@@ -24,10 +24,10 @@
     <bean id="sqlSessionFactory"
         class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="ds" />
-        <property name="configLocation"
+        <!-- <property name="configLocation"
             value="classpath:/mybatis-config.xml" />
         <property name="mapperLocations"
-            value="classpath:/mappers/*.xml" />
+            value="classpath:/mappers/*.xml" /> -->
     </bean>
     
     <!-- SqlSession 객체: SQL 문장 실행/결과 처리 등을 담당 -->
