@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
+    <title>TRANS - 장거리 교통정보 안내</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -33,19 +33,19 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-          <a class="navbar-brand" href="index.html">Deluxe</a>
+          <a class="navbar-brand" href="index.html" style="font-size: 50px">TRANS</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
+            <span class="oi oi-menu"></span> 메뉴
           </button>
 
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-              <li class="nav-item"><a href="rooms.html" class="nav-link">Rooms</a></li>
-              <li class="nav-item"><a href="restaurant.html" class="nav-link">Restaurant</a></li>
-              <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-              <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-              <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+              <li class="nav-item active"><a href="index.html" class="nav-link" style="font-size: 20px" >홈</a></li>
+              <li class="nav-item"><a href="rooms.html" class="nav-link" style="font-size: 20px" >교통 경로찾기</a></li>
+              <li class="nav-item"><a href="restaurant.html" class="nav-link" style="font-size: 20px" >여행지 정보</a></li>
+              <li class="nav-item"><a href="blog.html" class="nav-link" style="font-size: 20px" >게시판</a></li>
+              <li class="nav-item"><a href="about.html" class="nav-link" style="font-size: 20px" >예약</a></li>
+              <li class="nav-item"><a href="contact.html" class="nav-link" style="font-size: 20px" >로그인</a></li>
             </ul>
           </div>
         </div>
@@ -53,27 +53,27 @@
     <!-- END nav -->
 
     <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url(images/bg_1.jpg);">
+      <div class="slider-item" style="background-image:url(resources/images/bg_1.jpg);">
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-12 ftco-animate text-center">
             <div class="text mb-5 pb-3">
-                <h1 class="mb-3">Welcome To Deluxe</h1>
-                <h2>Hotels &amp; Resorts</h2>
+                <h1 class="mb-3" style="font-family:맑은 고딕; font-size: 500%">장거리 교통정보 / 관광지 안내</h1>
+                <h2>Transportation &amp; Travel Information</h2>
             </div>
           </div>
         </div>
         </div>
       </div>
 
-      <div class="slider-item" style="background-image:url(images/bg_2.jpg);">
+      <div class="slider-item" style="background-image:url(resources/images/bg_2.jpg);">
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-12 ftco-animate text-center">
             <div class="text mb-5 pb-3">
-                <h1 class="mb-3">Enjoy A Luxury Experience</h1>
+                <h1 class="mb-3" style="font-family:맑은 고딕; font-size: 400%">당신의 이용 경험을 공유하세요~</h1>
                 <h2>Join With Us</h2>
             </div>
           </div>

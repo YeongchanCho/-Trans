@@ -1,4 +1,4 @@
-package edu.spring.trans;
+package edu.spring.trans.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -25,15 +25,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+			
+		return "home_t1";
 	}
 	
 }

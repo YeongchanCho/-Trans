@@ -41,7 +41,7 @@
     <!-- Spring 프레임워크가 base-package 아래의 콤포넌트들을 검색해서
     bean(자바 객체)으로 생성/관리.
     해당 패키지 아래의 클래스에서는 콤포넌트 어노테이션이 사용되어야 함. -->
-    <context:component-scan base-package="edu.spring.trans">
+    <context:component-scan base-package="edu.spring.trans.controller">
         <context:exclude-filter type="annotation" 
             expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
