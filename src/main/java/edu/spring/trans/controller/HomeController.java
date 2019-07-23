@@ -29,4 +29,18 @@ public class HomeController {
 		return "home_t1";
 	}
 	
+	/*
+	 * @RequestMapping(value = "/login", method = RequestMethod.GET) public void
+	 * login() { logger.info("login() 호출");
+	 * 
+	 * }
+	 */
+	
+	/*
+	 * @RequestMapping(value = "/join", method = RequestMethod.GET) public void
+	 * join() { logger.info("join() 호출");
+	 * 
+	 * //return "redirect:"; }
+	 */
+	
 }

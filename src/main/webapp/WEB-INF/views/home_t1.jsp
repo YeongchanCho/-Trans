@@ -45,7 +45,7 @@
               <li class="nav-item"><a href="restaurant.html" class="nav-link" style="font-size: 20px" >여행지 정보</a></li>
               <li class="nav-item"><a href="blog.html" class="nav-link" style="font-size: 20px" >여행커뮤니티</a></li>
               <li class="nav-item"><a href="about.html" class="nav-link" style="font-size: 20px" >예약</a></li>
-              <li class="nav-item"><a href="contact.html" class="nav-link" style="font-size: 20px" >로그인</a></li>
+              <li class="nav-item"><a href="user/login" class="nav-link" style="font-size: 20px" >로그인</a></li>
             </ul>
           </div>
         </div>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.spring.trans.mappers.UserMapper">
+
+    <!-- <update id="updatePoints">
+    update users
+    set points = points + #{points}
+    where userid = #{userid}
+    </update> -->
+    
+    
+    <select id="selectAll" resultType="User">
+    select * from ${tbl_Users} order by ${col_userid} desc
+    </select>
+    
+    <select id="selectByUserId" resultType="User">
+    select * from ${tbl_Users} where ${col_userid} = #{userid}
+    </select>
+
+    <insert id="create">
+    insert into ${tbl_Users} (${col_userid}, ${col_pwd}, ${col_city},
+        ${col_phone}, ${col_email}, ${col_gender}, ${col_birth})
+    values (#{userid}, #{pwd}, #{city}, #{phone}, #{email},
+        #{gender}, #{birth})
+    </insert>
+
+    <update id="update">
+    update ${tbl_Users}
+    set ${col_pwd} = #{pwd}, ${col_city} = #{city},
+        ${col_phone} = #{phone}, ${col_email} = #{email}
+    where ${col_userid} = #{userid}
+    </update>
+    
+    <delete id="delete">
+    delete from ${tbl_Users} where ${col_userid} = #{userid}
+    </delete>
+    
+    <!-- <update id="updateReplyCnt">
+    update ${tbl_boards}
+    set ${col_replycnt} = ${col_replycnt} + #{increase}
+    where ${col_bno} = #{bno}
+    </update> -->
+
+</mapper>

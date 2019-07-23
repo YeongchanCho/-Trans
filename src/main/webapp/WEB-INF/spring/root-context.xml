@@ -24,10 +24,10 @@
     <bean id="sqlSessionFactory"
         class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="ds" />
-        <!-- <property name="configLocation"
+        <property name="configLocation"
             value="classpath:/mybatis-config.xml" />
         <property name="mapperLocations"
-            value="classpath:/mappers/*.xml" /> -->
+            value="classpath:/mappers/*.xml" />
     </bean>
     
     <!-- SqlSession 객체: SQL 문장 실행/결과 처리 등을 담당 -->
@@ -41,11 +41,12 @@
     <!-- Spring 프레임워크가 base-package 아래의 콤포넌트들을 검색해서
     bean(자바 객체)으로 생성/관리.
     해당 패키지 아래의 클래스에서는 콤포넌트 어노테이션이 사용되어야 함. -->
-    <context:component-scan base-package="edu.spring.trans.controller">
+    <context:component-scan base-package="edu.spring.trans">
         <context:exclude-filter type="annotation" 
             expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     
-   
+   <!-- 해당 패키지와 그 하위 패키지 안에서 Mapper 인터페이스를 찾아서 객체 생성 및 관리 -->
+    <mybatis-spring:scan base-package="edu.spring.trans.mappers"/>
     
 </beans>
