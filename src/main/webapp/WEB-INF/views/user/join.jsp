@@ -9,7 +9,7 @@
 	</head>
 	<body>
 	   <h1>회원가입 페이지</h1>
-	   <form action="login" method="post">
+	   <form action="user/login" method="post">
 	       <label>아    이    디</label>
 	       <input type="text" name="userId" placeholder="아이디 입력" required/><br/>
 	       <label>비  밀  번  호</label>

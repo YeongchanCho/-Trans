@@ -12,13 +12,13 @@ import edu.spring.trans.service.UserService;
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
-	@Autowired private UserService userService;
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
+	
+	//@Autowired UserService userService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void login() {
-		logger.info("login() 호출");
-		
+		log.info("login() 호출");
 	}
+
 }
