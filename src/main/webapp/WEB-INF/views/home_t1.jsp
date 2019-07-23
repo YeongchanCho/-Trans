@@ -86,7 +86,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="#" class="booking-form">
+                    <!-- <form action="#" class="booking-form"> -->
+                    <form action="transDetail" class="booking-form" method="post">
                     <div class="row">
                         <div class="col-md-3 d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
