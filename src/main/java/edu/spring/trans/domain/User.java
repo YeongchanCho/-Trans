@@ -1,18 +1,19 @@
 package edu.spring.trans.domain;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 public class User {
-	private String userId, pwd, pwdCheck, city, phone, email, gender;
+	private String userid, pwd, pwdCheck, city, phone, email, gender;
 	private Date birth;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String userId, String pwd, String pwdCheck, String city, String phone, String email, String gender,
+	public User(String userid, String pwd, String pwdCheck, String city, String phone, String email, String gender,
 			Date birth) {
-		this.userId = userId;
+		this.userid = userid;
 		this.pwd = pwd;
 		this.pwdCheck = pwdCheck;
 		this.city = city;
@@ -22,12 +23,12 @@ public class User {
 		this.birth = birth;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getUserid() {
+		return userid;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
 	public String getPwd() {
@@ -84,11 +85,13 @@ public class User {
 
 	public void setBirth(Date birth) {
 		this.birth = birth;
+		DateFormat df = DateFormat.getDateInstance();
+		df.format(birth);
 	}
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", pwd=" + pwd + ", pwdCheck=" + pwdCheck + ", city=" + city + ", phone="
+		return "User [userid=" + userid + ", pwd=" + pwd + ", pwdCheck=" + pwdCheck + ", city=" + city + ", phone="
 				+ phone + ", email=" + email + ", gender=" + gender + ", birth=" + birth + "]";
 	}
 	

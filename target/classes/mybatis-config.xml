@@ -7,7 +7,7 @@
     <!-- Oracle 데이터베이스의 테이블 이름, 컬럼 이름들을 상수로 정의 -->
     <properties>
         <property name="tbl_Users" value="users"/>
-        <property name="col_userId" value="userId"/>
+        <property name="col_userid" value="userid"/>
         <property name="col_pwd" value="pwd"/>
         <property name="col_city" value="city"/>
         <property name="col_phone" value="phone"/>

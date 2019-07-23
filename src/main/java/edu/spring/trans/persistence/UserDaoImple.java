@@ -20,10 +20,10 @@ public class UserDaoImple implements UserDao {
 		@Autowired private UserMapper mapper;
 
 	@Override
-	public User read(String userId) {
+	public User read(String userid) {
 		log.info("read() 호출");
 
-		return sqlSession.selectOne(NAMESPACE + ".selectByUserId", userId);
+		return sqlSession.selectOne(NAMESPACE + ".selectByUserId", userid);
 	}
 
 	@Override
@@ -41,10 +41,10 @@ public class UserDaoImple implements UserDao {
 	}
 
 	@Override
-	public int delete(String userId) {
-		log.info("delete(user = {})", userId);
+	public int delete(String userid) {
+		log.info("delete(user = {})", userid);
 
-		return sqlSession.delete(NAMESPACE + ".delete", userId);
+		return sqlSession.delete(NAMESPACE + ".delete", userid);
 	}
 
 	@Override

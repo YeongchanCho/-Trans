@@ -9,7 +9,7 @@
 	</head>
 	<body>
 	   <h1>로그인 페이지</h1>
-	   <form action="/user/join" method="get">
+	   <form action="join" method="get">
 		  <input type="submit" value="회원가입" />
 	   </form>
 	</body>

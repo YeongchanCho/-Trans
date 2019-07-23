@@ -12,17 +12,17 @@
     
     
     <select id="selectAll" resultType="User">
-    select * from ${tbl_Users} order by ${col_bno} desc
+    select * from ${tbl_Users} order by ${col_userid} desc
     </select>
     
     <select id="selectByUserId" resultType="User">
-    select * from ${tbl_Users} where ${col_userId} = #{userId}
+    select * from ${tbl_Users} where ${col_userid} = #{userid}
     </select>
 
     <insert id="create">
-    insert into ${tbl_Users} (${col_userId}, ${col_pwd}, ${col_city},
+    insert into ${tbl_Users} (${col_userid}, ${col_pwd}, ${col_city},
         ${col_phone}, ${col_email}, ${col_gender}, ${col_birth})
-    values (#{userId}, #{pwd}, #{city}, #{phone}, #{email},
+    values (#{userid}, #{pwd}, #{city}, #{phone}, #{email},
         #{gender}, #{birth})
     </insert>
 
@@ -30,11 +30,11 @@
     update ${tbl_Users}
     set ${col_pwd} = #{pwd}, ${col_city} = #{city},
         ${col_phone} = #{phone}, ${col_email} = #{email}
-    where ${col_userId} = #{userId}
+    where ${col_userid} = #{userid}
     </update>
     
     <delete id="delete">
-    delete from ${tbl_Users} where ${col_userId} = #{userId}
+    delete from ${tbl_Users} where ${col_userid} = #{userid}
     </delete>
     
     <!-- <update id="updateReplyCnt">

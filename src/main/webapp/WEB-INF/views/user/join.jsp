@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,9 +10,9 @@
 	</head>
 	<body>
 	   <h1>회원가입 페이지</h1>
-	   <form action="user/login" method="post">
+	   <form action="join" method="post">
 	       <label>아    이    디</label>
-	       <input type="text" name="userId" placeholder="아이디 입력" required/><br/>
+	       <input type="text" name="userid" placeholder="아이디 입력" required/><br/>
 	       <label>비  밀  번  호</label>
            <input type="password" name="pwd" placeholder="비밀번호 입력" required/><br/>
 	       <label>비밀번호 확인</label>
@@ -24,8 +25,7 @@
            <input type="email" name="email" placeholder="이메일 입력" required/><br/>
 	       <label>성           별</label>
            <input type="text" name="gender" placeholder="성별 입력" required/><br/>
-	       <label>출 생 연 월 일</label>
-           <input type="date" name="birth" placeholder="출생년월일 입력" required/><br/>
+	       <input type="date" name="birth" placeholder="출생년월일 입력" required/><br/>
 	       <input type="submit" value="회원가입"/>
 	   </form>
 		

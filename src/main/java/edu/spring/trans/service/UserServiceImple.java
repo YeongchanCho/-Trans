@@ -34,16 +34,16 @@ public class UserServiceImple implements UserService {
 	}
 	
 	@Override
-	public int delete(String userId) {
-		log.info("delete(bno={})", userId);
+	public int delete(String userid) {
+		log.info("delete(bno={})", userid);
 		
-		return userDao.delete(userId);
+		return userDao.delete(userid);
 	}
 	
 	@Override
-	public User read(String userId) {
-		log.info("read(bno={})", userId);
-		return userDao.read(userId);
+	public User read(String userid) {
+		log.info("read(bno={})", userid);
+		return userDao.read(userid);
 	}
 	
 	@Override
