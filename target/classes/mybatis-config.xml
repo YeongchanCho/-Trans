@@ -15,6 +15,16 @@
         <property name="col_gender" value="gender"/>
         <property name="col_birth" value="birth"/>
         
+        <property name="tbl_community" value="community"/>
+        <property name="col_bno" value="bno"/>
+        <property name="col_title" value="title"/>
+        <property name="col_content" value="content"/>
+        
+        <property name="col_regdate" value="reg_date"/>
+        <property name="col_replycnt" value="reply_cnt"/>
+        
+        
+        
         <!-- <property name="tbl_replies" value="replies"/>
         <property name="col_rno" value="rno"/>
         <property name="col_rtext" value="rtext"/>
