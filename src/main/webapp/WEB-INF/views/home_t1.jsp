@@ -87,7 +87,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- <form action="#" class="booking-form"> -->
-                    <form action="transDetail" class="booking-form" method="post">
+                    <form action="" class="booking-form" method="get">
                     <div class="row">
                         <div class="col-md-3 d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
@@ -147,13 +147,16 @@
                         </div>
                         <div class="col-md d-flex">
                             <div class="form-group d-flex align-self-stretch">
-                          <input type="submit" value="Check Availability" class="btn btn-primary py-3 px-4 align-self-stretch">
+                          <input type="submit" value="Check Availability" class="btn btn-primary py-3 px-4 align-self-stretch" id="reApi">
                         </div>
                         </div>
                     </div>
                 </form>
                 </div>
             </div>
+        </div>
+        <div class="showApi">
+                   
         </div>
     </section>
 
@@ -188,7 +191,7 @@
           
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2">Q & A</h2>
+                <h2 class="ftco-heading-2">Q &amp; A</h2>
                 <div class="block-23 mb-3">
                   <ul>
                     <li><span class="icon icon-map-marker"></span><span class="text">서울시 강남구 테헤란로000 여삼빌딩 PH</span></li>
@@ -234,6 +237,33 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="resources/js/google-map.js"></script>
   <script src="resources/js/main.js"></script>
+  
+  <script>
+    $(document).ready(function () {
+    	$('#reApi').click(function (event) {
+    		event.preventDefault();
+    		url = '/trans/transDetail';
+    		$.get(url, function (data) {
+    			/* alert(data); */
+    			window.open(
+    					data	
+    			);
+    		});
+    		
+    		
+    		/* $.ajax({ 
+    			url: 'http://openapi.tago.go.kr/openapi/service/ExpBusInfoService/getExpBusTrminlList?terminalNm=%EC%9D%B8%EC%B2%9C&ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D', 
+                type: 'GET',
+                
+                dataType: 'text',
+                success: function(data) {
+                	alert(data);
+                	$('.showApi').html(data);
+                }
+    		}); */
+    	});
+    });
+  </script>
     
   </body>
 </html>
