@@ -6,7 +6,7 @@
 
     <!-- Oracle 데이터베이스의 테이블 이름, 컬럼 이름들을 상수로 정의 -->
     <properties>
-        <property name="tbl_Users" value="users"/>
+        <property name="tbl_users" value="users"/>
         <property name="col_userid" value="userid"/>
         <property name="col_pwd" value="pwd"/>
         <property name="col_city" value="city"/>
@@ -14,6 +14,17 @@
         <property name="col_email" value="email"/>
         <property name="col_gender" value="gender"/>
         <property name="col_birth" value="birth"/>
+        <property name="col_grade" value="grade"/>
+        
+        <property name="tbl_community" value="community"/>
+        <property name="col_bno" value="bno"/>
+        <property name="col_title" value="title"/>
+        <property name="col_content" value="content"/>
+        
+        <property name="col_regdate" value="reg_date"/>
+        <property name="col_replycnt" value="reply_cnt"/>
+        
+        
         
         <!-- <property name="tbl_replies" value="replies"/>
         <property name="col_rno" value="rno"/>
