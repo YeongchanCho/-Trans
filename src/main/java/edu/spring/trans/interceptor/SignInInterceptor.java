@@ -29,15 +29,20 @@ public class SignInInterceptor extends HandlerInterceptorAdapter {
 		log.info("target = {}", target);
 
 		User user = (User)modelAndView.getModel().get("loginUser");
+		HttpSession session = request.getSession();
 		if (user != null) { // 로그인 성공한 경우
-//			if (user.getGrade().equals("guest")) {
-//			JOptionPane.showMessageDialog(null, "회원가입 승인이 되지 않았습니다.", "로그인 실패", JOptionPane.INFORMATION_MESSAGE);
-//				return;
-//			}
+			if (user.getGrade().equals("guest")) {
+				
+				session.setAttribute("code", "guest");
+				response.sendRedirect("/trans/");
+				
+				return;
+			}
 			log.info("로그인 성공.user = {}", user);
 			// 세션에 로그인 정보(사용자 아이디)를 저장하고, 페이지 이동(redirect)
-			HttpSession session = request.getSession();
+			
 			session.setAttribute("signinId", ((User) user).getUserid());
+			response.sendRedirect("/trans/");
 
 		} else { // 로그인 실패한 경우
 			log.info("로그인 실패");

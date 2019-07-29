@@ -61,7 +61,11 @@
     
     <div>
         <input type="text" name="rtext" id="rtext" placeholder="댓글 입력" />
+<<<<<<< HEAD
         <input type="text" name="userid" id="replier" readonly value="${ .userid }" />
+=======
+        <input type="text" name="userid" id="replier" placeholder="아이디 입력" />
+>>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
         <button id="btnCreateReply">댓글 작성 완료</button>
     </div> <!-- 댓글 입력 폼 -->
     

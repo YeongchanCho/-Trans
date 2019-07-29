@@ -45,7 +45,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String signin(User user, Model model) {
+	public void signin(User user, Model model) {
 		log.info("signin({})", user);
 		
 		// UserService의 메소드를 사용해서 로그인 처리(성공/실패)
@@ -54,7 +54,7 @@ public class UserController {
 		
 		// model 객체에 로그인 정보(signinId)를 attribute로 추가
 		model.addAttribute("loginUser", loginUser);
-		return "redirect:/";
+		/* return "redirect:/"; */
 	} // end signin(user)
 	
 	
