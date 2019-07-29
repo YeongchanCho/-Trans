@@ -28,7 +28,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		} else { // 로그인이 안된 경우
 			log.info("로그인 안됨");
 			String url = getRedirectUrl(request);
-			response.sendRedirect(url);
+			response.sendRedirect("../user/login");
 			return false;
 		}
 		

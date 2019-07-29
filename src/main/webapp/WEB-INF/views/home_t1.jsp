@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>TRANS - 장거리 교통정보 안내</title>
 <meta charset="utf-8">
@@ -115,14 +115,24 @@ function openWindow() {
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-      $('#close').click(function() {
-        $('#search').hide();
-      });
-    });
-    function search(){
-        $('#search').show();
-    }
+    
+    	function openwindow(){
+    		var _width = '300';
+    	    var _height = '400';
+    	 
+    	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+    	    var _left = Math.ceil(( document.body.offsetWidth - _width )/2);
+    	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+    	        
+    	 
+    	    window.open('/trans/user/login', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top ); 	
+    	if ('${code}' == 'guest') {
+    		alert('기다리셈');
+    	}
+    	};
+    	
+    	
+    
  </script>
 <script type="text/javascript">
     function openLogin() {
@@ -133,32 +143,31 @@ function openWindow() {
          $('#myModal').hide();
     };
 </script>
-<script src="https://code.jquery.com/jquery-latest.js"></script> 
- 
-    <style>
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-    
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 30%; /* Could be more or less, depending on screen size */                          
-        }
- 
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+<style>
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
 </style>
 
 
@@ -194,15 +203,16 @@ function openWindow() {
 						style="font-size: 20px">여행커뮤니티</a></li>
 					<li class="nav-item"><a href="about.html" class="nav-link"
 						style="font-size: 20px">예약</a></li>
-					<!-- <li class="nav-item "><a onclick="login();" class="nav-link" style="font-size: 20px">로그인</a></li> -->
 					<c:if test="${empty signinId}">
 						<%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
-						<li class="nav-item"><a onclick="openLogin();" class="nav-link"
-							style="font-size: 20px" id="btnSignIn">로그인</a></li>
+						<li class="nav-item">						
+						<a onclick="openLogin();" class="nav-link" style="font-size: 20px"
+						id="btnSignIn">로그인</a></li>
 					</c:if>
 					<c:if test="${not empty signinId}">
 						<%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
-						<li class="nav-link">${signinId}님,환영! <a href="user/logout" class="nav-link">로그아웃</a>
+						<li class="nav-link">${signinId}님,환영!<a href="user/logout"
+							class="nav-link">로그아웃</a>
 						</li>
 					</c:if>
 				</ul>
@@ -210,8 +220,8 @@ function openWindow() {
 		</div>
 	</nav>
 	<!-- END nav -->
-	
-	
+
+
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
@@ -438,45 +448,31 @@ function openWindow() {
 
 
 
-<!-- The Modal -->
-    <div id="myModal" class="modal">
- 
-      <!-- Modal content -->
-      <div class="modal-content">
-                <form action="user/login" method="post">
-                <input type="text" name="userid" placeholder="아이디 입력" required />
-                <br />
-                <input type="password" name="pwd" placeholder="비밀번호 입력" required />
-                <br />
-                <input type="submit" value="로그인" /> <a href="user/join">회원가입</a>
-                <br />
-                <input type="hidden" name="target" value="${ target }" />
-            </form>
-            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
-                <span class="pop_bt" style="font-size: 13pt;" >닫기</span>
-            </div>
-      </div>
- 
-    </div>
-        <!--End Modal-->
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
 
-
-	<div id="login">
-		<div style="height: 370px;">
+		<!-- Modal content -->
+		<div class="modal-content">
 			<form action="user/login" method="post">
 				<input type="text" name="userid" placeholder="아이디 입력" required />
 				<br />
 				<input type="password" name="pwd" placeholder="비밀번호 입력" required />
 				<br />
-				<input type="submit" value="로그인" /> <a href="user/join">회원가입</a>
+				<input type="submit" value="로그인" />
+				<a href="user/join">회원가입</a>
 				<br />
 				<input type="hidden" name="target" value="${ target }" />
 			</form>
+			<div
+				style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
+				onClick="close_pop();">
+				<span class="pop_bt" style="font-size: 13pt;">닫기</span>
+			</div>
 		</div>
-		<div>
-			<div id="closeLogin" style="width: 100px; margin: auto;">close</div>
-		</div>
+
 	</div>
+	<!--End Modal-->
+
 
 	<div id="search">
 		<div style="height: 370px;">
