@@ -6,7 +6,7 @@
     <title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
 
@@ -108,10 +108,9 @@
             <div class="pt-5 mt-5">
               <h3 class="mb-5">6 Comments</h3>
               <ul class="comment-list">
+              
                 <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../resources/images/person_1.jpg" alt="Image placeholder">
-                  </div>
+                  
                   <div class="comment-body">
                     <h3>John Doe</h3>
                     <div class="meta">Decmener 7, 2018 at 2:21pm</div>

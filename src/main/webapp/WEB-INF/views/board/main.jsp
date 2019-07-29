@@ -46,7 +46,7 @@
 
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a href="index.html" class="nav-link">홈</a></li>
+              <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
               <li class="nav-item"><a href="rooms.html" class="nav-link">교통 경로찾기</a></li>
               <li class="nav-item"><a href="restaurant.html" class="nav-link">여행지 정보</a></li>
               <li class="nav-item"><a href="about.html" class="nav-link">여행지 정보</a></li>
@@ -57,6 +57,8 @@
         </div>
       </nav>
     <!-- END nav -->
+    
+    
 
     <div class="hero-wrap" style="background-image: url('../resources/images/bg_1.jpg');">
       <div class="overlay"></div>
@@ -71,6 +73,8 @@
         </div>
       </div>
     </div>
+    
+    
     
      <nav>
      <br/>
@@ -94,6 +98,7 @@
         </ul>
     </nav>
 
+    
     <section class="ftco-section">
       <div class="container">
         <div class="row d-flex">
@@ -116,6 +121,7 @@
             </div>
           </div>
         </c:forEach>
+         
          
          
         <div class="row mt-5">

@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>TRANS - 장거리 교통정보 안내</title>
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -41,7 +40,8 @@
 
 
 <body>
-     <nav
+
+    <nav
         class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
         id="ftco-navbar">
         <div class="container">
@@ -67,7 +67,8 @@
             </div>
         </div>
     </nav>
-    
+
+
     <div class="hero-wrap"
         style="background-image: url('../resources/images/bg_1.jpg');">
         <div class="overlay"></div>
@@ -81,83 +82,42 @@
                             <span class="mr-2"><a href="../">홈</a></span> <span class="mr-2"><a
                                 href="main">여행커뮤니티</a></span>
                         </p>
-                        <h1 class="mb-4 bread" style="font-family: 맑은 고딕; font-size: 400%">글 수정하기</h1>
+                        <h1 class="mb-4 bread" style="font-family: 맑은 고딕; font-size: 400%">새
+                            글 작성하기</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
- <section class="ftco-section">
-    <div class="container">
-    <nav>
-    <div class="col-lg-8 ftco-animate order-md-last">
-        <ul>
-            <li>
-                <a href="main">게시판 메인 페이지</a>
-            </li>
-            <li>
-                <a href="detail?bno=${board.bno}">게시글 상세보기 페이지</a>
-            </li>
-            <li>
-                <a id="menuDelete" href="delete?bno=${board.bno}">삭제</a>
-            </li>
-        </ul>
-      </div>
-    </nav>
-    
-    <div class="comment-form-wrap pt-5">
-	    <form action="update" method="post" class="p-5 bg-light">
-	        <div class="form-group">
-	            <label for="bno">글 번호</label>
-	            <input type="number" id="bno" name="bno"
-	               class="form-control" value="${board.bno}" readonly/>
-	        </div>
-	        <div class="form-group">
-	            <label for="title">제목 *</label>
-	            <input type="text" id="title" name="title"
-	                class="form-control" value="${board.title}" required />
-	        </div>
-	        <div class="form-group">
-	            <label for="content">내용 *</label>
-	            <textarea rows="5" id="content" 
-	                name="content" class="form-control" required>${board.content}</textarea>
-	        </div>
-	        <div class="form-group">
-	            <label for="userid">작성자</label>
-	            <input type="text" id="userid"
-	                class="form-control" value="${board.userid}" readonly />
-	        </div>
-	        <div class="form-group">
-	            <label for="reply_cnt">댓글 갯수</label>
-	            <input type="number" id="reply_cnt"
-	               class="form-control" value="${board.reply_cnt}" readonly />
-	        </div>
-	        
-	        <div class="form-group">
-	            <input type="submit"  class="btn py-3 px-4 btn-primary"
-	            value="수정 완료" />
-	        </div>
-	    </form>
-	   </div>
 
-    <script>
-    $(document).ready(function () {
-        $('#menuDelete').click(function (event) {
-            event.preventDefault();
-            var result = confirm('정말 삭제할까요?');
-            if (result) {
-                location = $(this).attr("href");
-            }
-        });
+
+    <div class="comment-form-wrap pt-5">
         
-    });
-    </script>
+        <form action="insert" method="post" class="p-5 bg-light">
+            <div class="form-group">
+                <label for="name">제목 *</label> <input type="text" name="title" placeholder="제목 입력" 
+                class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="email">내용 *</label> <textarea rows="5" name="content" 
+                class="form-control" placeholder="내용 입력" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="website">아이디 *</label> <input type="text" name="userid" 
+                class="form-control" required /> 
+            </div>
+
+            
+            <div class="form-group">
+                <input type="submit" value="작성 완료"
+                    class="btn py-3 px-4 btn-primary">
+            </div>
+
+
+        </form>
+    </div>
     
-   
-        </div>
-     </section>
- <footer class="ftco-footer ftco-bg-dark ftco-section">
+     <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
 
