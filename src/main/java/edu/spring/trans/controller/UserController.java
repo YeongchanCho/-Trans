@@ -1,11 +1,14 @@
 package edu.spring.trans.controller;
 
+import java.awt.Window;
 import java.beans.PropertyEditorSupport;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
@@ -32,9 +35,39 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void login() {
+	public void login(String target, Model model) {
 		log.info("login() 호출");
+		if (target != null && !target.equals("")) {
+			model.addAttribute("target", target);
+			// 로그인 성공 후에 이동할 페이지를 저장해둠
+			
+		}
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public void signin(User user, Model model) {
+		log.info("signin({})", user);
+		
+		// UserService의 메소드를 사용해서 로그인 처리(성공/실패)
+		User loginUser = userService.signinCheck(user);
+		log.info("signinUser: {}", loginUser);
+		
+		// model 객체에 로그인 정보(signinId)를 attribute로 추가
+		model.addAttribute("loginUser", loginUser);
+		/* return "redirect:/"; */
+	} // end signin(user)
+	
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String signOut(HttpSession session) {
+		log.info("signOut() 호출");
+		session.removeAttribute("signinId");
+		session.invalidate(); // 세션 객체 무효화(세션 객체 소멸, 새로 생성)
+		
+		
+		return "redirect:/";
+	}
+	
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public void join() {
@@ -43,10 +76,10 @@ public class UserController {
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(User user) {
-		log.info("sigin() 호출");
+		log.info("join(POST) 호출");
 		
 		userService.create(user);
-		return "redirect:/user/login";
+		return "redirect:/";
 	}
 	
 	@InitBinder

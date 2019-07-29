@@ -20,7 +20,7 @@
     </select>
 
     <insert id="create">
-    insert into ${tbl_Users} (${col_userid}, ${col_pwd}, ${col_city},
+    insert into ${tbl_users} (${col_userid}, ${col_pwd}, ${col_city},
         ${col_phone}, ${col_email}, ${col_gender}, ${col_birth})
     values (#{userid}, #{pwd}, #{city}, #{phone}, #{email},
         #{gender}, #{birth})

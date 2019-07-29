@@ -4,22 +4,21 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class User {
-	private String userid, pwd, pwdCheck, city, phone, email, gender;
+	private String userid, pwd, city, phone, email, gender, grade;
 	private Date birth;
 	
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
+	public User() {}
 
-	public User(String userid, String pwd, String pwdCheck, String city, String phone, String email, String gender,
+	public User(String userid, String pwd, String city, String phone, String email, String gender, String grade,
 			Date birth) {
+		super();
 		this.userid = userid;
 		this.pwd = pwd;
-		this.pwdCheck = pwdCheck;
 		this.city = city;
 		this.phone = phone;
 		this.email = email;
 		this.gender = gender;
+		this.grade = grade;
 		this.birth = birth;
 	}
 
@@ -37,14 +36,6 @@ public class User {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
-	}
-
-	public String getPwdCheck() {
-		return pwdCheck;
-	}
-
-	public void setPwdCheck(String pwdCheck) {
-		this.pwdCheck = pwdCheck;
 	}
 
 	public String getCity() {
@@ -79,20 +70,27 @@ public class User {
 		this.gender = gender;
 	}
 
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
 	public Date getBirth() {
 		return birth;
 	}
 
 	public void setBirth(Date birth) {
 		this.birth = birth;
-		DateFormat df = DateFormat.getDateInstance();
-		df.format(birth);
 	}
 
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", pwd=" + pwd + ", pwdCheck=" + pwdCheck + ", city=" + city + ", phone="
-				+ phone + ", email=" + email + ", gender=" + gender + ", birth=" + birth + "]";
+		return "User [userid=" + userid + ", pwd=" + pwd + ", city=" + city + ", phone=" + phone + ", email=" + email
+				+ ", gender=" + gender + ", grade=" + grade + ", birth=" + birth + "]";
 	}
+
 	
 }
