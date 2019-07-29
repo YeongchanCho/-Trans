@@ -38,61 +38,49 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 @RestController
-@RequestMapping(value = "/transDetail")
-public class TransController {
-	private static final Logger log = LoggerFactory.getLogger(TransController.class);
+@RequestMapping(value = "/transCities")
+public class TransCitiesController {
+	private static final Logger log = LoggerFactory.getLogger(TransCitiesController.class);
 	private static final String API_URL = "http://openapi.tago.go.kr/openapi/service/"; 
-	private static final String SERVICE_KEY = "&ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D"; 
+	private static final String SERVICE_KEY = "?ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D"; 
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Map<String, Object>>> ExpBusParser() {
-		log.info("ExpBusParser() 호출");
+	public ResponseEntity<List<String>> CitiesParser() {
+		log.info("CitiesParser() 호출");
 		
-		List<Map<String, Object>> res_list = null;
+		List<String> res_list = null;
         try {
         	res_list = getOpenApi();
         } catch (Exception e) {
             e.printStackTrace();
         }
         
-        ResponseEntity<List<Map<String, Object>>> entity = 
-				new ResponseEntity<List<Map<String, Object>>>(res_list, HttpStatus.OK);
+        ResponseEntity<List<String>> entity = 
+				new ResponseEntity<List<String>>(res_list, HttpStatus.OK);
 
 		return entity;
     }
 	
-	private String getApiUrl(String requestMessage) throws Exception{
+	private String getApiUrl() throws Exception{
 		log.info("getApiUrl() 호출");
 		
-		String encodeResult1 = URLEncoder.encode("NAEK010", "UTF-8");
-		log.info("Encoder: {}", encodeResult1);
-		String encodeResult2 = URLEncoder.encode("NAEK300", "UTF-8");
-		log.info("Encoder: {}", encodeResult2);
-
 		String SERVICE_NAME = "ExpBusInfoService/"; 
-		//String OPERATION = "getExpBusTrminlList"; 
-		String OPERATION = "getStrtpntAlocFndExpbusInfo"; 
-		//String REQ_MESSAGE = "?terminalNm="; 
-		//String REQ_MESSAGE = "?terminalNm=%EC%9D%B8%EC%B2%9C"; 
-		String REQ_MESSAGE = "?depTerminalId=" + encodeResult1 + "&arrTerminalId=" + encodeResult2 + "&depPlandTime=20190726"; 
-		String url = API_URL + SERVICE_NAME + OPERATION + REQ_MESSAGE + SERVICE_KEY;
+		String OPERATION = "getCtyCodeList"; 
+		String url = API_URL + SERVICE_NAME + OPERATION + SERVICE_KEY;
 		
-		
-        if(requestMessage != null){
-        	url = url + requestMessage;
-        }
         log.info("url = {}", url);
+        
         return url;
     }
 	
 	
 	
-	public List<Map<String, Object>> getOpenApi() throws Exception {
+	public List<String> getOpenApi() throws Exception {
 		log.info("getOpenApi() 호출");
 		
-		List<Map<String, Object>> res_list = new ArrayList<Map<String, Object>>();
+		List<String> res_list = new ArrayList<String>();
 		
-		URL url = new URL(getApiUrl(null));
+		URL url = new URL(getApiUrl());
 		
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 		factory.setNamespaceAware(true);
@@ -106,35 +94,31 @@ public class TransController {
 		List<String> list = new ArrayList<String>();
 		
 		String addr = null;
-		Map<String, Object> tempMap = null;
 		while (event_type != XmlPullParser.END_DOCUMENT) {
 			if (event_type == XmlPullParser.START_TAG) {
 				tag = xpp.getName();
-				if (tag.equals("item")) {
-					tempMap = new HashMap<String, Object>();
-				}
+				//if (tag.equals("item")) {
+					//tempMap = new HashMap<String, Object>();
+				//}
 			} else if (event_type == XmlPullParser.TEXT) {
-				if (tag.equals("terminalId")) {
-					tempMap.put("terminalId", xpp.getText());
-					log.info("GET TEXT: {}", xpp.getText());
-				} else if (tag.equals("terminalNm")) {
-					tempMap.put("terminalNm", xpp.getText());
-				}
+				if (tag.equals("cityName")) {
+					list.add(xpp.getText());
+					log.info("도시명 {}", xpp.getText());
+				} 
 			} else if (event_type == XmlPullParser.END_TAG) {
-				tag = xpp.getName();
-				if (tag.equals("item")) {
-					res_list.add(tempMap);
-				}
+				/*
+				 * tag = xpp.getName(); if (tag.equals("item")) { res_list.add(tempMap); }
+				 */
 			}
 			event_type = xpp.next();
 		}
-		log.info("결과 = {}", res_list);
+		log.info("결과 = {}", list);
 		/*
 		 * HttpHeaders responseHeaders = new HttpHeaders();
 		 * responseHeaders.add("Content-Type", "application/json; charset=UTF-8");
 		 */
-		return res_list;
+		return list;
 		
 	}
-
 }
+

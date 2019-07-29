@@ -254,14 +254,15 @@ function openWindow() {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form onclick="search();" class="booking-form">
+                    <!-- <form onclick="search();" class="booking-form"> -->
+                    <form class="booking-form">
                         <div class="row">
                             <div class="col-md-3 d-flex">
                                 <div
                                     class="form-group p-4 align-self-stretch d-flex align-items-end">
                                     <div class="wrap">
                                         <label for="#">출발일</label> <input type="text"
-                                            class="form-control checkin_date" placeholder="Check-in date">
+                                            class="form-control checkin_date" placeholder="출발일 선택">
                                     </div>
                                 </div>
                             </div>
@@ -271,7 +272,7 @@ function openWindow() {
                                     <div class="wrap">
                                         <label for="#">도착일</label> <input type="text"
                                             class="form-control checkout_date"
-                                            placeholder="Check-out date">
+                                            placeholder="도착일 선택">
                                     </div>
                                 </div>
                             </div>
@@ -279,20 +280,17 @@ function openWindow() {
                                 <div
                                     class="form-group p-4 align-self-stretch d-flex align-items-end">
                                     <div class="wrap">
-                                        <label for="#">출발지</label>
+                                        <label for="#" >출발지</label>
                                         <div class="form-field">
                                             <div class="select-wrap">
                                                 <div class="icon">
                                                     <span class="ion-ios-arrow-down"></span>
                                                 </div>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">서울</option>
-                                                    <option value="">인천/경기</option>
-                                                    <option value="">대전</option>
-                                                    <option value="">대구</option>
-                                                    <option value="">광주</option>
-                                                    <option value="">부산</option>
+                                                <div >
+                                                <select name="" class="form-control">
+                                                    
                                                 </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -309,12 +307,7 @@ function openWindow() {
                                                     <span class="ion-ios-arrow-down"></span>
                                                 </div>
                                                 <select name="" id="" class="form-control">
-                                                    <option value="">서울</option>
-                                                    <option value="">인천/경기</option>
-                                                    <option value="">대전</option>
-                                                    <option value="">대구</option>
-                                                    <option value="">광주</option>
-                                                    <option value="">부산</option>
+                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -323,7 +316,7 @@ function openWindow() {
                             </div>
                             <div class="col-md d-flex">
                                 <div class="form-group d-flex align-self-stretch">
-                                    <input type="submit" value="Check Availability" class="btn btn-primary py-3 px-4 align-self-stretch" id="reApi">
+                                    <input type="submit" value="교통편 찾기" class="btn btn-primary py-3 px-4 align-self-stretch" id="reApi">
                                     <!-- <input type="button" onclick="search();"
                                         value="Check Availability"
                                         class="btn btn-primary py-3 px-4 align-self-stretch"> -->
@@ -439,23 +432,21 @@ function openWindow() {
             url = '/trans/transDetail';
             $.get(url, function (data) {
                 alert(data);
-                /* window.open(
-                        data    
-                ); */
             });
-            
-            
-            /* $.ajax({ 
-                url: 'http://openapi.tago.go.kr/openapi/service/ExpBusInfoService/getExpBusTrminlList?terminalNm=%EC%9D%B8%EC%B2%9C&ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D', 
-                type: 'GET',
-                
-                dataType: 'text',
-                success: function(data) {
-                    alert(data);
-                    $('.showApi').html(data);
-                }
-            }); */
         });
+    });
+    $(document).ready(function () {
+            url = '/trans/transCities';
+            $.get(url, function (data) {
+            	var strs = '<option value="">';
+            	var stre = '</option>';
+            	var str = '';
+            	$.each(data, function (i) {
+            	    console.log(i + ':' + data[i]);
+            	    str += strs + data[i] + stre;
+            	});
+                $('.form-control').append(str);
+            });
     });
   </script>
 
