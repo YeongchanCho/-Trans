@@ -17,13 +17,13 @@
         <c:if test="${empty signinId}">
             <%-- 로그인되어 있지 않은 경우 --%>
             <li>
-                <a href="../user/signin" id="btnSignIn">로그인</a>
+                <a href="../user/login" id="btnSignIn">로그인</a>
             </li>
         </c:if>
         <c:if test="${not empty signinId}">
             <%-- 로그인되어 있는 경우 --%>
             <li>${signinId}님.
-                <a href="../user/signout">로그아웃</a>
+                <a href="../user/logout">로그아웃</a>
             </li>
         </c:if>
             <li>
