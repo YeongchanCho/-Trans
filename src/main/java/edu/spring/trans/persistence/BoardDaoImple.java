@@ -1,6 +1,8 @@
 package edu.spring.trans.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -58,6 +60,17 @@ public class BoardDaoImple implements BoardDao {
 		log.info("delete(bno={})", bno);
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NAMESPACE + ".delete", bno);
+	}
+
+	@Override
+	public int update(int bno, int increase) {
+		log.info("update(bno={}, increase={})", bno, increase);
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("bno", bno);
+		params.put("increase", increase);
+		
+		return sqlSession.update(NAMESPACE + ".updateReplyCnt", params);
 	}
 
 

@@ -23,6 +23,10 @@
         <property name="col_regdate" value="reg_date"/>
         <property name="col_replycnt" value="reply_cnt"/>
         
+        <property name="tbl_replies" value="reply"/>
+        <property name="col_rno" value="rno"/>
+        <property name="col_rtext" value="rtext"/>
+        <property name="col_r_regdate" value="regdate"/>
         
         
         <!-- <property name="tbl_replies" value="replies"/>
