@@ -28,5 +28,10 @@
     delete from  ${tbl_community} where ${col_bno} = #{bno}
     </delete>
     
+    <update id="updateReplyCnt">
+    update ${tbl_community}
+    set ${col_replycnt} = ${col_replycnt} + #{increase}
+    where ${col_bno} = #{bno}
+    </update>
    
 </mapper>
