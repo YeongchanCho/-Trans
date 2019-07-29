@@ -24,7 +24,7 @@ public class ReplyDaoImple implements ReplyDao {
 	public int create(Reply reply) {
 		log.info("create({MY})", reply);
 		
-		return sqlSession.insert(NAMESPACE + ".create", reply);
+		 return sqlSession.insert(NAMESPACE + ".create", reply);
 	}
 
 	@Override
