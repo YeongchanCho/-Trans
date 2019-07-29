@@ -182,7 +182,7 @@ public class TransController {
 	      responseHeaders.add("Content-Type", "application/json; charset=UTF-8");
 	      
 
-		ResponseEntity<String> entity = new ResponseEntity<String>(result, HttpStatus.OK);
+		ResponseEntity<String> entity = new ResponseEntity<String>(result, responseHeaders, HttpStatus.OK);
 
 		return entity;
 	}
