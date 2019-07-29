@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
 	rel="stylesheet">
@@ -175,7 +175,7 @@ function openWindow() {
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html" style="font-size: 50px">TRANS</a>
+			<a class="navbar-brand" href="" style="font-size: 50px">TRANS</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -259,7 +259,7 @@ function openWindow() {
 								<div
 									class="form-group p-4 align-self-stretch d-flex align-items-end">
 									<div class="wrap">
-										<label for="#">출발일</label> <input type="text"
+										<label for="#">출발일</label> <input type="text" name=""
 											class="form-control checkin_date" placeholder="Check-in date">
 									</div>
 								</div>
@@ -268,7 +268,7 @@ function openWindow() {
 								<div
 									class="form-group p-4 align-self-stretch d-flex align-items-end">
 									<div class="wrap">
-										<label for="#">도착일</label> <input type="text"
+										<label for="#">도착일</label> <input type="text" name=""
 											class="form-control checkout_date"
 											placeholder="Check-out date">
 									</div>
@@ -341,7 +341,7 @@ function openWindow() {
 
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4 ml-md-5">
-						<h2 class="ftco-heading-2">유용한 기능</h2>
+						<h2 class="ftco-heading-2" style="font-family: 맑은 고딕">유용한 기능</h2>
 						<ul class="list-unstyled">
 							<li><a href="#" class="py-2 d-block">여행커뮤니티</a></li>
 							<li><a href="#" class="py-2 d-block">즐겨찾은 정보들</a></li>
@@ -353,7 +353,7 @@ function openWindow() {
 
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">정보</h2>
+						<h2 class="ftco-heading-2" style="font-family: 맑은 고딕">정보</h2>
 						<ul class="list-unstyled">
 							<li><a href="#" class="py-2 d-block">내정보수정</a></li>
 							<li><a href="#" class="py-2 d-block">사이트맵</a></li>
@@ -365,7 +365,7 @@ function openWindow() {
 
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Q & A</h2>
+						<h2 class="ftco-heading-2" style="font-family: 맑은 고딕">Q & A</h2>
 						<div class="block-23 mb-3">
 							<ul>
 								<li><span class="icon icon-map-marker"></span><span
