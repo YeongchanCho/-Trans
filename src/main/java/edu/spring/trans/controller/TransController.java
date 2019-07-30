@@ -39,7 +39,6 @@ public class TransController {
 		Trans t_sendTrans = new Trans("TrainInfoService", "getStrtpntAlocFndTrainInfo", "NAT010000", "NAT011668", "20190730");
 		Trans a_sendTrans = new Trans("DmstcFlightNvgInfoService", "getFlightOpratInfoList", "NAARKJJ", "NAARKPC", "20190730");
 
-
 		try {
 			e_list = getOpenApi(e_sendTrans);
 			ktx_list = getOpenApi(t_sendTrans);
@@ -48,14 +47,12 @@ public class TransController {
 			e.printStackTrace();
 		}
 
-
 		List<List<Trans>> result = new ArrayList<List<Trans>>();
 		result.add(e_list);
 		result.add(ktx_list);
 		result.add(bhg_list);
 
 		ResponseEntity<List<List<Trans>>> entity = new ResponseEntity<List<List<Trans>>>(result, HttpStatus.OK);
-
 
 		return entity;
 	}
@@ -70,7 +67,6 @@ public class TransController {
 
 		String REQ_MESSAGE;
 		String url = null;
-
 
 		if (sendTrans.getInfoService().equals("ExpBusInfoService")) {
 			REQ_MESSAGE = "?depTerminalId" + "=" + encodeResult1 + "&arrTerminalId" + "=" + encodeResult2 + "&depPlandTime=" + sendTrans.getDepPlandTime(); 
