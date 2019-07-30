@@ -36,69 +36,6 @@
 <link rel="stylesheet" href="resources/css/icomoon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 
-
-
-
-
-
-
-<!-- <style type="text/css">
-#login {
-	width: 20%;
-	height: 30%;
-	background: #3d3d3d;
-	color: #fff;
-	position: absolute;
-	z-index: 1;
-	top: 50%;
-	left: 50%;
-	text-align: center;
-	border: 2px solid #000;
-	display: none;
-}
-</style>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-
-
-function openWindow() {
-	var _width = '300';
-    var _height = '400';
- 
-    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
-    var _left = Math.ceil(( document.body.offsetWidth - _width )/2);
-    var _top = Math.ceil(( window.screen.height - _height )/2); 
-    	
- 
-    window.open('user/login', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
-    
-   
-    /* window.open(
-
-        "user/login", 
-
-        "open the window",
-
-        "toolbar=no, width=300, height=400, left="+ popupX + ", top="+ popupY
-
-    ); */
-
-}
-
-    $(document).ready(function() {
-      $('#closeLogin').click(function() {
-        $('#login').hide();
-      });
-    });
-    function login(){
-        $('#login').show();
-    }
- </script> -->
-
-
-
-
-
 <style type="text/css">
 #search {
 	width: 300px;
@@ -243,8 +180,6 @@ function openWindow() {
 			</div>
 		</div>
 	</section>
-
-<<<<<<< HEAD
     <section class="ftco-booking">
         <div class="container">
             <div class="row">
@@ -323,92 +258,6 @@ function openWindow() {
             </div>
         </div>
     </section>
-=======
-	<section class="ftco-booking">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<form onclick="search();" class="booking-form">
-						<div class="row">
-							<div class="col-md-3 d-flex">
-								<div
-									class="form-group p-4 align-self-stretch d-flex align-items-end">
-									<div class="wrap">
-										<label for="#">출발일</label> <input type="text" name=""
-											class="form-control checkin_date" placeholder="출발일">
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 d-flex">
-								<div
-									class="form-group p-4 align-self-stretch d-flex align-items-end">
-									<div class="wrap">
-										<label for="#">도착일</label> <input type="text" name=""
-											class="form-control checkout_date" placeholder="도착일">
-									</div>
-								</div>
-							</div>
-							<div class="col-md d-flex">
-								<div
-									class="form-group p-4 align-self-stretch d-flex align-items-end">
-									<div class="wrap">
-										<label for="#">출발지</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon">
-													<span class="ion-ios-arrow-down"></span>
-												</div>
-												<select name="" id="" class="form-control">
-													<option value="">서울</option>
-													<option value="">인천/경기</option>
-													<option value="">대전</option>
-													<option value="">대구</option>
-													<option value="">광주</option>
-													<option value="">부산</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md d-flex">
-								<div
-									class="form-group p-4 align-self-stretch d-flex align-items-end">
-									<div class="wrap">
-										<label for="#">도착지</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon">
-													<span class="ion-ios-arrow-down"></span>
-												</div>
-												<select name="" id="" class="form-control">
-													<option value="">서울</option>
-													<option value="">인천/경기</option>
-													<option value="">대전</option>
-													<option value="">대구</option>
-													<option value="">광주</option>
-													<option value="">부산</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md d-flex">
-								<div class="form-group d-flex align-self-stretch">
-									<input type="button" onclick="search();"
-										value="Check Availability"
-										class="btn btn-primary py-3 px-4 align-self-stretch">
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
-
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
@@ -485,8 +334,6 @@ function openWindow() {
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-
-<<<<<<< HEAD
     <script src="resources/js/jquery.min.js"></script>
     <script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="resources/js/popper.min.js"></script>
@@ -541,28 +388,6 @@ function openWindow() {
         });
     });
   </script>
-=======
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/popper.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.easing.1.3.js"></script>
-	<script src="resources/js/jquery.waypoints.min.js"></script>
-	<script src="resources/js/jquery.stellar.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/aos.js"></script>
-	<script src="resources/js/jquery.animateNumber.min.js"></script>
-	<script src="resources/js/bootstrap-datepicker.js"></script>
-	<script src="resources/js/jquery.timepicker.min.js"></script>
-	<script src="resources/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="resources/js/google-map.js"></script>
-	<script src="resources/js/main.js"></script>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
-
-
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -583,43 +408,6 @@ function openWindow() {
 		</div>
 
 	</div>
-	<!--End Modal-->
-
-	<!-- 
-	<div id="login">
-		<div style="height: 370px;">
-			<form action="user/login" method="post">
-				<input type="text" name="userid" placeholder="아이디 입력" required />
-				<br />
-				<input type="password" name="pwd" placeholder="비밀번호 입력" required />
-				<br />
-				<input type="submit" value="로그인" /> <a href="user/join">회원가입</a>
-				<br />
-				<input type="hidden" name="target" value="${ target }" />
-			</form>
-		</div>
-		<div>
-			<div id="closeLogin" style="width: 100px; margin: auto;">close</div>
-		</div>
-	</div>
-
-	<div id="search">
-		<div style="height: 370px;">
-			<form action="signin" method="post">
-				<input type="text" name="userid" placeholder="아이디 입력" required /> <br />
-				<input type="password" name="pwd" placeholder="비밀번호 입력" required />
-				<br /> <input type="submit" value="로그인" /> <a href="user/join">회원가입</a>
-				<br /> <input type="hidden" name="target" value="${ target }" />
-			</form>
-		</div>
-		<div>
-			<div id="close" style="width: 100px; margin: auto;">close</div>
-		</div>
-	</div>
- -->
-
-
-
 
 </body>
 </html>

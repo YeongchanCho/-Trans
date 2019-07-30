@@ -49,7 +49,6 @@ public class TransController {
 	private static final String SERVICE_KEY = "&ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D"; 
 														   
 	@RequestMapping(method = RequestMethod.GET)
-<<<<<<< HEAD
 	public ResponseEntity<List<Map<String, Object>>> ExpBusParser(
 			@RequestParam Map<String, String> request) {
 	log.info("ExpBusParser() 호출");
@@ -65,43 +64,40 @@ public class TransController {
 	
 		List<Map<String, Object>> res_list = null;
         try {
-        	res_list = getOpenApi();
+        	//res_list = getOpenApi();
         } catch (Exception e) {
-=======
-	public ResponseEntity<List<List<Trans>>> ExpBusParser() {
-		log.info("ExpBusParser() 호출");
-		
-		List<Trans> s_list = null;
-		List<Trans> e_list = null;
-		List<Trans> ktx_list = null;
-		List<Trans> bhg_list = null;
-		String oper1 = "SuburbsBusInfoService";
-		String oper2 = "ExpBusInfoService";
-		Trans s_sendTrans = new Trans("SuburbsBusInfoService", "getStrtpntAlocFndSuberbsBusInfo", "NAI104600001", "NAI252600075", "20190730");
-		Trans e_sendTrans = new Trans("ExpBusInfoService", "getStrtpntAlocFndExpbusInfo", "NAEK010", "NAEK300", "20190730");
-		Trans t_sendTrans = new Trans("TrainInfoService", "getStrtpntAlocFndTrainInfo", "NAT010000", "NAT011668", "20190730");
-		Trans a_sendTrans = new Trans("DmstcFlightNvgInfoService", "getFlightOpratInfoList", "NAARKJJ", "NAARKPC", "20190730");
-		
-		
-        try {                  
-        	s_list = getOpenApi(s_sendTrans);
-        	e_list = getOpenApi(e_sendTrans);
-        	ktx_list = getOpenApi(t_sendTrans);
-        	bhg_list = getOpenApi(a_sendTrans);
-		} catch (Exception e) { 
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
-            e.printStackTrace();
+			/*
+			 * public ResponseEntity<List<List<Trans>>> ExpBusParser() {
+			 * log.info("ExpBusParser() 호출");
+			 * 
+			 * List<Trans> s_list = null; List<Trans> e_list = null; List<Trans> ktx_list =
+			 * null; List<Trans> bhg_list = null; String oper1 = "SuburbsBusInfoService";
+			 * String oper2 = "ExpBusInfoService"; Trans s_sendTrans = new
+			 * Trans("SuburbsBusInfoService", "getStrtpntAlocFndSuberbsBusInfo",
+			 * "NAI104600001", "NAI252600075", "20190730"); Trans e_sendTrans = new
+			 * Trans("ExpBusInfoService", "getStrtpntAlocFndExpbusInfo", "NAEK010",
+			 * "NAEK300", "20190730"); Trans t_sendTrans = new Trans("TrainInfoService",
+			 * "getStrtpntAlocFndTrainInfo", "NAT010000", "NAT011668", "20190730"); Trans
+			 * a_sendTrans = new Trans("DmstcFlightNvgInfoService",
+			 * "getFlightOpratInfoList", "NAARKJJ", "NAARKPC", "20190730");
+			 * 
+			 * 
+			 * try { s_list = getOpenApi(s_sendTrans); e_list = getOpenApi(e_sendTrans);
+			 * ktx_list = getOpenApi(t_sendTrans); bhg_list = getOpenApi(a_sendTrans); }
+			 * catch (Exception e) { >>>>>>> branch 'master' of
+			 * https://github.com/YeongchanCho/Trans.git
+			             e.printStackTrace();*/
         }
         List<List<Trans>> result = null;
-        result.add(s_list);
-        result.add(e_list);
-        result.add(ktx_list);
-        result.add(bhg_list);
+		/*
+		 * result.add(s_list); result.add(e_list); result.add(ktx_list);
+		 * result.add(bhg_list);
+		 */
         
         ResponseEntity<List<List<Trans>>> entity = new ResponseEntity<List<List<Trans>>>(result, HttpStatus.OK);
        
         
-		return entity;
+		return null;
     }
 
 	private String getApiUrl(Trans sendTrans) throws Exception{
@@ -190,9 +186,4 @@ public class TransController {
 		
 		return res_list;
 	}
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
