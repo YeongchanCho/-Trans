@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>TRANS - 장거리 교통정보 안내</title>
+    <title>TRANS - 교통정보 안내</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -49,9 +49,9 @@
               <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
               <li class="nav-item"><a href="rooms.html" class="nav-link">교통 경로찾기</a></li>
               <li class="nav-item"><a href="restaurant.html" class="nav-link">여행지 정보</a></li>
-              <li class="nav-item"><a href="about.html" class="nav-link">여행지 정보</a></li>
               <li class="nav-item active"><a href="" class="nav-link">여행커뮤니티</a></li>
-              <li class="nav-item"><a href="contact.html" class="nav-link">예약</a></li>
+               <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
+              <li class="nav-item"><a href="contact.html" class="nav-link">로그인</a></li>
             </ul>
           </div>
         </div>
@@ -82,7 +82,7 @@
         <c:if test="${empty signinId}">
             <%-- 로그인되어 있지 않은 경우 --%>
             <li>
-                <a href="../user/signin" id="btnSignIn" style="font-family: 맑은 고딕; font-size: 200%">로그인</a>
+                <a href="../user/login" id="btnSignIn" style="font-family: 맑은 고딕; font-size: 200%">로그인</a>
             </li>
         </c:if>
         <c:if test="${not empty signinId}">
@@ -115,7 +115,7 @@
                     pattern="yyyy-MM-dd HH:mm" var="reg_date"/>
                   <div><a href="#">${reg_date}</a></div>
                   <div><a href="#">${board.userid}</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>${board.reply_cnt}</a></div>
                 </div>
               </div>
             </div>

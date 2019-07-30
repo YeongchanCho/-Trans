@@ -95,15 +95,15 @@
 		
 		<form action="insert" method="post" class="p-5 bg-light">
 			<div class="form-group">
-				<label for="name">제목 *</label> <input type="text" name="title" placeholder="제목 입력" 
+				<label for="title">제목 *</label> <input type="text" name="title" placeholder="제목 입력" 
 				class="form-control" required />
 			</div>
 			<div class="form-group">
-				<label for="email">내용 *</label> <textarea rows="5" name="content" 
+				<label for="content">내용 *</label> <textarea rows="5" name="content" 
 				class="form-control" placeholder="내용 입력" required></textarea>
 			</div>
 			<div class="form-group">
-				<label for="website">아이디 *</label> <input type="text" name="userid" 
+				<label for="userid">아이디 *</label> <input type="text" name="userid" 
 				class="form-control" required /> 
 			</div>
 
