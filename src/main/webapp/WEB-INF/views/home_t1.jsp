@@ -287,7 +287,7 @@ function openWindow() {
                                                     <span class="ion-ios-arrow-down"></span>
                                                 </div>
                                                 <div >
-                                                <select name="" class="form-control">
+                                                <select name="" id="departure" class="form-control">
                                                     
                                                 </select>
                                                 </div>
@@ -306,7 +306,7 @@ function openWindow() {
                                                 <div class="icon">
                                                     <span class="ion-ios-arrow-down"></span>
                                                 </div>
-                                                <select name="" id="" class="form-control">
+                                                <select name="" id="arrived" class="form-control">
                                                     
                                                 </select>
                                             </div>
@@ -427,15 +427,6 @@ function openWindow() {
 
     <script>
     $(document).ready(function () {
-        $('#reApi').click(function (event) {
-            event.preventDefault();
-            url = '/trans/transDetail';
-            $.get(url, function (data) {
-                alert(data);
-            });
-        });
-    });
-    $(document).ready(function () {
             url = '/trans/transCities';
             $.get(url, function (data) {
             	var strs = '<option value="">';
@@ -447,6 +438,26 @@ function openWindow() {
             	});
                 $('.form-control').append(str);
             });
+    });
+    $(document).ready(function () {
+        $('#reApi').click(function (event) {
+            event.preventDefault();
+            
+            var checkin_date = $(".checkin_date").val().replace(/-/gi, '');
+            var checkout_date = $(".checkout_date").val().replace(/-/gi, '');
+            var dep_city = $('#departure option:selected').text();
+            var arr_city = $('#arrived option:selected').text();
+            var req = { 'dep_date': checkin_date, 
+            		'arr_date': checkout_date, 
+            		'depcity': dep_city, 
+            		'arrcity': arr_city };
+            /* alert(checkin_date); */
+            
+            url = '/trans/transDetail';
+            $.get(url, req, function (data) {
+                /* alert(data); */
+            });
+        });
     });
   </script>
 

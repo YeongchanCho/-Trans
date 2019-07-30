@@ -103,7 +103,7 @@ public class TransCitiesController {
 			} else if (event_type == XmlPullParser.TEXT) {
 				if (tag.equals("cityName")) {
 					list.add(xpp.getText());
-					log.info("도시명 {}", xpp.getText());
+					//log.info("도시명 {}", xpp.getText());
 				} 
 			} else if (event_type == XmlPullParser.END_TAG) {
 				/*

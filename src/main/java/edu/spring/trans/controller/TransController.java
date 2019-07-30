@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.xmlpull.v1.XmlPullParser;
@@ -45,9 +47,19 @@ public class TransController {
 	private static final String SERVICE_KEY = "&ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D"; 
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Map<String, Object>>> ExpBusParser() {
-		log.info("ExpBusParser() 호출");
-		
+	public ResponseEntity<List<Map<String, Object>>> ExpBusParser(
+			@RequestParam Map<String, String> request) {
+	log.info("ExpBusParser() 호출");
+	log.info("depDate: {}", request.get("dep_date"));
+	log.info("arrDate: {}", request.get("arr_date"));
+	log.info("depCity: {}", request.get("depcity"));
+	log.info("arrCity: {}", request.get("arrcity"));
+	
+	String city = request.get("arrcity");
+	city = city.substring(0, city.length() - 1);
+	
+	log.info("도시이름: {}", city);
+	
 		List<Map<String, Object>> res_list = null;
         try {
         	res_list = getOpenApi();
