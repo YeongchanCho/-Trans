@@ -82,13 +82,17 @@
         <c:if test="${empty signinId}">
             <%-- 로그인되어 있지 않은 경우 --%>
             <li>
+<<<<<<< HEAD
+                <a href="../user/login" id="btnSignIn">로그인</a>
+=======
                 <a href="../user/login" id="btnSignIn" style="font-family: 맑은 고딕; font-size: 200%">로그인</a>
+>>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
             </li>
         </c:if>
         <c:if test="${not empty signinId}">
             <%-- 로그인되어 있는 경우 --%>
             <li>${signinId}님.
-                <a href="../user/signout">로그아웃</a>
+                <a href="../user/logout">로그아웃</a>
             </li>
         </c:if>
            
@@ -113,6 +117,8 @@
                 <div class="meta mb-3">
                 <fmt:formatDate value="${board.reg_date}"
                     pattern="yyyy-MM-dd HH:mm" var="reg_date"/>
+
+             
                   <div><a href="#">${reg_date}</a></div>
                   <div><a href="#">${board.userid}</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span>${board.reply_cnt}</a></div>
@@ -231,4 +237,5 @@
   <script src="../resources/js/main.js"></script>
     
   </body>
+>>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
 </html>

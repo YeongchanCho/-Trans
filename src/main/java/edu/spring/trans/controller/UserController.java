@@ -36,7 +36,7 @@ public class UserController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void login(String target, Model model) {
-		log.info("login() 호출");
+		log.info("sigin(target={}) GET 호출", target);
 		if (target != null && !target.equals("")) {
 			model.addAttribute("target", target);
 			// 로그인 성공 후에 이동할 페이지를 저장해둠
