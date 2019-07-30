@@ -78,57 +78,6 @@
                 <a href="update?bno=${board.bno}">수정하기</a>
             </li>
         </ul>
-<<<<<<< HEAD
-    </nav>
-    
-    <form>
-        <div>
-            <label for="bno">글 번호</label>
-            <input type="number" id="bno" name="bno"
-                value="${board.bno}" readonly />
-        </div>
-        <div>
-            <label for="title">글 제목</label>
-            <input type="text" id="title" name="title"
-                value="${board.title}" readonly />
-        </div>
-        <div>
-            <label for="content">내용</label>
-            <textarea rows="5" id="content" 
-                    name="content" readonly>${board.content}</textarea>
-        </div>
-        <div>
-            <label for="userid">작성자</label>
-            <input type="text" id="userid" name="userid"
-                value="${board.userid}" readonly />
-        </div>
-        <div>
-            <label for="reply_cnt">댓글 갯수</label>
-            <input type="number" id="reply_cnt" name="reply_cnt"
-                value="${board.reply_cnt}" readonly />
-        </div>
-        <div>
-            <label for="reg_date">작성 시간</label>
-            <input type="text" id="reg_date" name="reg_date"
-                value="${board.reg_date}" readonly />
-        </div>
-    </form>
-    
-    <hr/>
-    
-    <div>
-        <input type="text" name="rtext" id="rtext" placeholder="댓글 입력" />
-        <input type="text" name="userid" id="replier" readonly value="${ signinId }" />
-        <button id="btnCreateReply">댓글 작성 완료</button>
-    </div> <!-- 댓글 입력 폼 -->
-    
-    <hr/>
-    
-    <div id="replies">
-    </div> <!-- 댓글 리스트 -->
-    
-    <script>
-=======
           
             <h2 class="mb-3" style="font-family: 맑은 고딕">#${board.bno}. ${board.title}</h2>
             <p>${board.content}</p>
@@ -155,44 +104,55 @@
             </div>
             
             <div class="pt-5 mt-5">
-              <h3 class="mb-5">댓글 ${board.reply_cnt}개 </h3>
-              
-              <ul class="comment-list" id="replies">
-                <li class="comment">
-                 
-                  <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply">Reply</a></p>
-                  </div>
-                </li>
-
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../resources/images/person_1.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">December 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply">Reply</a></p>
-                  </div>
-                </li>
+              <h3 class="mb-5" style="font-family: 맑은 고딕;">댓글 ${board.reply_cnt}개 </h3>
+             
+            <!--  
+              <ul class="reply-item-list" id="replies">
+                
                 
               </ul>
-            
-              <!-- END comment-list -->
+            -->
+        
+         
+            <div class="reply-item-list" id="replies">
+            </div><!-- 댓글 리스트 -->
+              <!-- END reply-item-list -->
   
-  <script>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
+  
+             
+              <div class="reply-item-form-wrap pt-5">
+                <h3 class="mb-5" style="font-family: 맑은 고딕">댓글 달기</h3>
+                <form class="p-5 bg-light">
+                  <div class="form-group">
+                    <label for="rtext">내용 *</label>
+                    <input type="text" class="form-control"  name="rtext" id="rtext2" placeholder="댓글 입력">
+                  </div>
+                  <div class="form-group">
+                    <label for="userid">아이디 *</label>
+                    <input type="email" class="form-control" name="userid" id="replier2" readonly value="${signinId}">
+                  </div>
+                  
+                  <div class="form-group">
+                    <button id="btnCreateReply" class="btn py-3 px-4 btn-primary">댓글 작성 완료</button>
+                  </div>
+
+                </form>
+                        
+
+              </div>
+            </div>
+
+          </div> <!-- .col-md-8 -->
+          
+      <script>
     $(document).ready(function () {
         // input[id='bno']에 있는 글번호(bno)를 읽음
         //var bno = $('#bno').val();
+        var bno = ${board.bno};
         
         // 서버에서 해당 게시글 번호(bno)에 달린 모든 댓글 목록을 읽어오는 Ajax 함수 정의
         function getAllReplies() {
-            $.getJSON('/trans/reply/all/${board.bno}', function (data) {
+            $.getJSON('/trans/reply/all/' + bno, function (data) {
                 //console.log(data);
                 // div[id="replies"] 안에 있는 모든 하위 요소들을 삭제
                 $('#replies').empty();
@@ -204,21 +164,20 @@
                     var date = new Date(this.regdate);
                     var dateString = date.toLocaleDateString() 
                             + ' ' + date.toLocaleTimeString();
-                    list += '<li class="comment"> <div class="comment-body">'
-                            + '<p id="rno">글번호: '
-                            + this.rno
-                            + '</p>'                            
-                            + '<div class="meta" id="replier">아이디: '
-                            + this.userid
-                            + '</div>'
-                            
-                            + '<p id="rtext">내용: '
-                            + this.rtext
-                            + '</p>' 
-                            + '<button class="btnModify">수정</button>'
-                            + '<button class="btnDelete">삭제</button>'
-                            + '</div></li>'
-                            ;
+                    list += '<div class="comment-form-wrap pt-5"><div class="reply-item">'
+                        + '<input style="display:none" type="text" id="rno" value="'
+                        + this.rno
+                        + '" readonly />'
+                        + '<input type="text" id="rtext" value="'
+                        + this.rtext
+                        + '" />'
+                        + '<input type="text" id="replier" value="'
+                        + this.userid
+                        + '" readonly />'
+                        + '<button class="btnModify">수정</button>'
+                        + '<button class="btnDelete">삭제</button>'
+                        + '</div></div>';
+                
                 }); // end $.each();
                 
                 $('#replies').html(list);
@@ -228,19 +187,21 @@
         getAllReplies(); // 함수 호출
         
         // 버튼에 이벤트 핸들러 등록
-        $('#btnCreateReply').click(function () {
-            // 댓글 내용(input[id="rtext"]의 value)을 읽음
-            var rtext = $('#rtext').val();
+        $('#btnCreateReply').click(function (event) {
+        	event.preventDefault();
+        	
+            // 댓글 내용(input[id="rtext2"]의 value)을 읽음
+            var rtext = $('#rtext2').val();
             if (rtext === '') { // 입력된 댓글 내용이 없을 때
                 alert('댓글 내용은 반드시 입력해야 합니다.');
-                $('#rtext').focus(); // input에 포커스를 줌
+                $('#rtext2').focus(); // input에 포커스를 줌
                 return; // 이벤트 핸들러 종료
             }
             
-            var replier = $('#replier').val();
+            var replier = $('#replier2').val();
             if (replier === '') {
                 alert('댓글 작성자 아이디는 반드시 입력해야 합니다.');
-                $('#replier').focus();
+                $('#replier2').focus();
                 return;
             }
             
@@ -314,30 +275,6 @@
         
     }); // end $(document).ready()
     </script>
-             
-              <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5" style="font-family: 맑은 고딕">댓글 달기</h3>
-                <form action="#" class="p-5 bg-light">
-                  <div class="form-group">
-                    <label for="rtext">내용 *</label>
-                    <input type="text" class="form-control"  name="rtext" id="rtext" placeholder="댓글 입력">
-                  </div>
-                  <div class="form-group">
-                    <label for="userid">아이디 *</label>
-                    <input type="email" class="form-control" name="userid" id="replier" readonly value="${board.userid }">
-                  </div>
-                  
-                  <div class="form-group">
-                    <input type="submit" value="입력" class="btn py-3 px-4 btn-primary">
-                  </div>
-
-                </form>
-                        
-
-              </div>
-            </div>
-
-          </div> <!-- .col-md-8 -->
   
           
           <div class="col-lg-4 sidebar ftco-animate">
@@ -353,12 +290,12 @@
               <div class="categories">
                 <h3>카테고리</h3>
                 <ul>
-	                <li><a href="#">Properties <span>(12)</span></a></li>
-	                <li><a href="#">Home <span>(22)</span></a></li>
-	                <li><a href="#">House <span>(37)</span></a></li>
-	                <li><a href="#">Villa <span>(42)</span></a></li>
-	                <li><a href="#">Apartment <span>(14)</span></a></li>
-	                <li><a href="#">Condominium <span>(140)</span></a></li>
+                   <li><a href="#">Properties <span>(12)</span></a></li>
+                   <li><a href="#">Home <span>(22)</span></a></li>
+                   <li><a href="#">House <span>(37)</span></a></li>
+                   <li><a href="#">Villa <span>(42)</span></a></li>
+                   <li><a href="#">Apartment <span>(14)</span></a></li>
+                   <li><a href="#">Condominium <span>(140)</span></a></li>
                 </ul>
               </div>
             </div>
@@ -464,8 +401,3 @@
     
 </body>
 </html>
-
-
-
-
-

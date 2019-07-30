@@ -384,6 +384,7 @@
             url = '/trans/transDetail';
             $.get(url, req, function (data) {
                 /* alert(data); */
+                window.location = '/trans/transDetail';
             });
         });
     });

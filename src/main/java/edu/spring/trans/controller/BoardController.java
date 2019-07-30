@@ -21,8 +21,6 @@ public class BoardController {
 	
 	@Autowired BoardService boardservice;
 
-	
-	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public void main(Model model) {
 		// BoardService의 메소드를 사용해서 DB 게시판 테이블 전체 검색
