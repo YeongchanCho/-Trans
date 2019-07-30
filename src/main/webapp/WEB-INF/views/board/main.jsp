@@ -59,5 +59,14 @@
             </c:forEach>
         </tbody>
     </table>
+    <script>
+    $(document).ready(function () {
+        $('#btnSignIn').click(function (event) {
+            // 로그인 버튼(링크)를 클릭했을 때 페이지가 이동되는 기본 동작을 막음.
+            event.preventDefault();
+            location = encodeURI('/trans/user/login?target=' + location.href);
+        }); // end $(#btnSignIn).click
+    }); // end $(document).ready
+    </script>
 </body>
 </html>
