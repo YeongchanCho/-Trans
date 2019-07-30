@@ -78,57 +78,6 @@
                 <a href="update?bno=${board.bno}">수정하기</a>
             </li>
         </ul>
-<<<<<<< HEAD
-    </nav>
-    
-    <form>
-        <div>
-            <label for="bno">글 번호</label>
-            <input type="number" id="bno" name="bno"
-                value="${board.bno}" readonly />
-        </div>
-        <div>
-            <label for="title">글 제목</label>
-            <input type="text" id="title" name="title"
-                value="${board.title}" readonly />
-        </div>
-        <div>
-            <label for="content">내용</label>
-            <textarea rows="5" id="content" 
-                    name="content" readonly>${board.content}</textarea>
-        </div>
-        <div>
-            <label for="userid">작성자</label>
-            <input type="text" id="userid" name="userid"
-                value="${board.userid}" readonly />
-        </div>
-        <div>
-            <label for="reply_cnt">댓글 갯수</label>
-            <input type="number" id="reply_cnt" name="reply_cnt"
-                value="${board.reply_cnt}" readonly />
-        </div>
-        <div>
-            <label for="reg_date">작성 시간</label>
-            <input type="text" id="reg_date" name="reg_date"
-                value="${board.reg_date}" readonly />
-        </div>
-    </form>
-    
-    <hr/>
-    
-    <div>
-        <input type="text" name="rtext" id="rtext" placeholder="댓글 입력" />
-        <input type="text" name="userid" id="replier" readonly value="${ signinId }" />
-        <button id="btnCreateReply">댓글 작성 완료</button>
-    </div> <!-- 댓글 입력 폼 -->
-    
-    <hr/>
-    
-    <div id="replies">
-    </div> <!-- 댓글 리스트 -->
-    
-    <script>
-=======
           
             <h2 class="mb-3" style="font-family: 맑은 고딕">#${board.bno}. ${board.title}</h2>
             <p>${board.content}</p>
@@ -185,7 +134,6 @@
               <!-- END comment-list -->
   
   <script>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
     $(document).ready(function () {
         // input[id='bno']에 있는 글번호(bno)를 읽음
         //var bno = $('#bno').val();
@@ -324,7 +272,7 @@
                   </div>
                   <div class="form-group">
                     <label for="userid">아이디 *</label>
-                    <input type="email" class="form-control" name="userid" id="replier" readonly value="${board.userid }">
+                    <input type="email" class="form-control" name="userid" id="replier" readonly value="${signinId}">
                   </div>
                   
                   <div class="form-group">
@@ -353,12 +301,12 @@
               <div class="categories">
                 <h3>카테고리</h3>
                 <ul>
-	                <li><a href="#">Properties <span>(12)</span></a></li>
-	                <li><a href="#">Home <span>(22)</span></a></li>
-	                <li><a href="#">House <span>(37)</span></a></li>
-	                <li><a href="#">Villa <span>(42)</span></a></li>
-	                <li><a href="#">Apartment <span>(14)</span></a></li>
-	                <li><a href="#">Condominium <span>(140)</span></a></li>
+                   <li><a href="#">Properties <span>(12)</span></a></li>
+                   <li><a href="#">Home <span>(22)</span></a></li>
+                   <li><a href="#">House <span>(37)</span></a></li>
+                   <li><a href="#">Villa <span>(42)</span></a></li>
+                   <li><a href="#">Apartment <span>(14)</span></a></li>
+                   <li><a href="#">Condominium <span>(140)</span></a></li>
                 </ul>
               </div>
             </div>
@@ -464,8 +412,3 @@
     
 </body>
 </html>
-
-
-
-
-
