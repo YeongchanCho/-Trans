@@ -45,9 +45,9 @@
               <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
               <li class="nav-item"><a href="rooms.html" class="nav-link">교통 경로찾기</a></li>
               <li class="nav-item"><a href="restaurant.html" class="nav-link">여행지 정보</a></li>
-              <li class="nav-item"><a href="about.html" class="nav-link">여행지 정보</a></li>
-              <li class="nav-item active"><a href="../board/main" class="nav-link">여행커뮤니티</a></li>
-              <li class="nav-item"><a href="contact.html" class="nav-link">예약</a></li>
+               <li class="nav-item active"><a href="../board/main" class="nav-link">여행커뮤니티</a></li>
+              <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>             
+              <li class="nav-item"><a href="contact.html" class="nav-link">로그인</a></li>
             </ul>
           </div>
         </div>
@@ -272,7 +272,7 @@
                   </div>
                   <div class="form-group">
                     <label for="userid">아이디 *</label>
-                    <input type="email" class="form-control" name="userid" id="replier" readonly value="${board.userid }">
+                    <input type="email" class="form-control" name="userid" id="replier" readonly value="${signinId}">
                   </div>
                   
                   <div class="form-group">
@@ -301,12 +301,12 @@
               <div class="categories">
                 <h3>카테고리</h3>
                 <ul>
-	                <li><a href="#">Properties <span>(12)</span></a></li>
-	                <li><a href="#">Home <span>(22)</span></a></li>
-	                <li><a href="#">House <span>(37)</span></a></li>
-	                <li><a href="#">Villa <span>(42)</span></a></li>
-	                <li><a href="#">Apartment <span>(14)</span></a></li>
-	                <li><a href="#">Condominium <span>(140)</span></a></li>
+                   <li><a href="#">Properties <span>(12)</span></a></li>
+                   <li><a href="#">Home <span>(22)</span></a></li>
+                   <li><a href="#">House <span>(37)</span></a></li>
+                   <li><a href="#">Villa <span>(42)</span></a></li>
+                   <li><a href="#">Apartment <span>(14)</span></a></li>
+                   <li><a href="#">Condominium <span>(140)</span></a></li>
                 </ul>
               </div>
             </div>
@@ -412,8 +412,3 @@
     
 </body>
 </html>
-
-
-
-
-

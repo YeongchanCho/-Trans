@@ -59,10 +59,9 @@
                             경로찾기</a></li>
                     <li class="nav-item"><a href="restaurant.html"
                         class="nav-link">여행지 정보</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">여행지
-                            정보</a></li>
                     <li class="nav-item active"><a href="main" class="nav-link">여행커뮤니티</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">예약</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>                    
+                    <li class="nav-item"><a href="contact.html" class="nav-link">로그인</a></li>
                 </ul>
             </div>
         </div>
