@@ -82,11 +82,8 @@
         <c:if test="${empty signinId}">
             <%-- 로그인되어 있지 않은 경우 --%>
             <li>
-<<<<<<< HEAD
-                <a href="../user/login" id="btnSignIn">로그인</a>
-=======
                 <a href="../user/login" id="btnSignIn" style="font-family: 맑은 고딕; font-size: 200%">로그인</a>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
+
             </li>
         </c:if>
         <c:if test="${not empty signinId}">

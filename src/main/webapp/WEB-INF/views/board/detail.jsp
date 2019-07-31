@@ -164,18 +164,18 @@
                     var date = new Date(this.regdate);
                     var dateString = date.toLocaleDateString() 
                             + ' ' + date.toLocaleTimeString();
-                    list += '<div class="comment-form-wrap pt-5"><div class="reply-item">'
+                    list += '<div class="comment-form-wrap pt-5 p-5"><div class="reply-item">'
                         + '<input style="display:none" type="text" id="rno" value="'
                         + this.rno
                         + '" readonly />'
-                        + '<input type="text" id="rtext" value="'
+                        + '<label for="rtext">내용</label><input type="text" class="form-control" id="rtext" value="'
                         + this.rtext
                         + '" />'
-                        + '<input type="text" id="replier" value="'
+                        + '<label for="replier">작성자</label><input type="text" class="form-control" id="replier" value="'
                         + this.userid
-                        + '" readonly />'
-                        + '<button class="btnModify">수정</button>'
-                        + '<button class="btnDelete">삭제</button>'
+                        + '" readonly /><br/>'
+                        + '<button class="btnModify btn px-3 btn-primary">수정</button>'
+                        + '<button class="btnDelete btn px-3 btn-primary">삭제</button>'
                         + '</div></div>';
                 
                 }); // end $.each();
@@ -306,13 +306,7 @@
       </div>
     </section> <!-- .section -->
  
-    <hr/>
-    
-    
-    <hr/>
-    
-  
-    
+   
     <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
