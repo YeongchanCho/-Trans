@@ -1,13 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <title>TRANS - 장거리 교통정보 안내</title>
 <meta charset="utf-8">
 <meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link
     href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
     rel="stylesheet">
@@ -41,53 +42,6 @@
 
 
 
-<!-- <style type="text/css">
-#login {
-    width: 20%;
-    height: 30%;
-    background: #3d3d3d;
-    color: #fff;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    border: 2px solid #000;
-    display: none;
-}
-</style>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-function openWindow() {
-    var _width = '300';
-    var _height = '400';
- 
-    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
-    var _left = Math.ceil(( document.body.offsetWidth - _width )/2);
-    var _top = Math.ceil(( window.screen.height - _height )/2); 
-        
- 
-    window.open('user/login', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
-    
-   
-    /* window.open(
-        "user/login", 
-        "open the window",
-        "toolbar=no, width=300, height=400, left="+ popupX + ", top="+ popupY
-    ); */
-}
-    $(document).ready(function() {
-      $('#closeLogin').click(function() {
-        $('#login').hide();
-      });
-    });
-    function login(){
-        $('#login').show();
-    }
- </script> -->
-
-
-
 
 
 <style type="text/css">
@@ -107,32 +61,22 @@ function openWindow() {
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-    
-        function openwindow(){
-            var _width = '300';
-            var _height = '400';
-         
-            // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
-            var _left = Math.ceil(( document.body.offsetWidth - _width )/2);
-            var _top = Math.ceil(( window.screen.height - _height )/2); 
-                
-         
-            window.open('/trans/user/login', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );    
-        if ('${code}' == 'guest') {
-            alert('기다리셈');
-        }
-        };
-        
-        
-    
- </script>
+    $(document).ready(function() {
+        $('#close').click(function() {
+            $('#search').hide();
+        });
+    });
+    function search() {
+        $('#search').show();
+    }
+</script>
 <script type="text/javascript">
     function openLogin() {
-         $('#myModal').show();
+        $('#myModal').show();
     }
-  //팝업 Close 기능
+    //팝업 Close 기능
     function close_pop(flag) {
-         $('#myModal').hide();
+        $('#myModal').hide();
     };
 </script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
@@ -151,6 +95,7 @@ function openWindow() {
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
+
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
@@ -162,12 +107,6 @@ function openWindow() {
 </style>
 
 
-
-
-
-
-
-
 </head>
 <body>
 
@@ -175,7 +114,7 @@ function openWindow() {
         class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
         id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html" style="font-size: 50px">TRANS</a>
+            <a class="navbar-brand" href="" style="font-size: 50px">TRANS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#ftco-nav" aria-controls="ftco-nav"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -184,9 +123,9 @@ function openWindow() {
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.html"
-                        class="nav-link" style="font-size: 20px">홈</a></li>
-                    <li class="nav-item"><a href="rooms.html" class="nav-link"
+                    <li class="nav-item active"><a href="" class="nav-link"
+                        style="font-size: 20px">홈</a></li>
+                    <li class="nav-item"><a href="transDetail" class="nav-link"
                         style="font-size: 20px">교통 경로찾기</a></li>
                     <li class="nav-item"><a href="restaurant.html"
                         class="nav-link" style="font-size: 20px">여행지 정보</a></li>
@@ -194,11 +133,11 @@ function openWindow() {
                         style="font-size: 20px">여행커뮤니티</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link"
                         style="font-size: 20px">예약</a></li>
+                    <!-- <li class="nav-item "><a onclick="login();" class="nav-link" style="font-size: 20px">로그인</a></li> -->
                     <c:if test="${empty signinId}">
                         <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
-                        <li class="nav-item">                       
-                        <a onclick="openLogin();" class="nav-link" style="font-size: 20px"
-                        id="btnSignIn">로그인</a></li>
+                        <li class="nav-item"><a onclick="openLogin();"
+                            class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
                     </c:if>
                     <c:if test="${not empty signinId}">
                         <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
@@ -260,8 +199,8 @@ function openWindow() {
                                 <div
                                     class="form-group p-4 align-self-stretch d-flex align-items-end">
                                     <div class="wrap">
-                                        <label for="#">출발일</label> <input type="text"
-                                            class="form-control checkin_date" placeholder="Check-in date">
+                                        <label for="#">출발일</label> <input type="text" name=""
+                                            class="form-control checkin_date" placeholder="출발일">
                                     </div>
                                 </div>
                             </div>
@@ -269,9 +208,8 @@ function openWindow() {
                                 <div
                                     class="form-group p-4 align-self-stretch d-flex align-items-end">
                                     <div class="wrap">
-                                        <label for="#">도착일</label> <input type="text"
-                                            class="form-control checkout_date"
-                                            placeholder="Check-out date">
+                                        <label for="#">도착일</label> <input type="text" name=""
+                                            class="form-control checkout_date" placeholder="도착일">
                                     </div>
                                 </div>
                             </div>
@@ -321,12 +259,13 @@ function openWindow() {
                                     </div>
                                 </div>
                             </div>
+                            
+                            
                             <div class="col-md d-flex">
                                 <div class="form-group d-flex align-self-stretch">
-                                    <input type="submit" value="Check Availability" class="btn btn-primary py-3 px-4 align-self-stretch" id="reApi">
-                                    <!-- <input type="button" onclick="search();"
+                                    <input type="button" onclick="search();"
                                         value="Check Availability"
-                                        class="btn btn-primary py-3 px-4 align-self-stretch"> -->
+                                        class="btn btn-primary py-3 px-4 align-self-stretch">
                                 </div>
                             </div>
                         </div>
@@ -343,7 +282,7 @@ function openWindow() {
 
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">유용한 기능</h2>
+                        <h2 class="ftco-heading-2" style="font-family: 맑은 고딕">유용한 기능</h2>
                         <ul class="list-unstyled">
                             <li><a href="#" class="py-2 d-block">여행커뮤니티</a></li>
                             <li><a href="#" class="py-2 d-block">즐겨찾은 정보들</a></li>
@@ -355,7 +294,7 @@ function openWindow() {
 
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">정보</h2>
+                        <h2 class="ftco-heading-2" style="font-family: 맑은 고딕">정보</h2>
                         <ul class="list-unstyled">
                             <li><a href="#" class="py-2 d-block">내정보수정</a></li>
                             <li><a href="#" class="py-2 d-block">사이트맵</a></li>
@@ -367,7 +306,7 @@ function openWindow() {
 
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Q &amp; A</h2>
+                        <h2 class="ftco-heading-2" style="font-family: 맑은 고딕">Q & A</h2>
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="icon icon-map-marker"></span><span
@@ -432,37 +371,6 @@ function openWindow() {
     <script src="resources/js/google-map.js"></script>
     <script src="resources/js/main.js"></script>
 
-    <script>
-    $(document).ready(function () {
-        $('#reApi').click(function (event) {
-            event.preventDefault();
-            url = '/trans/transDetail';
-            $.get(url, function (data) {
-                alert(data);
-                /* window.open(
-                        data    
-                ); */
-            });
-            
-            
-            /* $.ajax({ 
-                url: 'http://openapi.tago.go.kr/openapi/service/ExpBusInfoService/getExpBusTrminlList?terminalNm=%EC%9D%B8%EC%B2%9C&ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D', 
-                type: 'GET',
-                
-                dataType: 'text',
-                success: function(data) {
-                    alert(data);
-                    $('.showApi').html(data);
-                }
-            }); */
-        });
-    });
-  </script>
-
-
-
-
-
 
 
     <!-- The Modal -->
@@ -471,14 +379,10 @@ function openWindow() {
         <!-- Modal content -->
         <div class="modal-content">
             <form action="user/login" method="post">
-                <input type="text" name="userid" placeholder="아이디 입력" required />
-                <br />
+                <input type="text" name="userid" placeholder="아이디 입력" required /> <br />
                 <input type="password" name="pwd" placeholder="비밀번호 입력" required />
-                <br />
-                <input type="submit" value="로그인" />
-                <a href="user/join">회원가입</a>
-                <br />
-                <input type="hidden" name="target" value="${ target }" />
+                <br /> <input type="submit" value="로그인" /> <a href="user/join">회원가입</a>
+                <br /> <input type="hidden" name="target" value="${ target }" />
             </form>
             <div
                 style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
@@ -488,26 +392,7 @@ function openWindow() {
         </div>
 
     </div>
-    <!--End Modal-->
-
-
-    <div id="search">
-        <div style="height: 370px;">
-            <form action="signin" method="post">
-                <input type="text" name="userid" placeholder="아이디 입력" required /> <br />
-                <input type="password" name="pwd" placeholder="비밀번호 입력" required />
-                <br /> <input type="submit" value="로그인" /> <a href="user/join">회원가입</a>
-                <br /> <input type="hidden" name="target" value="${ target }" />
-            </form>
-        </div>
-        <div>
-            <div id="close" style="width: 100px; margin: auto;">close</div>
-        </div>
-    </div>
-
-
-
-
+    
 
 </body>
 </html>
