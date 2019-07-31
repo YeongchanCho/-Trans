@@ -33,6 +33,7 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void login(String target, Model model) {
@@ -81,7 +82,7 @@ public class UserController {
 		userService.create(user);
 		return "redirect:/";
 	}
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) throws Exception {
 	    binder.registerCustomEditor(Date.class, new PropertyEditorSupport() {

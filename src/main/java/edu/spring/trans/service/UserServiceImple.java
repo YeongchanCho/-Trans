@@ -52,5 +52,15 @@ public class UserServiceImple implements UserService {
 		return userDao.update(user);
 	}
 
+
+	
+
+	@Override
+	public User select(String userid) {
+	log.info("ServiceCheckUserid",userid);
+		return userDao.select(userid);
+	}
+
+	
 } // end class UserServiceImple
 
