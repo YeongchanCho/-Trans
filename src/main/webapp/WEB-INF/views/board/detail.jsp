@@ -41,15 +41,27 @@
           </button>
 
           <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
-              <li class="nav-item"><a href="rooms.html" class="nav-link">교통 경로찾기</a></li>
-              <li class="nav-item"><a href="restaurant.html" class="nav-link">여행지 정보</a></li>
-               <li class="nav-item active"><a href="../board/main" class="nav-link">여행커뮤니티</a></li>
-              <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>             
-              <li class="nav-item"><a href="contact.html" class="nav-link">로그인</a></li>
-            </ul>
-          </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
+                    <li class="nav-item"><a href="rooms.html" class="nav-link">교통
+                            경로찾기</a></li>
+                    <li class="nav-item"><a href="restaurant.html"
+                        class="nav-link">여행지 정보</a></li>
+                    <li class="nav-item active"><a href="main" class="nav-link">여행커뮤니티</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
+                    <c:if test="${empty signinId}">
+                        <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
+                        <li class="nav-item"><a href="../user/login"
+                            class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
+                    </c:if>
+                    <c:if test="${not empty signinId}">
+                        <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
+                        <li class="nav-link">${signinId}님,환영!<a href="../user/logout"
+                            class="nav-link">로그아웃</a>
+                        </li>
+                    </c:if>
+                </ul>
+            </div>
         </div>
       </nav>
     <!-- END nav -->
@@ -80,7 +92,9 @@
         </ul>
           
             <h2 class="mb-3" style="font-family: 맑은 고딕">#${board.bno}. ${board.title}</h2>
-            <p>${board.content}</p>
+            <textarea rows="5" id="content" 
+                    name="content" class="form-control" readonly>${board.content}</textarea>
+             <br/>
             <p>
               <img src="../resources/images/image_7.jpg" alt="" class="img-fluid">
             </p>
