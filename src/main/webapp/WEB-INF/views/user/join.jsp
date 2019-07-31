@@ -131,8 +131,8 @@
 									<span class="ion-ios-arrow-down"></span>
 								</div>
 								<select name="gender" id="gender" class="form-control">
-									<option value="">남</option>
-									<option value="">여</option>
+									<option value="남">남</option>
+									<option value="여">여</option>
 								</select>
 							</div>
 						</div>
