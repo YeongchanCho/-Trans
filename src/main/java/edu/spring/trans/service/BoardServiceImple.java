@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.spring.trans.domain.Board;
+import edu.spring.trans.domain.Criteria;
 import edu.spring.trans.persistence.BoardDao;
 import edu.spring.trans.persistence.UserDao;
 
@@ -55,6 +56,17 @@ public class BoardServiceImple implements BoardService {
 		log.info("create");
 		
 		return boarddao.create(board);
+	}
+
+	@Override
+	public List<Board> listPage(Criteria cri) {
+		// 목록 + 페이징
+		return boarddao.listPage(cri);
+	}
+
+	@Override
+	public int listCount() {		
+		return boarddao.listCount();
 	}
 
 	

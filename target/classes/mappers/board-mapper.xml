@@ -4,9 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.spring.trans.mappers.BoardMapper">
 
+    <!--  
     <select id="selectAll" resultType="Board">
     select * from ${tbl_community} order by ${col_bno} desc
     </select>
+    -->
     
     <select id="selectByBno" resultType="Board">
     select * from ${tbl_community} where ${col_bno} = #{bno}
@@ -33,5 +35,27 @@
     set ${col_replycnt} = ${col_replycnt} + #{increase}
     where ${col_bno} = #{bno}
     </update>
+    
+    
+    <!-- 페이징 -->
+    <select id="listPage" resultType="Board" 
+    parameterType="Criteria">
+        select *
+        from (
+            select bno, title, content, userid, reg_date, reply_cnt,
+                row_number() over(order by bno desc) as rNum
+            from ${tbl_community} 
+            ) ${tbl_community}
+        where rNum between #{rowStart} and #{rowEnd}
+            order by bno desc
+    </select>
    
+   <select id="listCount" resultType="int">
+   <![CDATA[
+        select count(bno)
+        from ${tbl_community}
+        where bno > 0 
+   
+   ]]>   
+   </select>
 </mapper>

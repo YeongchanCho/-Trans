@@ -171,9 +171,9 @@
                         + '<label for="rtext">내용</label><input type="text" class="form-control" id="rtext" value="'
                         + this.rtext
                         + '" />'
-                        + '<label for="replier">작성자</label><input type="text" class="form-control" id="replier" value="'
+                        + '<label for="replier">작성자</label><p id="replier">'
                         + this.userid
-                        + '" readonly /><br/>'
+                        + '</p>'
                         + '<button class="btnModify btn px-3 btn-primary">수정</button>'
                         + '<button class="btnDelete btn px-3 btn-primary">삭제</button>'
                         + '</div></div>';

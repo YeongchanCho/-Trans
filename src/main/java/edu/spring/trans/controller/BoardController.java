@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.trans.domain.Board;
+import edu.spring.trans.domain.Criteria;
+import edu.spring.trans.domain.PageMaker;
 import edu.spring.trans.service.BoardService;
 import edu.spring.trans.service.UserService;
 
@@ -22,13 +24,20 @@ public class BoardController {
 	@Autowired BoardService boardservice;
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public void main(Model model) {
+	public void main(Criteria cri, Model model) {
 		// BoardService의 메소드를 사용해서 DB 게시판 테이블 전체 검색
 				// 검색 결과를 View(JSP)에 전달
 		log.info("main() 호출");
-		List<Board> list = boardservice.read();
+//		List<Board> list = boardservice.read();
+		List<Board> list = boardservice.listPage(cri);
 		log.info(list.toString());
 		model.addAttribute("boardList",list);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(boardservice.listCount());
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("cri", cri);
 	}
 	
 	@RequestMapping(value="/detail", method =  RequestMethod.GET)

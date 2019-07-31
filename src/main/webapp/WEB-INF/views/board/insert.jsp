@@ -104,7 +104,7 @@
 			</div>
 			<div class="form-group">
 				<label for="userid">아이디 *</label> <input type="text" name="userid" 
-				class="form-control" required /> 
+				class="form-control" readonly value="${signinId}" /> 
 			</div>
 
 			
