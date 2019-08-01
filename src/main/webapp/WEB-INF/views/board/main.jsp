@@ -60,7 +60,7 @@
 					<li class="nav-item"><a href="../" class="nav-link">홈</a></li>
 					<li class="nav-item"><a href="rooms.html" class="nav-link">교통
 							경로찾기</a></li>
-					<li class="nav-item"><a href="restaurant.html"
+					<li class="nav-item"><a href="../tour"
 						class="nav-link">여행지 정보</a></li>
 					<li class="nav-item active"><a href="" class="nav-link">여행커뮤니티</a></li>
 					<li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
@@ -154,25 +154,6 @@
 					</div>
 				</c:forEach>
                  </div>
-
-				<!--  
-				<div class="row mt-5">
-					<div class="col text-center">
-						<div class="block-27">
-							<ul>
-								<li><a href="#">&lt;</a></li>
-								<li class="active"><span>1</span></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">&gt;</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				-->
 
 				<div class="row mt-5">
 					<div class="col text-center">

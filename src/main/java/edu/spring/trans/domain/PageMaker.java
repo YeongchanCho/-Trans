@@ -23,7 +23,15 @@ public class PageMaker {
     .queryParam("perPageNum", cri.getPerPageNum())
     .build();
     
+  
   return uriComponents.toUriString();
+ }
+ 
+ public String mackTourQuery(int pageNo) {
+	 UriComponents uriComponents = UriComponentsBuilder.newInstance()
+				.queryParam("pageNo", pageNo).build();
+	 
+	 return uriComponents.toUriString();
  }
  
  public void setCri(Criteria cri) {

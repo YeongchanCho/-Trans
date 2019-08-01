@@ -119,7 +119,7 @@
 						style="font-size: 20px">홈</a></li>
 					<li class="nav-item"><a href="transDetail" class="nav-link"
 						style="font-size: 20px">교통 경로찾기</a></li>
-					<li class="nav-item"><a href="restaurant.html"
+					<li class="nav-item"><a href="tour"
 						class="nav-link" style="font-size: 20px">여행지 정보</a></li>
 					<li class="nav-item"><a href="board/main" class="nav-link"
 						style="font-size: 20px">여행커뮤니티</a></li>

@@ -6,6 +6,7 @@ public class Criteria {
 	private int rowStart;
 	private int rowEnd;
 
+	
 	public Criteria() {
 		this.page = 1;
 		this.perPageNum = 8;
@@ -17,6 +18,14 @@ public class Criteria {
 			return;
 		}
 		this.page = page;
+	}
+
+	public void setRowStart(int rowStart) {
+		this.rowStart = rowStart;
+	}
+
+	public void setRowEnd(int rowEnd) {
+		this.rowEnd = rowEnd;
 	}
 
 	public void setPerPageNum(int perPageNum) {

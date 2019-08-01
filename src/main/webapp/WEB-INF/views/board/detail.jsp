@@ -96,7 +96,7 @@
                     name="content" class="form-control" readonly>${board.content}</textarea>
              <br/>
             <p>
-              <img src="../resources/images/image_7.jpg" alt="" class="img-fluid">
+              <img src="http://tong.visitkorea.or.kr/cms2/website/55/2613555.jpg" alt="" class="img-fluid">
             </p>
             
           
@@ -159,7 +159,7 @@
           </div> <!-- .col-md-8 -->
           
       <script>
-    $(document).ready(function () {
+      $(document).ready(function () {
         // input[id='bno']에 있는 글번호(bno)를 읽음
         //var bno = $('#bno').val();
         var bno = ${board.bno};
