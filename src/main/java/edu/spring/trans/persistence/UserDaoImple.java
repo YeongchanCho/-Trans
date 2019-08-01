@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.spring.trans.domain.User;
+
 import edu.spring.trans.mappers.UserMapper;
 
 @Repository
@@ -18,6 +19,7 @@ public class UserDaoImple implements UserDao {
 
 	@Autowired SqlSession sqlSession; 
 		@Autowired private UserMapper mapper;
+			
 
 	@Override
 	public User read(String userid) {
@@ -53,5 +55,19 @@ public class UserDaoImple implements UserDao {
 
 		return mapper.signinCheck(user);
 	}
+
+	@Override
+	public User select(String userid) {
+		log.info("selectUserid",userid);
+		return sqlSession.selectOne(NAMESPACE+ ".idCheck", userid);
+	}
+
+	
+
+
+	
+
+
+	
 
 }

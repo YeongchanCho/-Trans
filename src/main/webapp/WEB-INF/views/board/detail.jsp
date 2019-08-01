@@ -132,6 +132,7 @@
             </div><!-- 댓글 리스트 -->
               <!-- END reply-item-list -->
   
+
   
              
               <div class="reply-item-form-wrap pt-5">
@@ -158,8 +159,10 @@
 
           </div> <!-- .col-md-8 -->
           
-      <script>
-      $(document).ready(function () {
+
+  <script>
+    $(document).ready(function () {
+
         // input[id='bno']에 있는 글번호(bno)를 읽음
         //var bno = $('#bno').val();
         var bno = ${board.bno};
@@ -289,7 +292,7 @@
         
     }); // end $(document).ready()
     </script>
-  
+
           
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
@@ -316,8 +319,8 @@
 
       
         </div>
-      </div>
-      </div>
+
+     
     </section> <!-- .section -->
  
    
@@ -373,7 +376,7 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
                         <script>
-                            document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear())
                         </script>
                         All rights reserved | This template is made with <i
                             class="icon-heart color-danger" aria-hidden="true"></i> by <a
@@ -408,4 +411,6 @@
   <script src="../resources/js/main.js"></script>
     
 </body>
+
 </html>
+

@@ -36,32 +36,6 @@
 <link rel="stylesheet" href="resources/css/icomoon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 
-<style type="text/css">
-#search {
-	width: 300px;
-	height: 400px;
-	background: #3d3d3d;
-	color: #fff;
-	position: absolute;
-	z-index: 1;
-	top: 50%;
-	left: 50%;
-	text-align: center;
-	border: 2px solid #000;
-	display: none;
-}
-</style>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#close').click(function() {
-			$('#search').hide();
-		});
-	});
-	function search() {
-		$('#search').show();
-	}
-</script>
 <script type="text/javascript">
 	function openLogin() {
 		$('#myModal').show();
@@ -180,84 +154,83 @@
 			</div>
 		</div>
 	</section>
-    <section class="ftco-booking">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- <form onclick="search();" class="booking-form"> -->
-                    <form class="booking-form">
-                        <div class="row">
-                            <div class="col-md-3 d-flex">
-                                <div
-                                    class="form-group p-4 align-self-stretch d-flex align-items-end">
-                                    <div class="wrap">
-                                        <label for="#">출발일</label> <input type="text"
-                                            class="form-control checkin_date" placeholder="출발일 선택">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 d-flex">
-                                <div
-                                    class="form-group p-4 align-self-stretch d-flex align-items-end">
-                                    <div class="wrap">
-                                        <label for="#">도착일</label> <input type="text"
-                                            class="form-control checkout_date"
-                                            placeholder="도착일 선택">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md d-flex">
-                                <div
-                                    class="form-group p-4 align-self-stretch d-flex align-items-end">
-                                    <div class="wrap">
-                                        <label for="#" >출발지</label>
-                                        <div class="form-field">
-                                            <div class="select-wrap">
-                                                <div class="icon">
-                                                    <span class="ion-ios-arrow-down"></span>
-                                                </div>
-                                                <div >
-                                                <select name="" id="departure" class="form-control">
-                                                    
-                                                </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md d-flex">
-                                <div
-                                    class="form-group p-4 align-self-stretch d-flex align-items-end">
-                                    <div class="wrap">
-                                        <label for="#">도착지</label>
-                                        <div class="form-field">
-                                            <div class="select-wrap">
-                                                <div class="icon">
-                                                    <span class="ion-ios-arrow-down"></span>
-                                                </div>
-                                                <select name="" id="arrived" class="form-control">
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md d-flex">
-                                <div class="form-group d-flex align-self-stretch">
-                                    <input type="submit" value="교통편 찾기" class="btn btn-primary py-3 px-4 align-self-stretch" id="reApi">
-                                    <!-- <input type="button" onclick="search();"
+	<section class="ftco-booking">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<!-- <form onclick="search();" class="booking-form"> -->
+					<form class="booking-form" action="transDetail">
+						<div class="row">
+							<div class="col-md-3 d-flex">
+								<div
+									class="form-group p-4 align-self-stretch d-flex align-items-end">
+									<div class="wrap">
+										<label for="#">출발일</label> <input type="text"
+											class="form-control checkin_date" name="depPlandTime"
+											placeholder="출발일 선택">
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 d-flex">
+								<div
+									class="form-group p-4 align-self-stretch d-flex align-items-end">
+									<div class="wrap">
+										<label for="#">도착일</label> <input type="text"
+											class="form-control checkout_date" name="arrPlandTime"
+											placeholder="도착일 선택">
+									</div>
+								</div>
+							</div>
+							<div class="col-md d-flex">
+								<div
+									class="form-group p-4 align-self-stretch d-flex align-items-end">
+									<div class="wrap">
+										<label for="#">출발지</label>
+										<div class="form-field">
+											<div class="select-wrap">
+												<div class="icon">
+													<span class="ion-ios-arrow-down"></span>
+												</div>
+												<div>
+													<select id="departure" class="form-control" name="depTerminalId" ></select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md d-flex">
+								<div
+									class="form-group p-4 align-self-stretch d-flex align-items-end">
+									<div class="wrap">
+										<label for="#">도착지</label>
+										<div class="form-field">
+											<div class="select-wrap">
+												<div class="icon">
+													<span class="ion-ios-arrow-down"></span>
+												</div>
+												<select id="arrived" class="form-control"  name="arrTerminalId" ></select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md d-flex">
+								<div class="form-group d-flex align-self-stretch">
+									<input type="submit" value="교통편 찾기"
+										class="btn btn-primary py-3 px-4 align-self-stretch"
+										id="reApi">
+									<!-- <input type="button" onclick="search();"
                                         value="Check Availability"
                                         class="btn btn-primary py-3 px-4 align-self-stretch"> -->
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
@@ -328,30 +301,34 @@
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+         <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none"
+         <circle class="path" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-    <script src="resources/js/jquery.min.js"></script>
-    <script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="resources/js/popper.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/jquery.easing.1.3.js"></script>
-    <script src="resources/js/jquery.waypoints.min.js"></script>
-    <script src="resources/js/jquery.stellar.min.js"></script>
-    <script src="resources/js/owl.carousel.min.js"></script>
-    <script src="resources/js/jquery.magnific-popup.min.js"></script>
-    <script src="resources/js/aos.js"></script>
-    <script src="resources/js/jquery.animateNumber.min.js"></script>
-    <script src="resources/js/bootstrap-datepicker.js"></script>
-    <script src="resources/js/jquery.timepicker.min.js"></script>
-    <script src="resources/js/scrollax.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="resources/js/google-map.js"></script>
-    <script src="resources/js/main.js"></script>
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="resources/js/popper.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.easing.1.3.js"></script>
+	<script src="resources/js/jquery.waypoints.min.js"></script>
+	<script src="resources/js/jquery.stellar.min.js"></script>
+	<script src="resources/js/owl.carousel.min.js"></script>
+	<script src="resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="resources/js/aos.js"></script>
+	<script src="resources/js/jquery.animateNumber.min.js"></script>
+	<script src="resources/js/bootstrap-datepicker.js"></script>
+	<script src="resources/js/jquery.timepicker.min.js"></script>
+	<script src="resources/js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="resources/js/google-map.js"></script>
+	<script src="resources/js/main.js"></script>
+	
+	 <!-- The Modal -->
+    <div id="myModal" class="modal">
+
 
     <script>
     $(document).ready(function () {
@@ -390,25 +367,71 @@
     });
   </script>
 
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <form action="user/login" method="post">
+                <input type="text" name="userid" placeholder="아이디 입력" required /> <br />
+                <input type="password" name="pwd" placeholder="비밀번호 입력" required />
+                <br /> <input type="submit" value="로그인" /> <a href="user/join">회원가입</a>
+                <br /> <input type="hidden" name="target" value="${ target }" />
+            </form>
+            <div
+                style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
+                onClick="close_pop();">
+                <span class="pop_bt" style="font-size: 13pt;">닫기</span>
+            </div>
+        </div>
 
-		<!-- Modal content -->
-		<div class="modal-content">
-			<form action="user/login" method="post">
-				<input type="text" name="userid" placeholder="아이디 입력" required /> <br />
-				<input type="password" name="pwd" placeholder="비밀번호 입력" required />
-				<br /> <input type="submit" value="로그인" /> <a href="user/join">회원가입</a>
-				<br /> <input type="hidden" name="target" value="${ target }" />
-			</form>
-			<div
-				style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
-				onClick="close_pop();">
-				<span class="pop_bt" style="font-size: 13pt;">닫기</span>
-			</div>
-		</div>
 
-	</div>
+    </div>
+	
+
+	<script>
+		$(document).ready(function() {
+			url = '/trans/transCities';
+			$.get(url, function(data) {
+				var strs = '<option value="">';
+				var stre = '</option>';
+				var str = '';
+				$.each(data, function(i) {
+					console.log(i + ':' + data[i]);
+					str += strs + data[i] + stre;
+				});
+				$('.form-control').append(str);
+			});
+		});
+
+		/* $(document).ready(
+
+				function() {
+					$('#reApi').click(
+							function(event) {
+								event.preventDefault();
+
+								var checkin_date = $(".checkin_date").val()
+										.replace(/-/gi, '');
+								var checkout_date = $(".checkout_date").val()
+										.replace(/-/gi, '');
+								var dep_city = $('#departure option:selected')
+										.text();
+								var arr_city = $('#arrived option:selected')
+										.text();
+								var req = {
+									'dep_date' : checkin_date,
+									'arr_date' : checkout_date,
+									'depcity' : dep_city,
+									'arrcity' : arr_city
+								};
+								alert(checkin_date);
+
+								url = '/trans/transDetail';
+								$.get(url, req, function(data) {
+									alert(data);
+									window.location = '/trans/transDetail';
+								});
+							});
+				}); */
+	</script>
 
 </body>
 </html>

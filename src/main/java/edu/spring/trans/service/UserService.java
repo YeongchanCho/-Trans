@@ -8,4 +8,5 @@ public interface UserService {
 	int create(User user);
 	int update(User user);
 	int delete(String userid);
+	User select(String userid);
 }

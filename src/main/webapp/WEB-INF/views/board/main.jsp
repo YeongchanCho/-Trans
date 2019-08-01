@@ -5,22 +5,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>TRANS - 교통정보 안내</title>
+
+<title>TRANS - 장거리 교통정보 안내</title>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <link
-	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
-	rel="stylesheet">
+    href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
+    rel="stylesheet">
 <link
-	href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
-	rel="stylesheet">
+    href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
+    rel="stylesheet">
 
 <link rel="stylesheet"
-	href="../resources/css/open-iconic-bootstrap.min.css">
+    href="../resources/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/animate.css">
 
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css">
@@ -39,6 +40,7 @@
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
+
 
 <body>
 

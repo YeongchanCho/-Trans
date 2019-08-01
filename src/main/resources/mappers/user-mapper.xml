@@ -12,11 +12,11 @@
     
     
     <select id="selectAll" resultType="User">
-    select * from ${tbl_Users} order by ${col_userid} desc
+    select * from ${tbl_users} order by ${col_userid} desc
     </select>
     
     <select id="selectByUserId" resultType="User">
-    select * from ${tbl_Users} where ${col_userid} = #{userid}
+    select * from ${tbl_users} where ${col_userid} = #{userid}
     </select>
 
     <insert id="create">
@@ -27,16 +27,22 @@
     </insert>
 
     <update id="update">
-    update ${tbl_Users}
+    update ${tbl_users}
     set ${col_pwd} = #{pwd}, ${col_city} = #{city},
         ${col_phone} = #{phone}, ${col_email} = #{email}
     where ${col_userid} = #{userid}
     </update>
     
     <delete id="delete">
-    delete from ${tbl_Users} where ${col_userid} = #{userid}
+    delete from ${tbl_users} where ${col_userid} = #{userid}
     </delete>
     
+    
+  
+    <!-- 아이디 확인 -->
+    <select id="idCheck" resultType="User">
+    select  ${col_userid} from ${tbl_users} where userid = #{userid}
+     </select>
     <!-- <update id="updateReplyCnt">
     update ${tbl_boards}
     set ${col_replycnt} = ${col_replycnt} + #{increase}
