@@ -18,7 +18,6 @@ public class Trans {
    
    public Trans() {}
 
-   
    public Trans(String depPlandTime, String arrPlandTime, String depCity, String arrCity) {
       this.depPlandTime = depPlandTime;
       this.arrPlandTime = arrPlandTime;
@@ -31,6 +30,7 @@ public class Trans {
       this.arrTerminalId = arrTerminalId;
       this.depPlandTime = depPlandTime;
    }
+
 
    public Trans(String depTerminalId, String arrTerminalId, String depPlandTime, String arrPlandTime, String travelTime,
          String price) {
@@ -101,6 +101,7 @@ public class Trans {
    public String getPrice() {
       return price;
    }
+
 
    public void setPrice(String price) {
       this.price = price;
