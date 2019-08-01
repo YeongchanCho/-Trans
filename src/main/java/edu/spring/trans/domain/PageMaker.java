@@ -27,7 +27,7 @@ public class PageMaker {
   return uriComponents.toUriString();
  }
  
- public String mackTourQuery(int pageNo) {
+ public String makeTourQuery(int pageNo) {
 	 UriComponents uriComponents = UriComponentsBuilder.newInstance()
 				.queryParam("pageNo", pageNo).build();
 	 

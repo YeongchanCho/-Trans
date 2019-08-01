@@ -7,7 +7,7 @@ public class Tour {
 	private String galPhotographyMonth;
 	private String galWebImageUrl;
 	private String galSearchKeyword;
-	
+		
 	public Tour() {}
 
 	public Tour(String galPhotographyLocation, String galTitle, String galPhotographyMonth, String galWebImageUrl,

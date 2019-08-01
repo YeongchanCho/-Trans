@@ -149,12 +149,13 @@
                 </c:forEach>
             </div>
 
-           
+            <p style="display:none" id="pageNo" name="pageNo">1</p>
             <div class="row mt-5">
                 <div class="col text-center">
                     <div class="block-27">
+                     <p style="display:none" id="pageNo">2</p>
                         <ul>
-                        
+                       
                             <li>
              
                             <a href="tour?pageNo=${pageNo -1}">&lt;이전</a></li>
@@ -162,7 +163,10 @@
                             <li>
         
                             <a href="tour?pageNo=${pageNo + 1}">다음&gt;</a></li>
+                            
                         </ul>
+                        
+                       
                     </div>
                 </div>
             </div>

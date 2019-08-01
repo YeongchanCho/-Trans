@@ -30,27 +30,26 @@ public class TourController {
 			LoggerFactory.getLogger(TourController.class);
 	private static final String API_URL = "http://api.visitkorea.or.kr/openapi/service/rest/";
 	private static final String SERVICE_KEY = "?ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D";
-	
-	
+		
 	@RequestMapping(method = RequestMethod.GET)
 	public void tour(Model model
+//			, int pageNo 
 //			,@RequestParam(name = "pageNo")int pageNo
 			) {
 //		tourParser(model);
 		log.info("tour() 호출");
 		int pageNo = 2;
-		model.addAttribute("pageNo", pageNo);
+//		log.info("pageNo={}" + pageNo);
 		List<Tour> tourList = null;
 		try {
-		
 			tourList = getOpenApi(pageNo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+		
 		model.addAttribute("tourList", tourList);
-	
+		model.addAttribute("pageNo", pageNo);
 	}
 	
 	

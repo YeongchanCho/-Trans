@@ -45,7 +45,7 @@
                     <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
                     <li class="nav-item"><a href="rooms.html" class="nav-link">교통
                             경로찾기</a></li>
-                    <li class="nav-item"><a href="restaurant.html"
+                    <li class="nav-item"><a href="../tour"
                         class="nav-link">여행지 정보</a></li>
                     <li class="nav-item active"><a href="main" class="nav-link">여행커뮤니티</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
@@ -119,22 +119,15 @@
             
             <div class="pt-5 mt-5">
               <h3 class="mb-5" style="font-family: 맑은 고딕;">댓글 ${board.reply_cnt}개 </h3>
-             
-            <!--  
-              <ul class="reply-item-list" id="replies">
-                
-                
-              </ul>
-            -->
-        
+      
+         </div></div>
+         
          
             <div class="reply-item-list" id="replies">
             </div><!-- 댓글 리스트 -->
               <!-- END reply-item-list -->
   
 
-  
-             
               <div class="reply-item-form-wrap pt-5">
                 <h3 class="mb-5" style="font-family: 맑은 고딕">댓글 달기</h3>
                 <form class="p-5 bg-light">

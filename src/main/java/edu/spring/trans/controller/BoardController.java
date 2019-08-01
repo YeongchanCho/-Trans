@@ -41,7 +41,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/detail", method =  RequestMethod.GET)
-	public void main(int bno,Model model)	{
+	public void main(int bno, Model model)	{
 		log.info("detail(bno={})", bno);
 		Board board = boardservice.read(bno);
 		model.addAttribute("board", board);
@@ -53,7 +53,7 @@ public class BoardController {
 		Board board = boardservice.read(bno);
 		model.addAttribute("board", board);
 	}
-	
+
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(Board board) {
 		log.info("update({})", board);
