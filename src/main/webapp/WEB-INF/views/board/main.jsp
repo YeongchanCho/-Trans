@@ -104,9 +104,9 @@
 	</div>
 
 
-
-	<nav>
 		<br />
+		<div class="container">
+		<div class="categories">
 		<ul>
 			<c:if test="${empty signinId}">
 				<%-- 로그인되어 있지 않은 경우 --%>
@@ -121,11 +121,10 @@
 
 			<li><a href="insert">새 글 작성하기</a></li>
 		</ul>
-	</nav>
+		</div></div>
+	
 
-
-	<section class="ftco-section">
-		<div class="container">
+		<div class="container pt-4">
 			<div class="row d-flex">
 
 				<c:forEach var="board" items="${boardList}">
@@ -190,7 +189,7 @@
 
 
 			</div>
-	</section>
+
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">

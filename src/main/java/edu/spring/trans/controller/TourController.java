@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,14 +31,15 @@ public class TourController {
 			LoggerFactory.getLogger(TourController.class);
 	private static final String API_URL = "http://api.visitkorea.or.kr/openapi/service/rest/";
 	private static final String SERVICE_KEY = "?ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D";
-		
+	String arrange = "&arrange=A&MobileOS=ETC&MobileApp=AppTesting&numOfRows=8&pageNo=";
+	String SERVICE_NAME = "PhotoGalleryService/"; 
+	
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public void tour(Model model, Tour tour)  {
 
 		log.info("tour() 호출");
-//		int pageNo = 2;
-//		model.addAttribute("pageNo", pageNo);
-//		log.info("pageNo={}" + pageNo);
+
 		List<Tour> tourList = null;
 		try {
 			tourList = getOpenApi(tour);
@@ -49,31 +51,29 @@ public class TourController {
 		model.addAttribute("tourList", tourList);		
 	}
 	
-	
-//	public ResponseEntity<List<Tour>> tourParser(Model model) {
-//		log.info("tourParser() 호출");
-//		
-//		List<Tour> tourList = null;
-//		
-//        try {
-//        	tourList = getOpenApi();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        
-//        ResponseEntity<List<Tour>> entity = 
-//				new ResponseEntity<List<Tour>>(tourList, HttpStatus.OK);
-//
-//        model.addAttribute("tourList", tourList);
-//		return entity;
-//    }
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public void keywordTour(Model model, Tour tour,
+			@RequestBody String keyword)  {
+
+		log.info("keywordTour() 호출");
+		log.info("keyword={}", keyword);		
+		List<Tour> tourList = null;
+		try {
+			tourList = getSearchOpenApi(tour, keyword);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("tour", tour);
+		model.addAttribute("tourList", tourList);	
+		model.addAttribute("keyowrd", keyword);
+		
+//		return "redirect:/tour";
+	}
 	
 	private String getApiUrl(int pageNo) throws Exception{
 		log.info("getApiUrl() 호출");
-		
-		String arrange = "&arrange=A&MobileOS=ETC&MobileApp=AppTesting&numOfRows=8&pageNo=";
-//		int pageNo= 1;
-		String SERVICE_NAME = "PhotoGalleryService/"; 
+	
 		String OPERATION = "galleryList"; 
 		String url = API_URL + SERVICE_NAME + OPERATION + SERVICE_KEY + arrange + pageNo;
 		
@@ -82,15 +82,46 @@ public class TourController {
         return url;
     }
 	
+	private String getSearchKeywordUrl(int pageNo,String keyword) throws Exception{
+		log.info("getSearchKeywordUrl 호출");
+		
+		String key = "&keyword=";		
+		String OPERATION = "gallerySearchList"; 
+		String url = API_URL + SERVICE_NAME + OPERATION + SERVICE_KEY 
+				+ arrange + pageNo + key + keyword;
+		
+        log.info("keywordurl = {}", url);
+        
+        return url;
+    }
 	
-	
-	public List<Tour> getOpenApi(Tour tour2) throws Exception {
+	public List<Tour> getOpenApi(Tour tour) throws Exception {
 		log.info("getOpenApi() 호출");
 		
 		List<Tour> tourList = new ArrayList<Tour>();		
 		
-		URL url = new URL(getApiUrl(tour2.getPageNo()));
+		URL url = new URL(getApiUrl(tour.getPageNo()));
 		
+		xmlParsing(tourList, url);
+
+		return tourList;
+		
+	}
+	
+	public List<Tour> getSearchOpenApi(Tour tour,String keyword) throws Exception {
+		log.info("getSearchOpenApi 호출");
+		
+		List<Tour> tourList = new ArrayList<Tour>();		
+		
+		URL url = new URL(getSearchKeywordUrl(1, keyword));
+		
+		xmlParsing(tourList, url);
+
+		return tourList;
+	}
+		
+	
+	public void xmlParsing(List<Tour> tourList, URL url) throws Exception{
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 		factory.setNamespaceAware(true);
 		XmlPullParser xpp = factory.newPullParser();
@@ -129,20 +160,11 @@ public class TourController {
 					tourList.add(tour);
 				}
 				
-				
-				/*
-				 * tag = xpp.getName(); if (tag.equals("item")) { res_list.add(tempMap); }
-				 */
+			
 			}
 			event_type = xpp.next();
 		}
 		log.info("결과 = {}", tourList);
-		/*
-		 * HttpHeaders responseHeaders = new HttpHeaders();
-		 * responseHeaders.add("Content-Type", "application/json; charset=UTF-8");
-		 */
-		return tourList;
-		
 	}
 } 
 

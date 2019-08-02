@@ -81,8 +81,8 @@
       </div>
     </div>
   
-     <section class="ftco-section ftco-degree-bg">
-      <div class="container">
+   
+      <div class="container pt-5">
         <div class="row">
           <div class="col-lg-8 ftco-animate order-md-last">
           <ul>
@@ -289,7 +289,7 @@
           </div>
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
-              <form action="#" class="search-form">
+              <form action="" class="search-form">
                 <div class="form-group">
                   <span class="icon fa fa-search"></span>
                   <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
@@ -298,7 +298,7 @@
             </div>
             <div class="sidebar-box ftco-animate">
               <div class="categories">
-                <h3>카테고리</h3>
+                <h3 style="font-family: 맑은 고딕">카테고리</h3>
                 <ul>
                    <li><a href="#">Properties <span>(12)</span></a></li>
                    <li><a href="#">Home <span>(22)</span></a></li>
@@ -314,7 +314,7 @@
         </div>
 </div>
      </div>
-    </section> <!-- .section -->
+  
  
    
     <footer class="ftco-footer ftco-bg-dark ftco-section">

@@ -97,11 +97,10 @@
             </div>
         </div>
     </div>
-    
- <section class="ftco-section">
-    <div class="container">
-    <nav>
-    <div class="col-lg-8 ftco-animate order-md-last">
+
+    <div class="container pt-3">
+ 
+    <div class="categories">
         <ul>
             <li>
                 <a href="main">게시판 메인 페이지</a>
@@ -114,9 +113,9 @@
             </li>
         </ul>
       </div>
-    </nav>
+ 
     
-    <div class="comment-form-wrap pt-5">
+    <div class="comment-form-wrap pt-1">
 	    <form action="update" method="post" class="p-5 bg-light">
 	        <div class="form-group">
 	            <label for="bno">글 번호</label>
@@ -166,7 +165,7 @@
     
    
         </div>
-     </section>
+ 
  <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
