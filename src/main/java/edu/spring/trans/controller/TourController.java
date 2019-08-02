@@ -22,6 +22,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import edu.spring.trans.domain.Criteria;
 import edu.spring.trans.domain.PageMaker;
+import edu.spring.trans.domain.Reply;
 import edu.spring.trans.domain.Tour;
 
 @Controller
@@ -52,7 +53,7 @@ public class TourController {
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public void keywordTour(Model model, Tour tour,
+	public ResponseEntity<List<Tour>> keywordTour(Model model, Tour tour,
 			@RequestBody String keyword)  {
 
 		log.info("keywordTour() 호출");
@@ -68,6 +69,9 @@ public class TourController {
 		model.addAttribute("tourList", tourList);	
 		model.addAttribute("keyowrd", keyword);
 		
+		ResponseEntity<List<Tour>> entity = 
+				new ResponseEntity<List<Tour>>(tourList, HttpStatus.OK);
+		return entity;
 //		return "redirect:/tour";
 	}
 	
