@@ -45,7 +45,7 @@
                     <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
                     <li class="nav-item"><a href="rooms.html" class="nav-link">교통
                             경로찾기</a></li>
-                    <li class="nav-item"><a href="../tour"
+                    <li class="nav-item"><a href="../tour?pageNo=1"
                         class="nav-link">여행지 정보</a></li>
                     <li class="nav-item active"><a href="main" class="nav-link">여행커뮤니티</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
@@ -66,7 +66,7 @@
       </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('../resources/images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../resources/images/korea3.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">

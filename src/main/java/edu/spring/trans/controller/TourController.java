@@ -32,24 +32,21 @@ public class TourController {
 	private static final String SERVICE_KEY = "?ServiceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D";
 		
 	@RequestMapping(method = RequestMethod.GET)
-	public void tour(Model model
-//			, int pageNo 
-//			,@RequestParam(name = "pageNo")int pageNo
-			) {
-//		tourParser(model);
+	public void tour(Model model, Tour tour)  {
+
 		log.info("tour() 호출");
-		int pageNo = 2;
+//		int pageNo = 2;
+//		model.addAttribute("pageNo", pageNo);
 //		log.info("pageNo={}" + pageNo);
 		List<Tour> tourList = null;
 		try {
-			tourList = getOpenApi(pageNo);
+			tourList = getOpenApi(tour);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		model.addAttribute("tourList", tourList);
-		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("tour", tour);
+		model.addAttribute("tourList", tourList);		
 	}
 	
 	
@@ -87,12 +84,12 @@ public class TourController {
 	
 	
 	
-	public List<Tour> getOpenApi(int pageNo) throws Exception {
+	public List<Tour> getOpenApi(Tour tour2) throws Exception {
 		log.info("getOpenApi() 호출");
 		
 		List<Tour> tourList = new ArrayList<Tour>();		
 		
-		URL url = new URL(getApiUrl(pageNo));
+		URL url = new URL(getApiUrl(tour2.getPageNo()));
 		
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 		factory.setNamespaceAware(true);

@@ -27,12 +27,6 @@ public class PageMaker {
   return uriComponents.toUriString();
  }
  
- public String makeTourQuery(int pageNo) {
-	 UriComponents uriComponents = UriComponentsBuilder.newInstance()
-				.queryParam("pageNo", pageNo).build();
-	 
-	 return uriComponents.toUriString();
- }
  
  public void setCri(Criteria cri) {
   this.cri = cri;
