@@ -6,6 +6,7 @@ public class User {
 	private String userid, pwd, city, phone, email, gender, grade;
 	private Date birth;
 	
+	
 	public User() {}
 
 	public User(String userid, String pwd, String city, String phone, String email, String gender, String grade,
