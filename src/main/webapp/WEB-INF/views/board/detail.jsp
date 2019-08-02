@@ -119,13 +119,13 @@
             
             <div class="pt-5 mt-5">
               <h3 class="mb-5" style="font-family: 맑은 고딕;">댓글 ${board.reply_cnt}개 </h3>
-      
-         </div></div>
-         
-         
-            <div class="reply-item-list" id="replies">
+      <div class="reply-item-list" id="replies">
             </div><!-- 댓글 리스트 -->
               <!-- END reply-item-list -->
+         </div>
+         
+         
+            
   
 
               <div class="reply-item-form-wrap pt-5">
@@ -148,9 +148,9 @@
                         
 
               </div>
-            </div>
+            
 
-          </div> <!-- .col-md-8 -->
+          <!-- .col-md-8 -->
           
 
   <script>
@@ -286,7 +286,7 @@
     }); // end $(document).ready()
     </script>
 
-          
+          </div>
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
               <form action="#" class="search-form">
@@ -312,8 +312,8 @@
 
       
         </div>
-
-     
+</div>
+     </div>
     </section> <!-- .section -->
  
    

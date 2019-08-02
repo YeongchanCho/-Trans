@@ -86,7 +86,6 @@
         </div>
     </div>
 
-<<<<<<< HEAD
     <section class="ftco-section">
         <div class="container">
             <div class="comment-form-wrap pt-5">
@@ -120,60 +119,11 @@
                         <label for="email">이메일 *</label> <input type="email" id="eamil"
                             name="email" class="form-control" placeholder="이메일 입력" required />
                     </div>
-=======
-	<section class="ftco-section">
-		<div class="container">
-			<div class="comment-form-wrap pt-5">
-				<form action="join" method="post" class="p-5 bg-light">
-					<div class="form-group">
-						<label for="userid">아이디 *</label> <input type="text" id="userid"
-							class="form-control" name="userid" placeholder="아이디 입력" required />
-							<input type="button" id="btn" value="아이디 중복 체크" /><br>
-							  <div id="result"></div>
-                              <div id="result2"></div><br>
-							<br />
-					</div>
-					<div class="form-group">
-						<label for="pwd">비밀번호 *</label> <input type="password" id="pwd"
-							name="pwd" class="form-control" placeholder="비밀번호 입력" required /><br />
-					</div>
-					<div class="form-group">
-						<label for="pwdCheck">비밀번호 확인</label> <input type="password"
-							id="pw2" name="pwdCheck" class="form-control" placeholder="비밀번호 다시 입력"
-							required /><br />
-					</div>
-					<div class="form-group">
-						<label for="city">거주 지역 </label> <input type="text" name="city"
-							class="form-control" placeholder="거주지 입력" required /><br />
-					</div>
-					<div class="form-group">
-						<label for="phone">전화번호 *</label> <input type="text" id="phone"
-							name="phone" class="form-control" placeholder="전화번호 입력" required /><br />
-					</div>
-					<div class="form-group">
-						<label for="email">이메일 *</label> <input type="email" id="eamil"
-							name="email" class="form-control" placeholder="이메일 입력" required />
-					</div>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
 
 
 
                     <div class="form-group align-self-stretch d-flex align-items-end">
 
-<<<<<<< HEAD
-                        <label for="gender">성별 * </label>
-                        <div class="form-field">
-                            <div class="select-wrap">
-                                <div class="icon">
-                                    <span class="ion-ios-arrow-down"></span>
-                                </div>
-                                <select name="gender" id="gender" class="form-control">
-                                    <option value="남">남</option>
-                                    <option value="여">여</option>
-                                </select>
-                            </div>
-                        </div>
-=======
 						<label for="gender">성별 * </label>
 						<div class="form-field">
 							<div class="select-wrap">
@@ -186,7 +136,7 @@
 								</select>
 							</div>
 						</div>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
+
 
                     </div>
 
@@ -332,18 +282,7 @@
            }); // end click()
            
        }); // end ready()
-<<<<<<< HEAD
-=======
 
-
-
-            
-       </script>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
-
-
-
-            
        </script>
 
     <script src="../resources/js/jquery.min.js"></script>
@@ -367,4 +306,4 @@
 
 </body>
 </html>
->>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
+
