@@ -91,7 +91,7 @@
                     <div class="text">
                         <p class="breadcrumbs mb-2">
                             <span class="mr-2"><a href="/trans">홈</a></span> <span
-                                class="mr-2"><a href="board/main">여행커뮤니티</a></span>
+                                class="mr-2"><a href="../board/main">여행커뮤니티</a></span>
                         </p>
                         <h1 class="mb-4 bread" style="font-family: 맑은 고딕; font-size: 400%">여행
                             정보</h1>
