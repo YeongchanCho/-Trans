@@ -86,6 +86,7 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> 메뉴
 			</button>
+			
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
@@ -97,8 +98,10 @@
 						class="nav-link" style="font-size: 20px">여행지 정보</a></li>
 					<li class="nav-item"><a href="board/main" class="nav-link"
 						style="font-size: 20px">여행커뮤니티</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link"
-						style="font-size: 20px">예약</a></li>
+					
+					<li class="nav-item"><a href="user/myinfo?userid=${signinId}" class="nav-link"
+						style="font-size: 20px">내 정보</a></li>
+						
 					<!-- <li class="nav-item "><a onclick="login();" class="nav-link" style="font-size: 20px">로그인</a></li> -->
 					<c:if test="${empty signinId}">
 						<%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
@@ -107,8 +110,9 @@
 					</c:if>
 					<c:if test="${not empty signinId}">
 						<%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
-						<li class="nav-link">${signinId}님,환영!<a href="user/logout"
+						<li class="nav-link">${signinId}님 환영 ,!<a href="user/logout"
 							class="nav-link">로그아웃</a>
+							
 						</li>
 					</c:if>
 				</ul>

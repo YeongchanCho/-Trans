@@ -1,5 +1,7 @@
 package edu.spring.trans.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,7 @@ public class UserServiceImple implements UserService {
 	
 	@Override
 	public User read(String userid) {
-		log.info("read(bno={})", userid);
+		log.info("read(userid={})", userid);
 		return userDao.read(userid);
 	}
 	
@@ -59,6 +61,12 @@ public class UserServiceImple implements UserService {
 	public User select(String userid) {
 	log.info("ServiceCheckUserid",userid);
 		return userDao.select(userid);
+	}
+
+	@Override
+	public List<User> read() {
+		//회원정보 전체 검색
+		return userDao.read();
 	}
 
 	

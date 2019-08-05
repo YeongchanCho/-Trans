@@ -1,5 +1,7 @@
 package edu.spring.trans.persistence;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,6 +62,13 @@ public class UserDaoImple implements UserDao {
 	public User select(String userid) {
 		log.info("selectUserid",userid);
 		return sqlSession.selectOne(NAMESPACE+ ".idCheck", userid);
+	}
+
+	@Override
+	public List<User> read() {
+		//전체 회원정보 검색
+		log.info("read(호출)");
+		return sqlSession.selectList(NAMESPACE+".selectAll");
 	}
 
 	

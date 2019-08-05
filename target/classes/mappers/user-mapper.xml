@@ -29,12 +29,16 @@
     <update id="update">
     update ${tbl_users}
     set ${col_pwd} = #{pwd}, ${col_city} = #{city},
-        ${col_phone} = #{phone}, ${col_email} = #{email}
+        ${col_phone} = #{phone}, ${col_email} = #{email},
+        ${col_gender} = #{gender}
+
     where ${col_userid} = #{userid}
+    <!-- 수정하기 -->
     </update>
     
     <delete id="delete">
     delete from ${tbl_users} where ${col_userid} = #{userid}
+    <!-- 삭제하기 -->
     </delete>
     
     

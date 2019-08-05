@@ -45,7 +45,7 @@ public class ReplyRestController {
 			@PathVariable(name = "bno") Integer bno) {
 		log.info("readAllReply(bno={})", bno);
 		
-		List<Reply> list = replyService.read(bno);
+		  List<Reply> list = replyService.read(bno);
 		
 		ResponseEntity<List<Reply>> entity = 
 				new ResponseEntity<List<Reply>>(list, HttpStatus.OK);
