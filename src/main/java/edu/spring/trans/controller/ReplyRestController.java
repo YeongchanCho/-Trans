@@ -16,7 +16,6 @@ import edu.spring.trans.domain.Reply;
 import edu.spring.trans.service.ReplyService;
 
 @RestController
-
 @RequestMapping(value = "/reply")
 public class ReplyRestController {
 	private static final Logger log =

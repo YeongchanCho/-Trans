@@ -9,7 +9,16 @@ public class Tour {
 	private String galSearchKeyword;
 	
 	private int pageNo;
+	private String keyword;
 		
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public int getPageNo() {
 		return pageNo;
 	}
@@ -25,13 +34,14 @@ public class Tour {
 	public Tour() {}
 
 	public Tour(String galPhotographyLocation, String galTitle, String galPhotographyMonth, String galWebImageUrl,
-			String galSearchKeyword, int pageNo) {
+			String galSearchKeyword, int pageNo, String keyword) {
 		this.galPhotographyLocation = galPhotographyLocation;
 		this.galTitle = galTitle;
 		this.galPhotographyMonth = galPhotographyMonth;
 		this.galWebImageUrl = galWebImageUrl;
 		this.galSearchKeyword = galSearchKeyword;
 		this.pageNo = 1;
+		this.keyword = keyword;
 	}
 
 	public String getGalPhotographyLocation() {

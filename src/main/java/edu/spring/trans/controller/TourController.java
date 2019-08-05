@@ -1,7 +1,10 @@
 package edu.spring.trans.controller;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -36,7 +39,7 @@ public class TourController {
 	String SERVICE_NAME = "PhotoGalleryService/"; 
 	
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public void tour(Model model, Tour tour)  {
 
 		log.info("tour() 호출");
@@ -44,8 +47,7 @@ public class TourController {
 		List<Tour> tourList = null;
 		try {
 			tourList = getOpenApi(tour);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {			
 			e.printStackTrace();
 		}
 		model.addAttribute("tour", tour);
@@ -53,28 +55,22 @@ public class TourController {
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ResponseEntity<List<Tour>> keywordTour(Model model, Tour tour,
-			@RequestBody String keyword)  {
+	public void searchTour(Model model, Tour tour)  {
 
-		log.info("keywordTour() 호출");
-		log.info("keyword={}", keyword);		
+		log.info("searchTour() 호출");
+//		log.info("keyword={}", keyword);	
 		List<Tour> tourList = null;
+//		tour.setKeyword(keyword);
 		try {
-			tourList = getSearchOpenApi(tour, keyword);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			tourList = getSearchOpenApi(tour);
+		} catch (Exception e) {			
 			e.printStackTrace();
 		}
 		model.addAttribute("tour", tour);
 		model.addAttribute("tourList", tourList);	
-		model.addAttribute("keyowrd", keyword);
-		
-		ResponseEntity<List<Tour>> entity = 
-				new ResponseEntity<List<Tour>>(tourList, HttpStatus.OK);
-		return entity;
-//		return "redirect:/tour";
 	}
 	
+
 	private String getApiUrl(int pageNo) throws Exception{
 		log.info("getApiUrl() 호출");
 	
@@ -86,13 +82,13 @@ public class TourController {
         return url;
     }
 	
-	private String getSearchKeywordUrl(int pageNo,String keyword) throws Exception{
+	private String getSearchKeywordUrl(int pageNo, String keyword) throws Exception{
 		log.info("getSearchKeywordUrl 호출");
 		
 		String key = "&keyword=";		
 		String OPERATION = "gallerySearchList"; 
 		String url = API_URL + SERVICE_NAME + OPERATION + SERVICE_KEY 
-				+ arrange + pageNo + key + keyword;
+				+ arrange + pageNo + key + URLEncoder.encode(keyword, "UTF-8");
 		
         log.info("keywordurl = {}", url);
         
@@ -112,16 +108,16 @@ public class TourController {
 		
 	}
 	
-	public List<Tour> getSearchOpenApi(Tour tour,String keyword) throws Exception {
+	public List<Tour> getSearchOpenApi(Tour tour) throws Exception {
 		log.info("getSearchOpenApi 호출");
 		
-		List<Tour> tourList = new ArrayList<Tour>();		
+		List<Tour> stourList = new ArrayList<Tour>();		
 		
-		URL url = new URL(getSearchKeywordUrl(1, keyword));
+		URL url = new URL(getSearchKeywordUrl(tour.getPageNo(), tour.getKeyword()));
 		
-		xmlParsing(tourList, url);
+		xmlParsing(stourList, url);
 
-		return tourList;
+		return stourList;
 	}
 		
 	
@@ -130,6 +126,7 @@ public class TourController {
 		factory.setNamespaceAware(true);
 		XmlPullParser xpp = factory.newPullParser();
 		BufferedInputStream bis = new BufferedInputStream(url.openStream());
+
 		xpp.setInput(bis, "utf-8");
 		
 		String tag = null;
@@ -162,8 +159,7 @@ public class TourController {
 					tour.setGalSearchKeyword(text);
 				} else if(tag.equals("item")) {
 					tourList.add(tour);
-				}
-				
+				} 
 			
 			}
 			event_type = xpp.next();

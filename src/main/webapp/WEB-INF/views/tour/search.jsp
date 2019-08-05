@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-<title>TRANS - 장거리 교통정보 안내</title>
+<title>TRANS - 교통정보 안내</title>
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="utf-8">
@@ -40,13 +40,13 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 
-
 <body>
-     <nav
+
+    <nav
         class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
         id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="../">TRANS</a>
+            <a class="navbar-brand" href="/trans">TRANS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#ftco-nav" aria-controls="ftco-nav"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -55,21 +55,21 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
+                    <li class="nav-item"><a href="/trans" class="nav-link">홈</a></li>
                     <li class="nav-item"><a href="rooms.html" class="nav-link">교통
                             경로찾기</a></li>
-                    <li class="nav-item"><a href="../tour/all?pageNo=1"
-                        class="nav-link">여행지 정보</a></li>
-                    <li class="nav-item active"><a href="main" class="nav-link">여행커뮤니티</a></li>
+                    <li class="nav-item active"><a href="" class="nav-link">여행지
+                            정보</a></li>
+                    <li class="nav-item"><a href="../board/main" class="nav-link">여행커뮤니티</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
                     <c:if test="${empty signinId}">
                         <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
-                        <li class="nav-item"><a href="../user/login"
-                            class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
+                        <li class="nav-item"><a href="../user/login" class="nav-link"
+                            style="font-size: 20px" id="btnSignIn">로그인</a></li>
                     </c:if>
                     <c:if test="${not empty signinId}">
                         <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
-                        <li class="nav-link">${signinId}님,환영!<a href="../user/logout"
+                        <li class="nav-link">${signinId}님,환영!<a href="/user/logout"
                             class="nav-link">로그아웃</a>
                         </li>
                     </c:if>
@@ -77,9 +77,11 @@
             </div>
         </div>
     </nav>
-    
+    <!-- END nav -->
+
+
     <div class="hero-wrap"
-        style="background-image: url('../resources/images/korea3.jpg');">
+        style="background-image: url('../resources/images/korea1.jpg');">
         <div class="overlay"></div>
         <div class="container">
             <div
@@ -88,85 +90,103 @@
                     class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
                     <div class="text">
                         <p class="breadcrumbs mb-2">
-                            <span class="mr-2"><a href="../">홈</a></span> <span class="mr-2"><a
-                                href="main">여행커뮤니티</a></span>
+                            <span class="mr-2"><a href="/trans">홈</a></span> <span
+                                class="mr-2"><a href="board/main">여행커뮤니티</a></span>
                         </p>
-                        <h1 class="mb-4 bread" style="font-family: 맑은 고딕; font-size: 400%">글 수정하기</h1>
+                        <h1 class="mb-4 bread" style="font-family: 맑은 고딕; font-size: 400%">여행
+                            정보</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container pt-3">
- 
-    <div class="categories">
-        <ul>
-            <li>
-                <a href="main">게시판 메인 페이지</a>
-            </li>
-            <li>
-                <a href="detail?bno=${board.bno}">게시글 상세보기 페이지</a>
-            </li>
-            <li>
-                <a id="menuDelete" href="delete?bno=${board.bno}">삭제</a>
-            </li>
-        </ul>
-      </div>
- 
-    
-    <div class="comment-form-wrap pt-1">
-	    <form action="update" method="post" class="p-5 bg-light">
-	        <div class="form-group">
-	            <label for="bno">글 번호</label>
-	            <input type="number" id="bno" name="bno"
-	               class="form-control" value="${board.bno}" readonly/>
-	        </div>
-	        <div class="form-group">
-	            <label for="title">제목 *</label>
-	            <input type="text" id="title" name="title"
-	                class="form-control" value="${board.title}" required />
-	        </div>
-	        <div class="form-group">
-	            <label for="content">내용 *</label>
-	            <textarea rows="5" id="content" 
-	                name="content" class="form-control" required>${board.content}</textarea>
-	        </div>
-	        <div class="form-group">
-	            <label for="userid">작성자</label>
-	            <input type="text" id="userid"
-	                class="form-control" value="${board.userid}" readonly />
-	        </div>
-	        <div class="form-group">
-	            <label for="reply_cnt">댓글 갯수</label>
-	            <input type="number" id="reply_cnt"
-	               class="form-control" value="${board.reply_cnt}" readonly />
-	        </div>
-	        
-	        <div class="form-group">
-	            <input type="submit"  class="btn py-3 px-4 btn-primary"
-	            value="수정 완료" />
-	        </div>
-	    </form>
-	   </div>
 
-    <script>
-    $(document).ready(function () {
-        $('#menuDelete').click(function (event) {
-            event.preventDefault();
-            var result = confirm('정말 삭제할까요?');
-            if (result) {
-                location = $(this).attr("href");
-            }
-        });
-        
-    });
-    </script>
-    
-   
+    <br />
+    <ul>
+        <c:if test="${empty signinId}">
+            <%-- 로그인되어 있지 않은 경우 --%>
+            <li><a href="user/login" id="btnSignIn"
+                style="font-family: 맑은 고딕; font-size: 200%">로그인</a></li>
+        </c:if>
+        <c:if test="${not empty signinId}">
+            <%-- 로그인되어 있는 경우 --%>
+            <li>${signinId}님.<a href="user/logout">로그아웃</a>
+            </li>
+        </c:if>
+
+    </ul>
+
+    <div class="col-lg-2 sidebar">
+        <div class="sidebar-box">
+            <input id="keyword" name="keyword" type="text" class="form-control"
+                placeholder="검색어 입력" />
         </div>
- 
- <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="sidebar-box ftco-animate">
+            <div class="categories">
+                <h3 style="font-family: 맑은 고딕">카테고리</h3>
+                <ul>
+                    <li><a href="#">Properties <span>(12)</span></a></li>
+                    <li><a href="#">Home <span>(22)</span></a></li>
+                    <li><a href="#">House <span>(37)</span></a></li>
+                    <li><a href="#">Villa <span>(42)</span></a></li>
+                    <li><a href="#">Apartment <span>(14)</span></a></li>
+                    <li><a href="#">Condominium <span>(140)</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container pt-4">
+        <div class="row d-flex">
+
+            <c:forEach var="tour" items="${tourList}">
+                <div class="col-md-3 d-flex ftco-animate">
+                    <div class="blog-entry align-self-stretch">
+                        <a class="block-20"
+                            style="background-image: url('${tour.galWebImageUrl}');"> </a>
+                        <div class="text mt-3 d-block">
+                            <h3 class="heading mt-3">
+                                <a style="font-family: 맑은 고딕">${tour.galTitle}</a>
+                            </h3>
+                            <div class="meta mb-3">
+
+                                <div>
+                                    <a >${tour.galPhotographyMonth}</a>
+                                </div>
+                                <div>
+                                    <a>${tour.galSearchKeyword}</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+
+                        <li><a href="search?pageNo=${tour.pageNo -1}&keyword=${tour.keyword}">&lt;이전</a></li>
+
+                        <li><a href="search?pageNo=${tour.pageNo + 1}&keyword=${tour.keyword}">다음&gt;</a></li>
+
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
 
@@ -229,7 +249,9 @@
             </div>
         </div>
     </footer>
-    
+
+
+
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
         <svg class="circular" width="48px" height="48px">
@@ -252,12 +274,33 @@
     <script src="../resources/js/aos.js"></script>
     <script src="../resources/js/jquery.animateNumber.min.js"></script>
     <script src="../resources/js/bootstrap-datepicker.js"></script>
-    <script src="../resources/js/jquery.timepicker.min.js"></script>
     <script src="../resources/js/scrollax.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="../resources/js/google-map.js"></script>
+   
     <script src="../resources/js/main.js"></script>
 
+
+    <script>
+        $(document).ready(function() {
+            $("#keyword").keydown(function(key) {
+                if (key.keyCode == 13) {
+                    var keyword = $('#keyword').val();
+                    console.log(keyword);
+                    var pageNo = ${tour.pageNo};
+                    pageNo = 1;
+                    if (keyword === '') {
+                        alert("검색할 키워드를 입력해주세요.");
+                        $('#keyword').focus();
+                        return;
+                    }
+                    location.href = "search?pageNo=" + pageNo +
+                    		"&keyword=" + keyword;
+                }
+            });
+        });
+    </script>
+
 </body>
+
+
+
 </html>
