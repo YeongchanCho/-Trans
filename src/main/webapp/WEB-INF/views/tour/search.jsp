@@ -153,7 +153,7 @@
                             <div class="meta mb-3">
 
                                 <div>
-                                    <a >${tour.galPhotographyMonth}</a>
+                                    <a>${tour.galPhotographyMonth}</a>
                                 </div>
                                 <div>
                                     <a>${tour.galSearchKeyword}</a>
