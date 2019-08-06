@@ -46,6 +46,7 @@
 
 
 
+<<<<<<< HEAD
    <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
       id="ftco-navbar">
@@ -56,7 +57,20 @@
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
          </button>
+=======
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+		id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="../" style="font-size: 50px">TRANS</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#ftco-nav" aria-controls="ftco-nav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+>>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
 
+<<<<<<< HEAD
          <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
@@ -67,6 +81,18 @@
                <li class="nav-item active"><a href="" class="nav-link">여행커뮤니티</a></li>
                <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
                <c:if test="${empty signinId}">
+=======
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a href="../" class="nav-link" style="font-size: 20px">홈</a></li>
+					<li class="nav-item"><a href="rooms.html" class="nav-link" style="font-size: 20px">교통
+							경로찾기</a></li>
+					<li class="nav-item"><a href="../tour/all?pageNo=1"
+						class="nav-link" style="font-size: 20px">여행지 정보</a></li>
+					<li class="nav-item active"><a href="" class="nav-link" style="font-size: 20px">여행커뮤니티</a></li>
+					<li class="nav-item"><a href="about.html" class="nav-link" style="font-size: 20px">예약</a></li>
+					<c:if test="${empty signinId}">
+>>>>>>> branch 'master' of https://github.com/YeongchanCho/Trans.git
                         <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
                         <li class="nav-item"><a href="../user/login"
                             class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
