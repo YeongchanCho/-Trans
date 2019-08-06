@@ -41,20 +41,32 @@
           </button>
 
           <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
-              <li class="nav-item"><a href="rooms.html" class="nav-link">교통 경로찾기</a></li>
-              <li class="nav-item"><a href="restaurant.html" class="nav-link">여행지 정보</a></li>
-               <li class="nav-item active"><a href="../board/main" class="nav-link">여행커뮤니티</a></li>
-              <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>             
-              <li class="nav-item"><a href="contact.html" class="nav-link">로그인</a></li>
-            </ul>
-          </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
+                    <li class="nav-item"><a href="rooms.html" class="nav-link">교통
+                            경로찾기</a></li>
+                    <li class="nav-item"><a href="../tour/all?pageNo=1"
+                        class="nav-link">여행지 정보</a></li>
+                    <li class="nav-item active"><a href="main" class="nav-link">여행커뮤니티</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
+                    <c:if test="${empty signinId}">
+                        <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
+                        <li class="nav-item"><a href="../user/login"
+                            class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
+                    </c:if>
+                    <c:if test="${not empty signinId}">
+                        <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
+                        <li class="nav-link">${signinId}님,환영!<a href="../user/logout"
+                            class="nav-link">로그아웃</a>
+                        </li>
+                    </c:if>
+                </ul>
+            </div>
         </div>
       </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('../resources/images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../resources/images/korea3.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
@@ -69,8 +81,8 @@
       </div>
     </div>
   
-     <section class="ftco-section ftco-degree-bg">
-      <div class="container">
+   
+      <div class="container pt-5">
         <div class="row">
           <div class="col-lg-8 ftco-animate order-md-last">
           <ul>
@@ -80,9 +92,11 @@
         </ul>
           
             <h2 class="mb-3" style="font-family: 맑은 고딕">#${board.bno}. ${board.title}</h2>
-            <p>${board.content}</p>
+            <textarea rows="5" id="content" 
+                    name="content" class="form-control" readonly>${board.content}</textarea>
+             <br/>
             <p>
-              <img src="../resources/images/image_7.jpg" alt="" class="img-fluid">
+              <img src="http://tong.visitkorea.or.kr/cms2/website/55/2613555.jpg" alt="" class="img-fluid">
             </p>
             
           
@@ -104,43 +118,51 @@
             </div>
             
             <div class="pt-5 mt-5">
-              <h3 class="mb-5">댓글 ${board.reply_cnt}개 </h3>
-              
-              <ul class="comment-list" id="replies">
-                <li class="comment">
-                 
-                  <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply">Reply</a></p>
-                  </div>
-                </li>
-
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../resources/images/person_1.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">December 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply">Reply</a></p>
-                  </div>
-                </li>
-                
-              </ul>
+              <h3 class="mb-5" style="font-family: 맑은 고딕;">댓글 ${board.reply_cnt}개 </h3>
+      <div class="reply-item-list" id="replies">
+            </div><!-- 댓글 리스트 -->
+              <!-- END reply-item-list -->
+         </div>
+         
+         
             
-              <!-- END comment-list -->
   
+
+              <div class="reply-item-form-wrap pt-5">
+                <h3 class="mb-5" style="font-family: 맑은 고딕">댓글 달기</h3>
+                <form class="p-5 bg-light">
+                  <div class="form-group">
+                    <label for="rtext">내용 *</label>
+                    <input type="text" class="form-control"  name="rtext" id="rtext2" placeholder="댓글 입력">
+                  </div>
+                  <div class="form-group">
+                    <label for="userid">아이디 *</label>
+                    <input type="email" class="form-control" name="userid" id="replier2" readonly value="${signinId}">
+                  </div>
+                  
+                  <div class="form-group">
+                    <button id="btnCreateReply" class="btn py-3 px-4 btn-primary">댓글 작성 완료</button>
+                  </div>
+
+                </form>
+                        
+
+              </div>
+            
+
+          <!-- .col-md-8 -->
+          
+
   <script>
     $(document).ready(function () {
+
         // input[id='bno']에 있는 글번호(bno)를 읽음
         //var bno = $('#bno').val();
+        var bno = ${board.bno};
         
         // 서버에서 해당 게시글 번호(bno)에 달린 모든 댓글 목록을 읽어오는 Ajax 함수 정의
         function getAllReplies() {
-            $.getJSON('/trans/reply/all/${board.bno}', function (data) {
+            $.getJSON('/trans/reply/all/' + bno, function (data) {
                 //console.log(data);
                 // div[id="replies"] 안에 있는 모든 하위 요소들을 삭제
                 $('#replies').empty();
@@ -152,21 +174,20 @@
                     var date = new Date(this.regdate);
                     var dateString = date.toLocaleDateString() 
                             + ' ' + date.toLocaleTimeString();
-                    list += '<li class="comment"> <div class="comment-body">'
-                            + '<p id="rno">글번호: '
-                            + this.rno
-                            + '</p>'                            
-                            + '<div class="meta" id="replier">아이디: '
-                            + this.userid
-                            + '</div>'
-                            
-                            + '<p id="rtext">내용: '
-                            + this.rtext
-                            + '</p>' 
-                            + '<button class="btnModify">수정</button>'
-                            + '<button class="btnDelete">삭제</button>'
-                            + '</div></li>'
-                            ;
+                    list += '<div class="comment-form-wrap pt-5 p-5"><div class="reply-item">'
+                        + '<input style="display:none" type="text" id="rno" value="'
+                        + this.rno
+                        + '" readonly />'   
+                        + '<label for="rtext">내용</label><input type="text" class="form-control" id="rtext" value="'
+                        + this.rtext
+                        + '" />'
+                        + '<label for="replier">작성자</label><p id="replier">'
+                        + this.userid
+                        + '</p>'
+                        + '<button class="btnModify btn px-3 btn-primary">수정</button>'
+                        + '<button class="btnDelete btn px-3 btn-primary">삭제</button>'
+                        + '</div></div>';
+                
                 }); // end $.each();
                 
                 $('#replies').html(list);
@@ -176,19 +197,21 @@
         getAllReplies(); // 함수 호출
         
         // 버튼에 이벤트 핸들러 등록
-        $('#btnCreateReply').click(function () {
-            // 댓글 내용(input[id="rtext"]의 value)을 읽음
-            var rtext = $('#rtext').val();
+        $('#btnCreateReply').click(function (event) {
+        	event.preventDefault();
+        	
+            // 댓글 내용(input[id="rtext2"]의 value)을 읽음
+            var rtext = $('#rtext2').val();
             if (rtext === '') { // 입력된 댓글 내용이 없을 때
                 alert('댓글 내용은 반드시 입력해야 합니다.');
-                $('#rtext').focus(); // input에 포커스를 줌
+                $('#rtext2').focus(); // input에 포커스를 줌
                 return; // 이벤트 핸들러 종료
             }
             
-            var replier = $('#replier').val();
+            var replier = $('#replier2').val();
             if (replier === '') {
                 alert('댓글 작성자 아이디는 반드시 입력해야 합니다.');
-                $('#replier').focus();
+                $('#replier2').focus();
                 return;
             }
             
@@ -262,35 +285,11 @@
         
     }); // end $(document).ready()
     </script>
-             
-              <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5" style="font-family: 맑은 고딕">댓글 달기</h3>
-                <form action="#" class="p-5 bg-light">
-                  <div class="form-group">
-                    <label for="rtext">내용 *</label>
-                    <input type="text" class="form-control"  name="rtext" id="rtext" placeholder="댓글 입력">
-                  </div>
-                  <div class="form-group">
-                    <label for="userid">아이디 *</label>
-                    <input type="email" class="form-control" name="userid" id="replier" readonly value="${signinId}">
-                  </div>
-                  
-                  <div class="form-group">
-                    <input type="submit" value="입력" class="btn py-3 px-4 btn-primary">
-                  </div>
 
-                </form>
-                        
-
-              </div>
-            </div>
-
-          </div> <!-- .col-md-8 -->
-  
-          
+          </div>
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
-              <form action="#" class="search-form">
+              <form action="" class="search-form">
                 <div class="form-group">
                   <span class="icon fa fa-search"></span>
                   <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
@@ -299,7 +298,7 @@
             </div>
             <div class="sidebar-box ftco-animate">
               <div class="categories">
-                <h3>카테고리</h3>
+                <h3 style="font-family: 맑은 고딕">카테고리</h3>
                 <ul>
                    <li><a href="#">Properties <span>(12)</span></a></li>
                    <li><a href="#">Home <span>(22)</span></a></li>
@@ -313,17 +312,11 @@
 
       
         </div>
-      </div>
-      </div>
-    </section> <!-- .section -->
- 
-    <hr/>
-    
-    
-    <hr/>
-    
+</div>
+     </div>
   
-    
+ 
+   
     <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
@@ -376,7 +369,7 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
                         <script>
-                            document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear())
                         </script>
                         All rights reserved | This template is made with <i
                             class="icon-heart color-danger" aria-hidden="true"></i> by <a
@@ -411,4 +404,6 @@
   <script src="../resources/js/main.js"></script>
     
 </body>
+
 </html>
+

@@ -1,6 +1,5 @@
 package edu.spring.trans.domain;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 public class User {
@@ -11,7 +10,6 @@ public class User {
 
 	public User(String userid, String pwd, String city, String phone, String email, String gender, String grade,
 			Date birth) {
-		super();
 		this.userid = userid;
 		this.pwd = pwd;
 		this.city = city;

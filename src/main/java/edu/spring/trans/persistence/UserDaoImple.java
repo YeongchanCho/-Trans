@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.trans.domain.Board;
+import edu.spring.trans.domain.Reply;
 import edu.spring.trans.domain.User;
 
 import edu.spring.trans.mappers.UserMapper;
@@ -70,6 +72,8 @@ public class UserDaoImple implements UserDao {
 		log.info("read(호출)");
 		return sqlSession.selectList(NAMESPACE+".selectAll");
 	}
+
+
 
 	
 

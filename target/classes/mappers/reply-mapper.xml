@@ -31,4 +31,7 @@
     where ${col_rno} = #{rno}
     </select>
     
+     <select id="replyCheckbyUserid" resultType="Reply">
+    select * from ${tbl_replies} where ${col_userid} = #userid
+    </select>
 </mapper>

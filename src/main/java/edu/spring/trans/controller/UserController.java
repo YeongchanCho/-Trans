@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.spring.trans.domain.Board;
+import edu.spring.trans.domain.Criteria;
+import edu.spring.trans.domain.PageMaker;
 import edu.spring.trans.domain.User;
 import edu.spring.trans.service.UserService;
 
@@ -138,5 +141,5 @@ public class UserController {
 		// 게시글 수정 이후에 상세보기 페이지로 이동(redirect)
 		return "redirect:/user/myinfo?userid=" +user.getUserid();
 	}
-	
+		
 }

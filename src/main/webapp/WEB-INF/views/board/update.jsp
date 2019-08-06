@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,18 +58,28 @@
                     <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
                     <li class="nav-item"><a href="rooms.html" class="nav-link">교통
                             경로찾기</a></li>
-                    <li class="nav-item"><a href="restaurant.html"
+                    <li class="nav-item"><a href="../tour/all?pageNo=1"
                         class="nav-link">여행지 정보</a></li>
                     <li class="nav-item active"><a href="main" class="nav-link">여행커뮤니티</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>                    
-                    <li class="nav-item"><a href="contact.html" class="nav-link">로그인</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">예약</a></li>
+                    <c:if test="${empty signinId}">
+                        <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
+                        <li class="nav-item"><a href="../user/login"
+                            class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
+                    </c:if>
+                    <c:if test="${not empty signinId}">
+                        <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
+                        <li class="nav-link">${signinId}님,환영!<a href="../user/logout"
+                            class="nav-link">로그아웃</a>
+                        </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
     </nav>
     
     <div class="hero-wrap"
-        style="background-image: url('../resources/images/bg_1.jpg');">
+        style="background-image: url('../resources/images/korea3.jpg');">
         <div class="overlay"></div>
         <div class="container">
             <div
@@ -86,11 +97,10 @@
             </div>
         </div>
     </div>
-    
- <section class="ftco-section">
-    <div class="container">
-    <nav>
-    <div class="col-lg-8 ftco-animate order-md-last">
+
+    <div class="container pt-3">
+ 
+    <div class="categories">
         <ul>
             <li>
                 <a href="main">게시판 메인 페이지</a>
@@ -103,9 +113,9 @@
             </li>
         </ul>
       </div>
-    </nav>
+ 
     
-    <div class="comment-form-wrap pt-5">
+    <div class="comment-form-wrap pt-1">
 	    <form action="update" method="post" class="p-5 bg-light">
 	        <div class="form-group">
 	            <label for="bno">글 번호</label>
@@ -155,7 +165,7 @@
     
    
         </div>
-     </section>
+ 
  <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">

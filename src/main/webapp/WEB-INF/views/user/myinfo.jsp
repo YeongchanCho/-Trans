@@ -53,6 +53,9 @@
     </form>
     
     <hr/>
+    <div id ="selectBoarduserid">
+    
+    </div>
       <script>
     $(document).ready(function () {
         $('#menudelete').click(function (event) {
@@ -62,9 +65,52 @@
                 location = $(this).attr("href");
             }
         });
-        
     });
     </script>
-      
+    
+        <script>
+    $(document).ready(function () {
+        // input[id='bno']에 있는 글번호(bno)를 읽음
+        var userid = $('#userid').val();
+        
+        // 서버에서 해당 게시글 번호(bno)에 달린 모든 댓글 목록을 읽어오는 Ajax 함수 정의
+        function getAllReplies() {
+            $.getJSON('/trans/selectuserid/boards/' + userid, function (data) {
+                //console.log(data);
+                // div[id="replies"] 안에 있는 모든 하위 요소들을 삭제
+                $('#selectBoarduserid').empty();
+                var list = ''; // div의 하위 요소가 될 HTML 코드들
+                
+                // 자바스크립트 배열 data의 원소 갯수만큼 콜백 함수의 내용을 반복
+                $(data).each(function () {
+                    // 콜백 함수 내부에서 this: 배열 data의 원소
+                    var date = new Date(this.regdate);
+                    var dateString = date.toLocaleDateString() 
+                            + ' ' + date.toLocaleTimeString();
+                    list += '<div class="reply-item">'
+                    	    +'<a href="/trans/board/detail?bno=' + this.bno + '">'
+                            + '<input type="text" id="bno" value="'
+                            + this.bno
+                            + '" readonly />'    
+                            +'</a>'
+                            + '<input type="text" id="title" value="'
+                            + this.title
+                            + '" readonly />'
+                            
+                            + '<input type="text" id="userid" value="'
+                            + this.userid
+                            + '" readonly />'
+                            
+                            + '</div>';
+                }); // end $.each();
+                
+                $('#selectBoarduserid').html(list);
+            }); // end $.getJSON()
+        } // end getAllReplies()
+        getAllReplies();
+   
+        
+    }); // end $(document).ready()
+    </script>
 </body>
 </html>

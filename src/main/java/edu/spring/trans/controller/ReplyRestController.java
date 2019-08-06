@@ -16,7 +16,6 @@ import edu.spring.trans.domain.Reply;
 import edu.spring.trans.service.ReplyService;
 
 @RestController
-
 @RequestMapping(value = "/reply")
 public class ReplyRestController {
 	private static final Logger log =
@@ -49,7 +48,7 @@ public class ReplyRestController {
 		
 		ResponseEntity<List<Reply>> entity = 
 				new ResponseEntity<List<Reply>>(list, HttpStatus.OK);
-		log.info("리턴하기전(bno={})");
+		log.info("리턴하기전(userid={})");
 
 		return entity;
 	} // end readAllReplies()

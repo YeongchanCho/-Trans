@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.spring.trans.domain.Board;
+import edu.spring.trans.domain.Criteria;
 
 @Repository
 public class BoardDaoImple implements BoardDao {
@@ -73,6 +74,26 @@ public class BoardDaoImple implements BoardDao {
 		return sqlSession.update(NAMESPACE + ".updateReplyCnt", params);
 	}
 
+	@Override
+	public List<Board> listPage(Criteria cri) {
+		log.info("listPage ", cri);
+		return sqlSession.selectList(NAMESPACE + ".listPage", cri);
+	}
+
+	@Override
+	public int listCount() {
+		return sqlSession.selectOne(NAMESPACE + ".listCount");
+	}
+
+	
+	
+	@Override
+	public List<Board> selectbyuserid(String userid) {
+		log.info("selectbyuserid호출 userid=",userid);
+		return sqlSession.selectList(NAMESPACE+ ".selectByUserid", userid);
+	}
+
+	
 
 
 }
