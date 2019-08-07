@@ -22,7 +22,7 @@
     <update id="update">
     update ${tbl_community}
     set ${col_title} = #{title}, ${col_content} = #{content}, 
-        ${col_regdate} = sysdate
+        ${col_regdate} = sysdate, ${col_attachment} = #{attachment}
     where ${col_bno} = #{bno}
     </update>
     

@@ -33,7 +33,7 @@
 	<!-- 업로드 패스 설정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg
-			value="C:\study\lab-spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Trans\resources">
+			value="C:\study\lab-spring\Trans\src\main\webapp\resources">
 		</beans:constructor-arg>
 	</beans:bean>
 	<!-- 일반 파일 업로드 경로 -->

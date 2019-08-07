@@ -31,7 +31,7 @@ public class RestSelectUseridController {
 			@PathVariable(name = "userid") String userid) {
 		log.info("readAllReply(userid={})", userid);
 		
-		  List<Board> list = boardService.selectbyuserid(userid);
+		List<Board> list = boardService.selectbyuserid(userid);
 		
 		ResponseEntity<List<Board>> entity = 
 				new ResponseEntity<List<Board>>(list, HttpStatus.OK);

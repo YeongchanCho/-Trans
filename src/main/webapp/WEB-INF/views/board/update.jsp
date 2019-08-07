@@ -137,6 +137,30 @@
 	            <input type="text" id="userid"
 	                class="form-control" value="${board.userid}" readonly />
 	        </div>
+	        <!-- 
+	        <div class="inputArea">
+	        <p>${board.attachment}</p>
+                <label for="attachment">이미지</label> <input type="file" id="attachment" value="${board.attachment}"
+                    name="file" />
+                <div class="select_img">
+                    <img src="" />
+                </div>
+
+                <script>
+                    $("#attachment").change(
+                            function() {
+                                if (this.files && this.files[0]) {
+                                    var reader = new FileReader;
+                                    reader.onload = function(data) {
+                                        $(".select_img img").attr("src",
+                                                data.target.result).width(500);
+                                    }
+                                    reader.readAsDataURL(this.files[0]);
+                                }
+                            });
+                </script>
+                </div>
+                 -->
 	        <div class="form-group">
 	            <label for="reply_cnt">댓글 갯수</label>
 	            <input type="number" id="reply_cnt"
