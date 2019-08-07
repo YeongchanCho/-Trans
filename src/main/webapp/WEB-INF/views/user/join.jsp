@@ -149,8 +149,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="birth">생년월일 *</label> <input type="date" name="birth"
-                            id="birth" class="form-control" placeholder="출생년월일 입력" required /><br />
+                        <label for="birth">생년월일 *</label> <input type="text" name="birth"
+                            id="birth" class="form-control checkin_date" placeholder="출생년월일 입력" required /><br />
                     </div>
                     <div class="form-group">
                         <input type="submit" value="회원가입"

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 <title>TRANS - 교통정보 안내</title>
 <script
@@ -122,8 +123,10 @@
 							 class="form-control" name="gender" value="${user.gender}" required="required" />
 					</div>
 					<div class="form-group">
-						<label for="birth">생년월일</label> <input type="date" id="birth"
-							 class="form-control" name="birth" value="${user.birth}" required="required" />
+						<fmt:formatDate value="${user.birth}"
+	                    pattern="yyyy-MM-dd" var="birth"/> 
+						<label for="birth">생년월일</label><br/> <input type="text" id="birth"
+							  class="form-control checkin_date" name="birth" value="${birth}" required="required" />
 					</div>
 					<div class="form-group">
 						<input type="submit" value="수정 완료" class="btn py-3 px-4 btn-primary"/>
