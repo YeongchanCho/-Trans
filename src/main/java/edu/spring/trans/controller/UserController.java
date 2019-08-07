@@ -2,11 +2,13 @@ package edu.spring.trans.controller;
 
 import java.awt.Window;
 import java.beans.PropertyEditorSupport;
+import java.nio.channels.SeekableByteChannel;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.spring.trans.domain.Board;
+import edu.spring.trans.domain.Criteria;
+import edu.spring.trans.domain.PageMaker;
 import edu.spring.trans.domain.User;
 import edu.spring.trans.service.UserService;
 
@@ -82,7 +87,19 @@ public class UserController {
 		userService.create(user);
 		return "redirect:/";
 	}
-
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(String userid, HttpSession session) {
+		log.info("delete(userid={})", userid);
+		// BoardService의 메소드를 사용해서, 회원정보가 userid인 글을 테이블에서 삭제
+		int result = userService.delete(userid);
+		log.info("signOut() 호출");
+		session.removeAttribute("signinId");
+		session.invalidate();
+		
+		// 삭제 후 본 화면으로 이동
+		return "redirect:/";
+	}
 	@InitBinder
 	public void initBinder(WebDataBinder binder) throws Exception {
 	    binder.registerCustomEditor(Date.class, new PropertyEditorSupport() {
@@ -97,6 +114,32 @@ public class UserController {
 	        }
 	    });
 	}
-
 	
+	@RequestMapping(value="/myinfo", method =  RequestMethod.GET)
+	public void myinfo(String userid, Model model)	{
+		User user = userService.read(userid);
+		log.info("myinfo(userid={})", userid);
+		model.addAttribute("user", user);
+		//회원상세정보 확인(GET방식)
+	}
+	
+	
+	
+	@RequestMapping(value = "myinfoupdate", method = RequestMethod.GET)
+	public void update(String userid, Model model) {
+		log.info("update(userid={})", userid);
+		User user = userService.read(userid);
+		model.addAttribute("user", user);
+	}
+	
+	@RequestMapping(value = "/myinfoupdate", method = RequestMethod.POST)
+	public String update(User user) {
+		log.info("update({})", user);
+		// BoardService의 메소드를 사용해서 게시글을 수정(DB 테이블 수정)
+		int result = userService.update(user);
+		
+		// 게시글 수정 이후에 상세보기 페이지로 이동(redirect)
+		return "redirect:/user/myinfo?userid=" +user.getUserid();
+	}
+		
 }

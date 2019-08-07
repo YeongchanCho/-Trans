@@ -1,9 +1,10 @@
-
--->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
 <head>
 <title>TRANS - 교통정보 안내</title>
 <script
@@ -40,12 +41,15 @@
 <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 
+<meta charset="UTF-8">
+<title>My Informaiton</title>
+</head>
 <body>
     <nav
         class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
         id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="../">TRANS</a>
+            <a class="navbar-brand" href="/trans" style="font-size: 50px">TRANS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#ftco-nav" aria-controls="ftco-nav"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -54,19 +58,25 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
-                    <li class="nav-item"><a href="rooms.html" class="nav-link">교통
+                    <li class="nav-item"><a href="/trans" class="nav-link" style="font-size: 20px">홈</a></li>
+                    <li class="nav-item"><a href="rooms.html" class="nav-link" style="font-size: 20px">교통
                             경로찾기</a></li>
-                    <li class="nav-item"><a href="../tour?pageNo=1"
-                        class="nav-link">여행지 정보</a></li>
-                    <li class="nav-item"><a href="../board/main" class="nav-link">여행커뮤니티</a></li>
-                    <li class="nav-item"><a href="../user/myinfo?userid=${signinId}" class="nav-link">내정보</a></li>
-                    <li class="nav-item active"><a href="" class="nav-link">로그인</a></li>
+                    <li class="nav-item active"><a href="/trans/tour/all?pageNo=1" class="nav-link" style="font-size: 20px">여행지
+                            정보</a></li>
+                    <li class="nav-item"><a href="../board/main" class="nav-link" style="font-size: 20px">여행커뮤니티</a></li>
+                    <li class="nav-item"><a href="../user/myinfo?userid=${signinId}" class="nav-link" style="font-size: 20px">내정보</a></li>
+            
+                    <c:if test="${not empty signinId}">
+                        <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
+                        <li class="nav-link">${signinId}님,환영!<a href="../user/logout"
+                            class="nav-link">로그아웃</a>
+                        </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
     </nav>
-
+    <!-- END nav -->
     <div class="hero-wrap"
         style="background-image: url('../resources/images/korea1.jpg');">
         <div class="overlay"></div>
@@ -77,84 +87,155 @@
                     class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
                     <div class="text">
                         <p class="breadcrumbs mb-2">
-                            <span class="mr-2"><a href="../">홈</a></span> <span>여행커뮤니티</span>
+                            <span class="mr-2"><a href="/trans">홈</a></span> <span
+                                class="mr-2"><a href="../board/main">여행커뮤니티</a></span>
                         </p>
-                        <h1 class="mb-4 bread" style="font-family: 맑은 고딕; font-size: 400%">회원가입</h1>
+                        <h1 class="mb-4 bread" style="font-family: 맑은 고딕; font-size: 400%">내정보</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <section class="ftco-section">
-        <div class="container">
-            <div class="comment-form-wrap pt-5">
-                <form action="join" method="post" class="p-5 bg-light">
-                    <div class="form-group">
-                        <label for="userid">아이디 *</label> <input type="text" id="userid"
-                            class="form-control" name="userid" placeholder="아이디 입력" required />
-                            <input type="button" id="btn" value="아이디 중복 체크" /><br>
-                              <div id="result"></div>
-                              <div id="result2"></div><br>
-                            <br />
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">비밀번호 *</label> <input type="password" id="pwd"
-                            name="pwd" class="form-control" placeholder="비밀번호 입력" required /><br />
-                    </div>
-                    <div class="form-group">
-                        <label for="pwdCheck">비밀번호 확인</label> <input type="password"
-                            id="pw2" name="pwdCheck" class="form-control" placeholder="비밀번호 다시 입력"
-                            required /><br />
-                    </div>
-                    <div class="form-group">
-                        <label for="city">거주 지역 </label> <input type="text" name="city"
-                            class="form-control" placeholder="거주지 입력" required /><br />
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">전화번호 *</label> <input type="text" id="phone"
-                            name="phone" class="form-control" placeholder="전화번호 입력" required /><br />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">이메일 *</label> <input type="email" id="eamil"
-                            name="email" class="form-control" placeholder="이메일 입력" required />
-                    </div>
-
-
-
-                    <div class="form-group align-self-stretch d-flex align-items-end">
-
-						<label for="gender">성별 * </label>
-						<div class="form-field">
-							<div class="select-wrap">
-								<div class="icon">
-									<span class="ion-ios-arrow-down"></span>
-								</div>
-								<select name="gender" id="gender" class="form-control">
-									<option value="남">남</option>
-									<option value="여">여</option>
-								</select>
-							</div>
-						</div>
-
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="birth">생년월일 *</label> <input type="date" name="birth"
-                            id="birth" class="form-control" placeholder="출생년월일 입력" required /><br />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="회원가입"
-                            class="btn py-3 px-4 btn-primary" />
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+ 
+    <hr>
+      <form>
+      
+   
+      
+        <table>
+        <tbody>
+        <tr>
+        <td>
+           <label for="userid">아이디</label>
+       </td>
+        <td>
+            <input type="text" id="userid" name="userid"
+                value="${user.userid}" readonly />
+        </td>
+        </tr>
+        <tr>
+        <td>
+        
+            <label for="pwd">비밀번호</label>
+       </td>
+        <td>
+            <input type="text" id="pwd" name="pwd"
+                value="${user.pwd}" readonly />
+       </td>
+        </tr>    
+        <tr>
+        <td>
+            <label for="city">도시</label>
+        </td>
+        <td>
+            <input type="text" id="city" name="city"
+                value="${user.city}" readonly />
+        </td>
+        </tr>    
+        <tr>
+        <td>
+            <label for="email">이메일</label>
+        </td>
+        <td>      
+            <input type="email" id="email" name="email"
+                value="${user.email}" readonly />
+       </td>
+        </tr>    
+        <tr>
+        <td>
+            <label for="gender">성별</label>
+              </td>
+        <td> 
+            <input type="text" id="gender" name="gender"
+                value="${user.gender}" readonly />
+        </td>
+        </tr>    
+        <tr>
+        <td>
+            <label for="grade">생년월일</label>
+                </td>
+        <td> 
+        <fmt:formatDate value="${user.birth}"
+                    pattern="yyyy-MM-dd" var="birth"/>                    
+            
+           <input type="text" id="birth" name="birth"
+                value="${birth}" readonly />
+           </td>
+        </tr>
+        </tbody>
+        </table>
+    </form>
+    <hr>
+        <ul>
+       
+        <li><a href="myinfoupdate?userid=${user.userid}">회원 정보 수정</a></li>
+        <div><a id="menudelete" href="delete?userid=${user.userid}">회원 탈퇴</a></li></button></form>
+      
+    </ul>
     
+    <hr/>
+    <div id ="selectBoarduserid">
     
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+    </div>
+      <script>
+    $(document).ready(function () {
+        $('#menudelete').click(function (event) {
+            event.preventDefault();
+            var result = confirm('정말 삭제할까요?');
+            if (result) {
+                location = $(this).attr("href");
+            }
+        });
+    });
+    </script>
+    
+        <script>
+    $(document).ready(function () {
+        // input[id='bno']에 있는 글번호(bno)를 읽음
+        var userid = $('#userid').val();
+        
+        // 서버에서 해당 게시글 번호(bno)에 달린 모든 댓글 목록을 읽어오는 Ajax 함수 정의
+        function getAllReplies() {
+            $.getJSON('/trans/selectuserid/boards/' + userid, function (data) {
+                //console.log(data);
+                // div[id="replies"] 안에 있는 모든 하위 요소들을 삭제
+                $('#selectBoarduserid').empty();
+                var list = ''; // div의 하위 요소가 될 HTML 코드들
+                
+                // 자바스크립트 배열 data의 원소 갯수만큼 콜백 함수의 내용을 반복
+                $(data).each(function () {
+                    // 콜백 함수 내부에서 this: 배열 data의 원소
+                    var date = new Date(this.regdate);
+                    var dateString = date.toLocaleDateString() 
+                            + ' ' + date.toLocaleTimeString();
+                    list += '<div class="reply-item">'
+                    	    +'<a href="/trans/board/detail?bno=' + this.bno + '">'
+                            + '<input type="text" id="bno" value="'
+                            + this.bno
+                            + '" readonly />'    
+                            +'</a>'
+                            + '<input type="text" id="title" value="'
+                            + this.title
+                            + '" readonly />'
+                            
+                            + '<input type="text" id="userid" value="'
+                            + this.userid
+                            + '" readonly />'
+                            
+                            + '</div>';
+                }); // end $.each();
+                
+                $('#selectBoarduserid').html(list);
+            }); // end $.getJSON()
+        } // end getAllReplies()
+        getAllReplies();
+   
+        
+    }); // end $(document).ready()
+    
+    </script>
+    <br>
+     <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
 
@@ -229,61 +310,6 @@
                 stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
     </div>
 
-<div class="family">
-        <a href="javascript:void(0);" class="flink"><img src="/newweb/kr/images/main/family.gif" alt="패밀리사이트 바로가기" /></a>
-        <div class="flist">
-            <ul>
-                <li><a href="http://www.mltm.go.kr" target="_blank" title="새창이동">국토교통부</a></li>
-                <li><a href="http://www.visitkorea.co.kr" target="_blank" title="새창이동">한국관광공사</a></li>
-                <li><a href="http://www.bus.or.kr" target="_blank" title="새창이동">전국버스운송사업조합연합회</a></li>
-                <li><a href="http://www.sbus.or.kr" target="_blank" title="새창이동">서울특별시버스운송사업조합</a></li>
-                <li><a href="http://www.incheonbus.or.kr" target="_blank" title="새창이동">인천광역시버스운송사업조합</a></li>
-                <li><a href="http://www.daejeonbus.or.kr" target="_blank" title="새창이동">대전광역시버스운송사업조합</a></li>
-                <li><a href="http://www.ulsanbus.or.kr" target="_blank" title="새창이동">울산광역시버스운송사업조합</a></li>
-                <li><a href="http://www.gbus.or.kr" target="_blank" title="새창이동">경기도버스운송사업조합</a></li>
-                <li><a href="http://www.busta.or.kr" target="_blank" title="새창이동">전라북도버스운송사업조합</a></li>
-            </ul>
-        </div>
-    </div>
-      <script>
-       $(function(){
-         //비밀번호 확인
-             $('#pw2').blur(function(){
-                if($('#pwd').val() != $('#pw2').val()){
-                     if($('#pw2').val()!=''){
-                     alert("비밀번호가 일치하지 않습니다.");
-                         $('#pw2').val('');
-                       $('#pw2').focus();
-                    }
-                 }
-             });         
-         });
-       $(document).ready(function () {
-    
-           $('#btn').click(function () {
-              
-               var query = {userid : $("#userid").val()};
-               $.ajax({
-                   url: '/trans/user/checkid',
-                   type: 'post',
-                   data: query,
-                   success: function (data) {
-                       
-                       if (data === 1) {
-                           $('#result2').html('<em>사용할 수 없는 아이디</em>');
-                           $('#userid').val('');
-                           $('#userid').focus();
-                       } else {
-                           $('#result2').html('<em>사용할 수 있는 아이디</em>');
-                       }
-                   }
-               });  
-               
-           }); // end click()
-           
-       }); // end ready()
-
-       </script>
 
     <script src="../resources/js/jquery.min.js"></script>
     <script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
@@ -304,6 +330,6 @@
     <script src="../resources/js/google-map.js"></script>
     <script src="../resources/js/main.js"></script>
 
+    
 </body>
 </html>
-

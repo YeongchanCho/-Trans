@@ -61,12 +61,19 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public List<Board> listPage(Criteria cri) {
 		// 목록 + 페이징
+		log.info("boardservice 호출", cri);
 		return boarddao.listPage(cri);
 	}
 
 	@Override
 	public int listCount() {		
 		return boarddao.listCount();
+	}
+
+	@Override
+	public List<Board> selectbyuserid(String userid) {
+		log.info("selectbyuserid 호출 userid",userid);
+		return boarddao.selectbyuserid(userid);
 	}
 
 	

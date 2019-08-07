@@ -52,7 +52,7 @@
                             class="nav-link" style="font-size: 20px">여행지 정보</a></li>
                         <li class="nav-item"><a href="board/main" class="nav-link"
                             style="font-size: 20px">여행커뮤니티</a></li>
-                        <li class="nav-item"><a href="user/myinfo" class="nav-link"
+                        <li class="nav-item"><a href="user/myinfo?userid=${signinId}" class="nav-link"
                             style="font-size: 20px">내정보</a></li>
                         <!-- <li class="nav-item "><a onclick="login();" class="nav-link" style="font-size: 20px">로그인</a></li> -->
                         <c:if test="${empty signinId}">

@@ -30,6 +30,11 @@
     delete from  ${tbl_community} where ${col_bno} = #{bno}
     </delete>
     
+     <select id="selectByUserid" resultType="Board">
+     <!-- 회원 정보에서 내가 쓴 글 찾기 -->
+    select * from ${tbl_community} where ${col_userid} = #{userid}
+    </select>
+    
     <update id="updateReplyCnt">
     update ${tbl_community}
     set ${col_replycnt} = ${col_replycnt} + #{increase}

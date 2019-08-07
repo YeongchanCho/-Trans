@@ -66,8 +66,8 @@
 						class="nav-link" style="font-size: 20px">여행지 정보</a></li>
 					<li class="nav-item active"><a href="main" class="nav-link"
 						style="font-size: 20px">여행커뮤니티</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link"
-						style="font-size: 20px">예약</a></li>
+					<li class="nav-item"><a href="../user/myinfo?userid=${signinId}" class="nav-link"
+						style="font-size: 20px">내정보</a></li>
 					<c:if test="${empty signinId}">
 						<%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
 						<li class="nav-item"><a href="../user/login" class="nav-link"
@@ -140,7 +140,7 @@
 								}
 							});
 				</script>
-				<%=request.getRealPath("/") %>
+				<!-- <%=request.getRealPath("/") %> -->
 			</div>
 			<div class="form-group">
 				<label for="userid">아이디 *</label> <input type="text" name="userid"

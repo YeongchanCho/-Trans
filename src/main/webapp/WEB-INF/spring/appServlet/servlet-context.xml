@@ -48,22 +48,26 @@
 
 
 	<!-- 인터셉터 설정 -->
-	<beans:bean id="signinInterceptor"
-		class="edu.spring.trans.interceptor.SignInInterceptor" />
-	<beans:bean id="authInterceptor"
-		class="edu.spring.trans.interceptor.AuthInterceptor" />
 
-	<interceptors>
-		<interceptor>
-			<mapping path="/user/login" />
-			<beans:ref bean="signinInterceptor" />
-		</interceptor>
-
-		<interceptor>
-			<!-- 인증(로그인)된 사용자만 방문할 수 있는 페이지의 URL 주소들을 매핑 -->
-			<mapping path="/board/detail" />
-			<beans:ref bean="authInterceptor" />
-		</interceptor>
-	</interceptors>
+    <beans:bean id="signinInterceptor" class="edu.spring.trans.interceptor.SignInInterceptor" />
+    <beans:bean id="authInterceptor" class="edu.spring.trans.interceptor.AuthInterceptor" />
+    
+    <interceptors>
+       <interceptor>
+           <mapping path="/user/login"/>
+           <mapping path="/user/myinfo"/>
+           
+           <beans:ref bean="signinInterceptor"/>
+       </interceptor>
+  
+       <interceptor>
+           <!-- 인증(로그인)된 사용자만 방문할 수 있는 페이지의 URL 주소들을 매핑 -->
+           <mapping path="/board/detail"/>
+           <mapping path="/board/insert"/>
+           <mapping path="/user/myinfo"/>
+           <beans:ref bean="authInterceptor"/>
+       </interceptor>
+    </interceptors>
+	
 
 </beans:beans>

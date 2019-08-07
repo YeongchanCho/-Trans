@@ -76,12 +76,21 @@ public class BoardDaoImple implements BoardDao {
 
 	@Override
 	public List<Board> listPage(Criteria cri) {
+		log.info("listPage ", cri);
 		return sqlSession.selectList(NAMESPACE + ".listPage", cri);
 	}
 
 	@Override
 	public int listCount() {
 		return sqlSession.selectOne(NAMESPACE + ".listCount");
+	}
+
+	
+	
+	@Override
+	public List<Board> selectbyuserid(String userid) {
+		log.info("selectbyuserid호출 userid=",userid);
+		return sqlSession.selectList(NAMESPACE+ ".selectByUserid", userid);
 	}
 
 	

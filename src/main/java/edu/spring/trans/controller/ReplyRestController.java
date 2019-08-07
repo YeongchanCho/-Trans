@@ -44,11 +44,11 @@ public class ReplyRestController {
 			@PathVariable(name = "bno") Integer bno) {
 		log.info("readAllReply(bno={})", bno);
 		
-		List<Reply> list = replyService.read(bno);
+		  List<Reply> list = replyService.read(bno);
 		
 		ResponseEntity<List<Reply>> entity = 
 				new ResponseEntity<List<Reply>>(list, HttpStatus.OK);
-		log.info("리턴하기전(bno={})");
+		log.info("리턴하기전(userid={})");
 
 		return entity;
 	} // end readAllReplies()

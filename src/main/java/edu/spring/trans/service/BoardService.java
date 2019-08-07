@@ -18,4 +18,6 @@ public interface BoardService {
 	List<Board> listPage(Criteria cri);
 	// 게시물 총 갯수
 	int listCount();
+	//회원정보에서 내글 찾기
+	List<Board> selectbyuserid(String userid);
 }
