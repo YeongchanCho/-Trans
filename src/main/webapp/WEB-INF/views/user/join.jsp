@@ -1,8 +1,6 @@
-
--->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 <title>TRANS - 교통정보 안내</title>
@@ -45,7 +43,7 @@
         class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
         id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="../">TRANS</a>
+            <a class="navbar-brand" href="../" style="font-size: 50px">TRANS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#ftco-nav" aria-controls="ftco-nav"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -54,14 +52,24 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="../" class="nav-link">홈</a></li>
-                    <li class="nav-item"><a href="rooms.html" class="nav-link">교통
+                    <li class="nav-item"><a href="../" class="nav-link" style="font-size: 20px">홈</a></li>
+                    <li class="nav-item"><a href="rooms.html" class="nav-link" style="font-size: 20px">교통
                             경로찾기</a></li>
                     <li class="nav-item"><a href="../tour?pageNo=1"
-                        class="nav-link">여행지 정보</a></li>
-                    <li class="nav-item"><a href="../board/main" class="nav-link">여행커뮤니티</a></li>
-                    <li class="nav-item"><a href="../user/myinfo?userid=${signinId}" class="nav-link">내정보</a></li>
-                    <li class="nav-item active"><a href="" class="nav-link">로그인</a></li>
+                        class="nav-link" style="font-size: 20px">여행지 정보</a></li>
+                    <li class="nav-item"><a href="../board/main" class="nav-link" style="font-size: 20px">여행커뮤니티</a></li>
+                    <li class="nav-item"><a href="../user/myinfo?userid=${signinId}" class="nav-link" style="font-size: 20px">내정보</a></li>
+                    <c:if test="${empty signinId}">
+                        <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
+                        <li class="nav-item"><a href="../user/login"
+                            class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
+                    </c:if>
+                    <c:if test="${not empty signinId}">
+                        <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
+                        <li class="nav-link">${signinId}님,환영!<a href="../user/logout"
+                            class="nav-link">로그아웃</a>
+                        </li>
+                    </c:if>
                 </ul>
             </div>
         </div>

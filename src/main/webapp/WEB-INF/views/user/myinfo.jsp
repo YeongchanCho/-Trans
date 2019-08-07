@@ -61,10 +61,10 @@
                     <li class="nav-item"><a href="/trans" class="nav-link" style="font-size: 20px">홈</a></li>
                     <li class="nav-item"><a href="rooms.html" class="nav-link" style="font-size: 20px">교통
                             경로찾기</a></li>
-                    <li class="nav-item active"><a href="/trans/tour/all?pageNo=1" class="nav-link" style="font-size: 20px">여행지
+                    <li class="nav-item"><a href="/trans/tour/all?pageNo=1" class="nav-link" style="font-size: 20px">여행지
                             정보</a></li>
                     <li class="nav-item"><a href="../board/main" class="nav-link" style="font-size: 20px">여행커뮤니티</a></li>
-                    <li class="nav-item"><a href="../user/myinfo?userid=${signinId}" class="nav-link" style="font-size: 20px">내정보</a></li>
+                    <li class="nav-item active"><a href="../user/myinfo?userid=${signinId}" class="nav-link" style="font-size: 20px">내정보</a></li>
             
                     <c:if test="${not empty signinId}">
                         <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
@@ -97,144 +97,73 @@
         </div>
     </div>
  
-    <hr>
-      <form>
-      
-   
-      
-        <table>
-        <tbody>
-        <tr>
-        <td>
-           <label for="userid">아이디</label>
-       </td>
-        <td>
-            <input type="text" id="userid" name="userid"
-                value="${user.userid}" readonly />
-        </td>
-        </tr>
-        <tr>
-        <td>
-        
-            <label for="pwd">비밀번호</label>
-       </td>
-        <td>
-            <input type="text" id="pwd" name="pwd"
+    <div class="col-lg-4 sidebar">
+       
+        <div class="sidebar-box">
+            <div class="categories">
+                <h3 style="font-family: 맑은 고딕">내정보 상세보기</h3>
+                <ul>
+                    <li>
+	                    <label for="userid">아이디</label><br/>
+	                    <input type="text" id="userid" name="userid"
+	                value="${user.userid}" readonly />
+                </li>
+                    <li>
+                        <label for="pwd">비밀번호</label><br/>
+                        <input type="text" id="pwd" name="pwd"
                 value="${user.pwd}" readonly />
-       </td>
-        </tr>    
-        <tr>
-        <td>
-            <label for="city">도시</label>
-        </td>
-        <td>
-            <input type="text" id="city" name="city"
+                    </li>
+                    <li>
+                        <label for="city">도시</label><br/>
+                        <input type="text" id="city" name="city"
                 value="${user.city}" readonly />
-        </td>
-        </tr>    
-        <tr>
-        <td>
-            <label for="email">이메일</label>
-        </td>
-        <td>      
-            <input type="email" id="email" name="email"
+                    </li>
+                    <li>
+                        <label for="email">이메일</label><br/>
+                        <input type="email" id="email" name="email"
                 value="${user.email}" readonly />
-       </td>
-        </tr>    
-        <tr>
-        <td>
-            <label for="gender">성별</label>
-              </td>
-        <td> 
-            <input type="text" id="gender" name="gender"
+                    </li>
+                    <li>
+                        <label for="gender">성별</label><br/>
+                        <input type="text" id="gender" name="gender"
                 value="${user.gender}" readonly />
-        </td>
-        </tr>    
-        <tr>
-        <td>
-            <label for="grade">생년월일</label>
-                </td>
-        <td> 
-        <fmt:formatDate value="${user.birth}"
-                    pattern="yyyy-MM-dd" var="birth"/>                    
-            
-           <input type="text" id="birth" name="birth"
-                value="${birth}" readonly />
-           </td>
-        </tr>
-        </tbody>
-        </table>
-    </form>
+                    </li>
+                    <li>
+                        <label for="grade">생년월일</label><br/>
+                        <fmt:formatDate value="${user.birth}"
+                    pattern="yyyy-MM-dd" var="birth"/> 
+		           <input type="text" id="birth" name="birth"
+		                value="${birth}" readonly />
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+ 
+ 
+ 
+    <hr>
+     
+    
     <hr>
         <ul>
        
         <li><a href="myinfoupdate?userid=${user.userid}">회원 정보 수정</a></li>
-        <div><a id="menudelete" href="delete?userid=${user.userid}">회원 탈퇴</a></li></button></form>
+        <li><a id="menudelete" href="delete?userid=${user.userid}">회원 탈퇴</a></li>
+     
       
     </ul>
     
     <hr/>
+    <h3 style="font-family: 맑은 고딕">내가 쓴 글</h3>
+    <div class="container pt-5">
     <div id ="selectBoarduserid">
     
-    </div>
-      <script>
-    $(document).ready(function () {
-        $('#menudelete').click(function (event) {
-            event.preventDefault();
-            var result = confirm('정말 삭제할까요?');
-            if (result) {
-                location = $(this).attr("href");
-            }
-        });
-    });
-    </script>
+    </div></div>
     
-        <script>
-    $(document).ready(function () {
-        // input[id='bno']에 있는 글번호(bno)를 읽음
-        var userid = $('#userid').val();
-        
-        // 서버에서 해당 게시글 번호(bno)에 달린 모든 댓글 목록을 읽어오는 Ajax 함수 정의
-        function getAllReplies() {
-            $.getJSON('/trans/selectuserid/boards/' + userid, function (data) {
-                //console.log(data);
-                // div[id="replies"] 안에 있는 모든 하위 요소들을 삭제
-                $('#selectBoarduserid').empty();
-                var list = ''; // div의 하위 요소가 될 HTML 코드들
-                
-                // 자바스크립트 배열 data의 원소 갯수만큼 콜백 함수의 내용을 반복
-                $(data).each(function () {
-                    // 콜백 함수 내부에서 this: 배열 data의 원소
-                    var date = new Date(this.regdate);
-                    var dateString = date.toLocaleDateString() 
-                            + ' ' + date.toLocaleTimeString();
-                    list += '<div class="reply-item">'
-                    	    +'<a href="/trans/board/detail?bno=' + this.bno + '">'
-                            + '<input type="text" id="bno" value="'
-                            + this.bno
-                            + '" readonly />'    
-                            +'</a>'
-                            + '<input type="text" id="title" value="'
-                            + this.title
-                            + '" readonly />'
-                            
-                            + '<input type="text" id="userid" value="'
-                            + this.userid
-                            + '" readonly />'
-                            
-                            + '</div>';
-                }); // end $.each();
-                
-                $('#selectBoarduserid').html(list);
-            }); // end $.getJSON()
-        } // end getAllReplies()
-        getAllReplies();
-   
-        
-    }); // end $(document).ready()
-    
-    </script>
     <br>
+    <!--  
      <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
@@ -284,7 +213,7 @@
                 <div class="col-md-12 text-center">
 
                     <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                       
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
@@ -292,12 +221,13 @@
                         All rights reserved | This template is made with <i
                             class="icon-heart color-danger" aria-hidden="true"></i> by <a
                             href="https://colorlib.com" target="_blank">Cho &amp; 3Kim </a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                       
                     </p>
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> 
+    -->
 
 
 
@@ -330,6 +260,62 @@
     <script src="../resources/js/google-map.js"></script>
     <script src="../resources/js/main.js"></script>
 
+      <script>
+    $(document).ready(function () {
+        $('#menudelete').click(function (event) {
+            event.preventDefault();
+            var result = confirm('정말 삭제할까요?');
+            if (result) {
+                location = $(this).attr("href");
+            }
+        });
+    });
+    </script>
+    
+    <script>
+    $(document).ready(function () {
+        // input[id='bno']에 있는 글번호(bno)를 읽음
+        var userid = $('#userid').val();
+        
+        // 서버에서 해당 게시글 번호(bno)에 달린 모든 댓글 목록을 읽어오는 Ajax 함수 정의
+        function getAllmyBoard() {
+            $.getJSON('/trans/selectuserid/boards/' + userid, function (data) {
+                //console.log(data);
+                // div[id="replies"] 안에 있는 모든 하위 요소들을 삭제
+                $('#selectBoarduserid').empty();
+                var list = ''; // div의 하위 요소가 될 HTML 코드들
+                
+                // 자바스크립트 배열 data의 원소 갯수만큼 콜백 함수의 내용을 반복
+                $(data).each(function () {
+                    // 콜백 함수 내부에서 this: 배열 data의 원소
+                    var date = new Date(this.regdate);
+                    var dateString = date.toLocaleDateString() 
+                            + ' ' + date.toLocaleTimeString();
+                    list += '<div class="container pt-2"><div class="row d-flex"><div class="my-board">'
+                            +'<a href="/trans/board/detail?bno=' + this.bno + '">'
+                            + '<input type="text" id="bno" value="'
+                            + this.bno
+                            + '" readonly />'    
+                            +'</a>'
+                            + '<input type="text" id="title" value="'
+                            + this.title
+                            + '" readonly />'                            
+                            + '<input type="text" id="userid" value="'
+                            + this.userid
+                            + '" readonly />'
+                            
+                            + '</div></div></div>';
+                }); // end $.each();
+                
+                $('#selectBoarduserid').html(list);
+            }); // end $.getJSON()
+        } // end getAllmyBoard()
+        getAllmyBoard();
+   
+        
+    }); // end $(document).ready()
+    
+    </script>
     
 </body>
 </html>
