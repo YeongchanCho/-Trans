@@ -37,6 +37,9 @@
 <link rel="stylesheet" href="../resources/css/flaticon.css">
 <link rel="stylesheet" href="../resources/css/icomoon.css">
 <link rel="stylesheet" href="../resources/css/style.css">
+<style>
+    .select_img img {margin: 20px 0;}
+</style>
 </head>
 
 
@@ -54,27 +57,30 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="../" class="nav-link" style="font-size: 20px">홈</a></li>
-                    <li class="nav-item"><a href="rooms.html" class="nav-link" style="font-size: 20px">교통
-                            경로찾기</a></li>
-                    <li class="nav-item"><a href="../tour/all?pageNo=1"
-                        class="nav-link" style="font-size: 20px">여행지 정보</a></li>
-                    <li class="nav-item active"><a href="main" class="nav-link" style="font-size: 20px">여행커뮤니티</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link" style="font-size: 20px">예약</a></li>
-                    <c:if test="${empty signinId}">
-                        <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
-                        <li class="nav-item"><a href="../user/login"
-                            class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
-                    </c:if>
-                    <c:if test="${not empty signinId}">
-                        <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
-                        <li class="nav-link">${signinId}님,환영!<a href="../user/logout"
-                            class="nav-link">로그아웃</a>
-                        </li>
-                    </c:if>
-                </ul>
-            </div>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a href="../" class="nav-link"
+						style="font-size: 20px">홈</a></li>
+					<li class="nav-item"><a href="rooms.html" class="nav-link"
+						style="font-size: 20px">교통 경로찾기</a></li>
+					<li class="nav-item"><a href="../tour/all?pageNo=1"
+						class="nav-link" style="font-size: 20px">여행지 정보</a></li>
+					<li class="nav-item active"><a href="main" class="nav-link"
+						style="font-size: 20px">여행커뮤니티</a></li>
+					<li class="nav-item"><a href="about.html" class="nav-link"
+						style="font-size: 20px">예약</a></li>
+					<c:if test="${empty signinId}">
+						<%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
+						<li class="nav-item"><a href="../user/login" class="nav-link"
+							style="font-size: 20px" id="btnSignIn">로그인</a></li>
+					</c:if>
+					<c:if test="${not empty signinId}">
+						<%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
+						<li class="nav-link">${signinId}님,환영!<a href="../user/logout"
+							class="nav-link">로그아웃</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
 		</div>
 	</nav>
 
@@ -102,95 +108,115 @@
 
 
 	<div class="comment-form-wrap pt-5">
-		
-		<form action="insert" method="post" class="p-5 bg-light">
-			<div class="form-group">
-				<label for="title">제목 *</label> <input type="text" name="title" placeholder="제목 입력" 
-				class="form-control" required />
-			</div>
-			<div class="form-group">
-				<label for="content">내용 *</label> <textarea rows="5" name="content" 
-				class="form-control" placeholder="내용 입력" required></textarea>
-			</div>
-			<div class="form-group">
-				<label for="userid">아이디 *</label> <input type="text" name="userid" 
-				class="form-control" readonly value="${signinId}" /> 
-			</div>
 
-			
+		<form action="insert" method="post" class="p-5 bg-light"
+			enctype="multipart/form-data">
 			<div class="form-group">
-				<input type="submit" value="작성 완료"
-					class="btn py-3 px-4 btn-primary">
+				<label for="title">제목 *</label> <input type="text" name="title"
+					placeholder="제목 입력" class="form-control" required />
 			</div>
+			<div class="form-group">
+				<label for="content">내용 *</label>
+				<textarea rows="5" name="content" class="form-control"
+					placeholder="내용 입력" required></textarea>
+			</div>
+			<div class="inputArea">
+				<label for="attachment">이미지</label> <input type="file" id="attachment"
+					name="file" />
+				<div class="select_img">
+					<img src="" />
+				</div>
 
-
+				<script>
+					$("#attachment").change(
+							function() {
+								if (this.files && this.files[0]) {
+									var reader = new FileReader;
+									reader.onload = function(data) {
+										$(".select_img img").attr("src",
+												data.target.result).width(500);
+									}
+									reader.readAsDataURL(this.files[0]);
+								}
+							});
+				</script>
+				<%=request.getRealPath("/") %>
+			</div>
+			<div class="form-group">
+				<label for="userid">아이디 *</label> <input type="text" name="userid"
+					class="form-control" readonly value="${signinId}" />
+			</div>
+			<div class="form-group">
+				<input type="submit" value="작성 완료" class="btn py-3 px-4 btn-primary">
+			</div>
 		</form>
+		
 	</div>
-	
-	 <footer class="ftco-footer ftco-bg-dark ftco-section">
-        <div class="container">
-            <div class="row mb-5">
 
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2" style="font-family: 맑은 고딕">유용한 기능</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">여행커뮤니티</a></li>
-                            <li><a href="#" class="py-2 d-block">즐겨찾은 정보들</a></li>
-                            <li><a href="#" class="py-2 d-block">Amenities</a></li>
-                            <li><a href="#" class="py-2 d-block">Gift Card</a></li>
-                        </ul>
-                    </div>
-                </div>
+	<footer class="ftco-footer ftco-bg-dark ftco-section">
+		<div class="container">
+			<div class="row mb-5">
 
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2" style="font-family: 맑은 고딕">정보</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">내정보수정</a></li>
-                            <li><a href="#" class="py-2 d-block">사이트맵</a></li>
-                            <li><a href="#" class="py-2 d-block">서비스 안내</a></li>
-                            <li><a href="#" class="py-2 d-block">새 소식</a></li>
-                        </ul>
-                    </div>
-                </div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-5">
+						<h2 class="ftco-heading-2" style="font-family: 맑은 고딕">유용한 기능</h2>
+						<ul class="list-unstyled">
+							<li><a href="#" class="py-2 d-block">여행커뮤니티</a></li>
+							<li><a href="#" class="py-2 d-block">즐겨찾은 정보들</a></li>
+							<li><a href="#" class="py-2 d-block">Amenities</a></li>
+							<li><a href="#" class="py-2 d-block">Gift Card</a></li>
+						</ul>
+					</div>
+				</div>
 
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2" style="font-family: 맑은 고딕">Q & A</h2>
-                        <div class="block-23 mb-3">
-                            <ul>
-                                <li><span class="icon icon-map-marker"></span><span
-                                    class="text">서울시 강남구 테헤란로000 여삼빌딩 PH</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span
-                                        class="text">+2 5555 9999</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span
-                                        class="text">chosamkim@itwill.com</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2" style="font-family: 맑은 고딕">정보</h2>
+						<ul class="list-unstyled">
+							<li><a href="#" class="py-2 d-block">내정보수정</a></li>
+							<li><a href="#" class="py-2 d-block">사이트맵</a></li>
+							<li><a href="#" class="py-2 d-block">서비스 안내</a></li>
+							<li><a href="#" class="py-2 d-block">새 소식</a></li>
+						</ul>
+					</div>
+				</div>
 
-            <div class="row">
-                <div class="col-md-12 text-center">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2" style="font-family: 맑은 고딕">Q & A</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon icon-map-marker"></span><span
+									class="text">서울시 강남구 테헤란로000 여삼빌딩 PH</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span
+										class="text">+2 5555 9999</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+										class="text">chosamkim@itwill.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                        All rights reserved | This template is made with <i
-                            class="icon-heart color-danger" aria-hidden="true"></i> by <a
-                            href="https://colorlib.com" target="_blank">Cho &amp; 3Kim </a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="icon-heart color-danger" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Cho &amp; 3Kim </a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">

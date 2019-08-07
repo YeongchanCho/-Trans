@@ -96,7 +96,7 @@
                     name="content" class="form-control" readonly>${board.content}</textarea>
              <br/>
             <p>
-              <img src="http://tong.visitkorea.or.kr/cms2/website/55/2613555.jpg" alt="" class="img-fluid">
+              <img src="../resources${board.attachment}" class="img-fluid" />
             </p>
             
           

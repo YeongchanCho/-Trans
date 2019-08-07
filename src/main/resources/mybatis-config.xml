@@ -20,6 +20,7 @@
         <property name="col_bno" value="bno"/>
         <property name="col_title" value="title"/>
         <property name="col_content" value="content"/>
+        <property name="col_attachment" value="attachment"/>
         
         <property name="col_regdate" value="reg_date"/>
         <property name="col_replycnt" value="reply_cnt"/>

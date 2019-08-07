@@ -15,8 +15,8 @@
     </select>
 
     <insert id="create">
-    insert into ${tbl_community} (${col_title}, ${col_content}, ${col_userid})
-    values (#{title}, #{content}, #{userid})
+    insert into ${tbl_community} (${col_title}, ${col_content}, ${col_userid}, ${col_attachment})
+    values (#{title}, #{content}, #{userid}, #{attachment})
     </insert>
 
     <update id="update">
@@ -42,7 +42,7 @@
     parameterType="Criteria">
         select *
         from (
-            select bno, title, content, userid, reg_date, reply_cnt,
+            select bno, title, content, userid, reg_date, reply_cnt, attachment,
                 row_number() over(order by bno desc) as rNum
             from ${tbl_community} 
             ) ${tbl_community}

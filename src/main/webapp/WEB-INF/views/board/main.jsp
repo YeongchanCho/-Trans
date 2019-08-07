@@ -130,8 +130,13 @@
 				<c:forEach var="board" items="${boardList}">
 					<div class="col-md-3 d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
-							<a href="detail?bno=${board.bno}" class="block-20"
-								style="background-image: url('../resources/images/image_1.jpg');">
+						  <a href="detail?bno=${board.bno}" class="block-20">	
+						  		<c:if test="${empty board.attachment}">
+						  		  <img src="../resources/images/none.jpg" width="250" height="250">
+						  		</c:if>
+						  		<c:if test="${not empty board.attachment}">
+								    <img src="../resources${board.attachment}" width="250" height="250">
+								</c:if>
 							</a>
 							<div class="text mt-3 d-block">
 								<h3 class="heading mt-3">
