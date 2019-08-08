@@ -292,6 +292,7 @@
                         $('#keyword').focus();
                         return;
                     }
+                    alert(keyword + ' 검색합니다.');
                     location.href = "search?pageNo=" + pageNo +
                     		"&keyword=" + keyword;
                 }

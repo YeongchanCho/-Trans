@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <title>TRANS - 장거리 교통정보 안내</title>
         <meta charset="utf-8">
@@ -195,7 +195,7 @@
                         <div class="ftco-footer-widget mb-4 ml-md-5">
                             <h2 class="ftco-heading-2" style="font-family: 맑은 고딕">유용한 기능</h2>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">여행커뮤니티</a></li>
+                                <li><a href="board/main" class="py-2 d-block">여행커뮤니티</a></li>
                                 <li><a href="#" class="py-2 d-block">즐겨찾은 정보들</a></li>
                                 <li><a href="#" class="py-2 d-block">Amenities</a></li>
                                 <li><a href="#" class="py-2 d-block">Gift Card</a></li>
@@ -207,7 +207,7 @@
                         <div class="ftco-footer-widget mb-4">
                             <h2 class="ftco-heading-2" style="font-family: 맑은 고딕">정보</h2>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">내정보수정</a></li>
+                                <li><a href="user/myinfo?userid=${signinId}" class="py-2 d-block">내정보</a></li>
                                 <li><a href="#" class="py-2 d-block">사이트맵</a></li>
                                 <li><a href="#" class="py-2 d-block">서비스 안내</a></li>
                                 <li><a href="#" class="py-2 d-block">새 소식</a></li>

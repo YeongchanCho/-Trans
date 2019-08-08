@@ -294,52 +294,12 @@
                         $('#keyword').focus();
                         return;
                     }
+                    alert(keyword + ' 검색합니다.');
                     location.href = "search?pageNo=" + pageNo +
                             "&keyword=" + keyword;
                 }
             });
         });
     </script>
-
-
-
-    <!--  
-    <script>
-        $(document).ready(function() {
-
-            $("#keyword").keydown(function(key) {
-                if (key.keyCode == 13) {
-                    var keyword = $('#keyword').val();
-                    var pageNo = ${tour.pageNo};
-                    if (keyword === '') {
-                        alert("검색할 키워드를 입력해주세요.");
-                        $('#keyword').focus();
-                        return;
-                    }
-                    $.ajax({
-                        url : '/trans/search',
-                        type : 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-HTTP-Method-Override': 'POST' 
-                        },
-                        // JSON.stringify({}): JavaScript 객체를 JSON 형식의 문자열로 변환
-                        data: JSON.stringify({
-                            'keyword': keyword,
-                            'pageNo': pageNo
-                        }),
-                        success: function (data) {
-                            console.log(data);
-                               alert(keyword + '로 검색합니다.');                        
-                        }
-                    });
-                }
-            });
-        });
-    </script>-->
-
 </body>
-
-
-
 </html>
