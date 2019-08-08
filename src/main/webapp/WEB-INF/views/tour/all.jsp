@@ -126,12 +126,12 @@
             <div class="categories">
                 <h3 style="font-family: 맑은 고딕">카테고리</h3>
                 <ul>
-                    <li><a href="#">Properties <span>(12)</span></a></li>
-                    <li><a href="#">Home <span>(22)</span></a></li>
-                    <li><a href="#">House <span>(37)</span></a></li>
-                    <li><a href="#">Villa <span>(42)</span></a></li>
-                    <li><a href="#">Apartment <span>(14)</span></a></li>
-                    <li><a href="#">Condominium <span>(140)</span></a></li>
+                    <li><a href="search?pageNo=1&keyword=서울">서울</a></li>
+                    <li><a href="search?pageNo=1&keyword=부산">부산 </a></li>
+                    <li><a href="search?pageNo=1&keyword=대구">대구</a></li>
+                    <li><a href="search?pageNo=1&keyword=제주도">제주도 </a></li>
+                    <li><a href="search?pageNo=1&keyword=음식">음식</a></li>
+                    <li><a href="search?pageNo=1&keyword=숙박">숙박</a></li>
                 </ul>
             </div>
         </div>
