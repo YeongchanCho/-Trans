@@ -58,9 +58,7 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="/trans" class="nav-link" style="font-size: 20px">홈</a></li>
-                    <li class="nav-item"><a href="rooms.html" class="nav-link" style="font-size: 20px">교통
-                            경로찾기</a></li>
+                    <li class="nav-item"><a href="/trans" class="nav-link" style="font-size: 20px">홈</a></li>                    
                     <li class="nav-item"><a href="/trans/tour/all?pageNo=1" class="nav-link" style="font-size: 20px">여행지
                             정보</a></li>
                     <li class="nav-item"><a href="../board/main" class="nav-link" style="font-size: 20px">여행커뮤니티</a></li>
@@ -97,11 +95,18 @@
         </div>
     </div>
  
-    <div class="col-lg-4 sidebar">
-       
-        <div class="sidebar-box">
-            <div class="categories">
-                <h3 style="font-family: 맑은 고딕">내정보 상세보기</h3>
+ <br/>
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-6">       
+        <div class="row bg-light">
+            <div class="categories">             
+                 <ul>
+                    <li><a href="myinfoupdate?userid=${user.userid}">회원 정보 수정</a></li>
+                    <li><a id="menudelete" href="delete?userid=${user.userid}">회원 탈퇴</a></li>     
+                 </ul>
+   
+                 <div class="fields">
                 <ul>
                     <li>
 	                    <label for="userid">아이디</label><br/>
@@ -137,33 +142,25 @@
                     </li>
                 </ul>
             </div>
+            </div>
         </div>
 
     </div>
  
  
- 
-    <hr>
-     
-    
-    <hr>
-        <ul>
+     <div class="col-lg-3 sidebar">
        
-        <li><a href="myinfoupdate?userid=${user.userid}">회원 정보 수정</a></li>
-        <li><a id="menudelete" href="delete?userid=${user.userid}">회원 탈퇴</a></li>
-     
-      
-    </ul>
-    
-    <hr/>
-    <h3 style="font-family: 맑은 고딕">내가 쓴 글</h3>
-    <div class="container pt-5">
+  
+    <h4 style="font-family: 맑은 고딕 ; color:darkblue;">내가 쓴 글</h4>
+    <div class="container">
     <div id ="selectBoarduserid">
     
     </div></div>
-    
+    </div></div>
+    </div>
+ 
     <br>
-    <!--  
+     
      <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
@@ -227,7 +224,7 @@
             </div>
         </div>
     </footer> 
-    -->
+ 
 
 
 
@@ -239,7 +236,6 @@
             <circle class="path" cx="24" cy="24" r="22" fill="none"
                 stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
     </div>
-
 
     <script src="../resources/js/jquery.min.js"></script>
     <script src="../resources/js/jquery-migrate-3.0.1.min.js"></script>
@@ -281,30 +277,28 @@
         function getAllmyBoard() {
             $.getJSON('/trans/selectuserid/boards/' + userid, function (data) {
                 //console.log(data);
-                // div[id="replies"] 안에 있는 모든 하위 요소들을 삭제
+                // div[id="my-board"] 안에 있는 모든 하위 요소들을 삭제
                 $('#selectBoarduserid').empty();
                 var list = ''; // div의 하위 요소가 될 HTML 코드들
                 
                 // 자바스크립트 배열 data의 원소 갯수만큼 콜백 함수의 내용을 반복
                 $(data).each(function () {
                     // 콜백 함수 내부에서 this: 배열 data의 원소
-                    var date = new Date(this.regdate);
+                    var date = new Date(this.reg_date);
                     var dateString = date.toLocaleDateString() 
                             + ' ' + date.toLocaleTimeString();
-                    list += '<div class="container pt-2"><div class="row d-flex"><div class="my-board">'
+                    
+                    list += '<div class="block-21 mb-4 d-flex"><div class="my-board">'
                             +'<a href="/trans/board/detail?bno=' + this.bno + '">'
-                            + '<input type="text" id="bno" value="'
-                            + this.bno
-                            + '" readonly />'    
+                            + '<img width="150" height="100" src="../resources'+ this.attachment +'">'                         
                             +'</a>'
-                            + '<input type="text" id="title" value="'
-                            + this.title
-                            + '" readonly />'                            
-                            + '<input type="text" id="userid" value="'
-                            + this.userid
-                            + '" readonly />'
-                            
-                            + '</div></div></div>';
+                            +'<p id="title" style="font-family: 맑은 고딕">'
+                            + '제목: ' + this.title
+                            +'</p>'
+                            + '<p id="reg_date" name="reg_date">'
+                            + dateString                      
+                            + '</p><hr/>'
+                            + '</div></div>';
                 }); // end $.each();
                 
                 $('#selectBoarduserid').html(list);

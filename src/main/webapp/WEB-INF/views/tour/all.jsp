@@ -56,8 +56,6 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="/trans" class="nav-link" style="font-size: 20px">홈</a></li>
-                    <li class="nav-item"><a href="rooms.html" class="nav-link" style="font-size: 20px">교통
-                            경로찾기</a></li>
                     <li class="nav-item active"><a href="" class="nav-link" style="font-size: 20px">여행지
                             정보</a></li>
                     <li class="nav-item"><a href="../board/main" class="nav-link" style="font-size: 20px">여행커뮤니티</a></li>
