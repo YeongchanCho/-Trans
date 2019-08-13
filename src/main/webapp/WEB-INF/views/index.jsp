@@ -284,70 +284,155 @@
             </div>
             </div>
         </div>
-        <!-- The Modal -->
-        <div id="trans_f" class="modal fade">
-            <div class="modal-dialog modal-lg">
+    <!-- The Modal 1st -->
+    <div id="trans_f" class="modal fade">
+        <div class="modal-dialog modal-80size modal-center">
             <!-- Modal content -->
             <div class="modal-content">
                 <!-- Modal Header -->
-            <div class="modal-header">
-                <div>
-                <table class="table table-borderless" id="trans_table">
-                      <thead style="font-size: 25px">
-                          <tr style="color: #ff8000;">
-                              <th id="dep_city" style="text-align: center;">서울</th>
-                              <th id="" style="text-align: center;">&nbsp;-->&nbsp;</th>
-                              <th id="arr_city" style="text-align: center;">부산</th>
-                          </tr>
-                      </thead>
-                </table>
+                <div class="modal-header">
+                    <div>
+                        <table class="table table-borderless" id="trans_table">
+                            <thead style="font-size: 25px">
+                                <tr style="color: #ff8000;">
+                                    <th class="dep_city" style="text-align: center;">서울</th>
+                                    <th id="" style="text-align: center;">&nbsp;-->&nbsp;</th>
+                                    <th class="arr_city" style="text-align: center;">부산</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-body">
+                    <div class="panel-body">
+
+                        <table width="100%"
+                            class="table table-striped table-bordered table-hover"
+                            id="trans_table">
+                            <thead class="thead-dark" style="text-align: center;">
+                                <tr>
+                                    <th>교통편</th>
+                                    <th>출발일</th>
+                                    <th>도착일</th>
+                                    <th>요금</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;">
+                                <tr class="showDetail table-info" id="expBus-table">
+                                    <td id="device">고속버스</td>
+                                    <td class="date_dep">date</td>
+                                    <td class="date_arr">date</td>
+                                    <td id="e_charge">N/A</td>
+                                </tr>
+                                <tr class="showDetail table-warning" id="train-table">
+                                    <td id="device">열차</td>
+                                    <td class="date_dep">date</td>
+                                    <td class="date_arr">date</td>
+                                    <td id="t_charge">N/A</td>
+                                </tr>
+                                <tr class="showDetail table-danger" id="airplane-table">
+                                    <td id="device">항공편</td>
+                                    <td class="date_dep">date</td>
+                                    <td class="date_arr">date</td>
+                                    <td id="a_charge">N/A</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            <div class="modal-body">
-             <div class="panel-body">
-                
-                  <table width="100%" class="table table-striped table-bordered table-hover" id="trans_table">
-                      <thead style="text-align: center;">
-                          <tr>
-                              <th>교통편</th>
-                              <th>출발일</th>
-                              <th>도착일</th>
-                              <th>요금</th>
-                          </tr>
-                      </thead>
-                      <tbody style="text-align: center;">
-                          <tr class="table-info">
-                                <td id="device">고속버스</td>
-                                <td class="date_dep">date</td>
-                                <td class="date_arr">date</td>
-                                <td id="e_charge">100원</td>
-                            </tr>
-                            <tr class="table-warning">
-                                <td id="device">KTX</td>
-                                <td class="date_dep">date</td>
-                                <td class="date_arr">date</td>
-                                <td id="a_charge">100원</td>
-                            </tr>
-                            <tr class="table-danger">
-                                <td id="device">비행기</td>
-                                <td class="date_dep">date</td>
-                                <td class="date_arr">date</td>
-                                <td id="a_charge">100원</td>
-                            </tr>
-                      </tbody>
-                  </table>
-              </div>
-            </div>
-            
-            <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 
             </div>
         </div>
+    </div>
+
+    <!-- The Modal 2nd -->
+    <div id="trans_s" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <div style="text-align: center; font-size: 170%; color: red;">
+                        <label># 교통편 상세 검색</label>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table class="table table-borderless" id="trans_table"
+                            style="display: inline-block;">
+                            <thead style="font-size: 25px">
+                                <tr style="color: #ff8000;">
+                                    <th id="" style="text-align: center;">경로 :</th>
+                                    <th class="dep_city" style="text-align: center;">서울</th>
+                                    <th id="" style="text-align: center;">&nbsp;-->&nbsp;</th>
+                                    <th class="arr_city" style="text-align: center;">부산</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="panel-body">
+
+
+                    <form>
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">출발 터미널</label>  
+                                <select name="" id="depTerminal" class="depTerminalList">
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">도착 터미널</label> 
+                                <select name="" id="arrTerminal" class="arrTerminalList">
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-primary mb-2"  id="search-path">검  색</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- <form>
+                                <label class="my-1 mr-2" style="font-size: 140%; color: blue;">*** 이용 가능 노선 ***</label> 
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <label class="my-1 mr-2" id="d_Path" style="font-size: 120%; color: blue;">N/A</label> 
+                            </div>
+                        </div>
+                    </form> -->
+
+                        
+                        <table width="100%"
+                            class="table table-dark table-striped table-hover">
+                            <thead style="text-align: center;">
+                                <tr>
+                                    <th>출발시간</th>
+                                    <th>도착시간</th>
+                                    <th>요금</th>
+                                    <th id="air_grade">등급</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;" class="transDetail_table">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
         </div>
+    </div>
         <!-- <script src="resources/js/jquery.min.js"></script> -->
         <!-- <script src="resources/js/jquery-migrate-3.0.1.min.js"></script> -->
         <!-- <script src="resources/js/popper.min.js"></script> -->
@@ -367,74 +452,336 @@
         <script src="resources/js/main.js"></script>
         
         <script type="text/javascript">
-            function openLogin() {
-                $('#myModal').show();
-            }
-            //팝업 Close 기능
-            function close_pop(flag) {
-                $('#myModal').hide();
+        function openLogin() {
+            $('#myModal').show();
+        }
+        //팝업 Close 기능
+        function close_pop(flag) {
+            $('#myModal').hide();
+        };
+        function trimCityNm(city) {
+            city = city.substring(0, city.length - 1);
+            city = city.replace('특별', '');
+            city = city.replace('광역', '');
+            return city;
+        };
+        var HashSet = function () {
+
+            this.set = [];
+
+            this.add = function (obj) {
+                if (!this.contains(obj)) {
+                    this.set.push(obj);
+                }
             };
-            
-        </script>
-        <script>
-        $(document).ready(function () {
-                url = '/trans/transCities';
-                $.get(url, function (data) {
+
+            this.remove = function (obj) {
+                this.set = jQuery.grep(this.set, function (value) {
+                    return value !== obj;
+                });
+            };
+
+            this.clear = function () {
+                this.set = [];
+            };
+
+            this.contains = function (obj) {
+                return $.inArray(obj, this.set) > -1;
+            };
+
+            this.isEmpty = function () {
+                return this.set.length === 0;
+            };
+        };
+    </script>
+    <script>
+        $(document).ready(function() {
+            url = '/trans/transCities';
+            $.get(url, function(data) {
+                var strs = '<option value="';
+                var strm = '">';
+                var stre = '</option>';
+                var str = '';
+                $.each(data, function(i) {
+                    $.each(data[i], function(key, value) {
+                        if (i === 0) {
+                            /* console.log(key + ' / ' + value); */
+                            str += strs + key
+                                    + strm
+                                    + value
+                                    + stre;
+                        };
+                        if (i != 0) {
+                            /* console.log(key + ' / ' + value); */
+                            str += strs + value
+                                    + strm
+                                    + key
+                                    + stre;
+                        };
+                    });
+                });
+                $('.form-control').append(str);
+            });
+        });
+
+        var responseData;
+        $(document).ready(function() {
+            $("#trans").click(function() {
+                responseData = null;
+                var checkin_date = $(".checkin_date").val().replace(/-/gi, '');
+                var checkout_date = $(".checkout_date").val().replace(/-/gi, '');
+                var dep_city = $('#departure option:selected').text();
+                var dep_cityCode = $('#departure option:selected').val();
+                var arr_city = $('#arrived option:selected').text();
+                var arr_cityCode = $('#arrived option:selected').val();
+                var req = {
+                    'dep_date' : checkin_date,
+                    'arr_date' : checkout_date,
+                    'depcity' : dep_city,
+                    'arrcity' : arr_city,
+                    'depcitycode' : dep_cityCode,
+                    'arrcitycode' : arr_cityCode,
+                };
+                var redirectURL = '/board/main'
+                $('.dep_city').html(dep_city);
+                $('.arr_city').html(arr_city);
+                $('.date_dep').html($(".checkin_date").val());
+                $('.date_arr').html($(".checkout_date").val());
+                url = '/trans/transDetail';
+                
+                $.get(url, req, function(data) {
+                    responseData = data;
                     var strs = '<option value="';
                     var strm = '">';
                     var stre = '</option>';
-                    var str = '';
-                    $.each(data, function (i) {
-                        $.each(data[i], function (key, value) {
-                            if (i === 0) {
-                                /* console.log(key + ' / ' + value); */
-                                str += strs + key + strm + value + stre;
-                            };
-                            if (i != 0) {
-                                /* console.log(key + ' / ' + value); */
-                                str += strs + value + strm + key + stre;
-                            };
-                        });
+                    var str1 = '';
+                    var str2 = '';
+    
+                    var exit = false;
+                    for (i in data) {
+                        for (j in data[i]) {
+                            if (data[i][j]['price'] !== null && data[i][j]['infoService'] === 'bus') {
+                                //console.log('BUS: (' + i + ' : ' + j + ')' + data[i][j]['price']);
+                                $('#e_charge').html(data[i][j]['price'].replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1,') + '원');
+                                /* exit = true;
+                                break; */
+                            }
+                            if (data[i][j]['price'] !== null && data[i][j]['infoService'] === 'train') {
+                                //console.log('TRAIN: (' + i + ' : ' + j + ')' + data[i][j]['price']);
+                                $('#t_charge').html(data[i][j]['price'].replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + '원');
+                                /* exit = true;
+                                break; */
+                            }
+                            if (data[i][j]['price'] !== null && data[i][j]['infoService'] === 'air') {
+                                /* console.log(data[i][j]['price']); */
+                                $('#a_charge').html(data[i][j]['price'].replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + '원');
+                                /* exit = true;
+                                break; */
+                            }
+                        }
+                            /* if (exit) {
+                              break;
+                            } */
+                    }
+
+                    $("#trans_f").modal();
+
                     });
-                    $('.form-control').append(str);
                 });
-        });
-        $(document).ready(function () {
-            $('#reApi').click(function (event) {
-                event.preventDefault();
+
+            $(".showDetail").click(function() {
+                var strs = '<option value="';
+                var strm = '">';
+                var stre = '</option>';
+                var str1 = '';
+                var str2 = '';
+                var device = $(this).attr('id');
+                var deviceKey = '';
+    
+                if (device === 'airplane-table') {
+                    deviceKey = 'AIRPLANE';
+                    $('#air_grade').html('항공사');
+                };
+                if (device === 'train-table') {
+                    deviceKey = 'TRAIN';
+                }
+                if (device === 'expBus-table') {
+                    deviceKey = 'BUS';
+                }
+                var str1 = '';
+                var str2 = '';
+                $('.depTerminalList').html(str1);
+                $('.arrTerminalList').html(str2);
+                var dcity = $('#departure option:selected').text();
+                dcity = trimCityNm(dcity);
+                var acity = $('#arrived option:selected').text();
+                acity = trimCityNm(acity);
+                for (i in responseData) { /* 교통편 상세보기 출발지&도착지 터미널 리스트 */
+                    for (j in responseData[i]) {
+                        if (responseData[i][j]['oper'] !== null && responseData[i][j]['infoService'] === deviceKey) {
+                            var ct = decodeURIComponent(responseData[i][j]['oper']);
+                            if (deviceKey === 'AIRPLANE') {
+                                dcity = responseData[i][j]['depCity'];
+                                acity = responseData[i][j]['arrCity'];
+                            }
+                            if (ct === dcity) {
+                                str1 += strs + 
+                                        responseData[i][j]['terminalId'] + 
+                                        strm + 
+                                        responseData[i][j]['terminalNm'] + stre;
+                            }
+                            if (ct === acity) {
+                                str2 += strs + 
+                                        responseData[i][j]['terminalId'] + 
+                                        strm + 
+                                        responseData[i][j]['terminalNm'] + stre;
+                            }
+                        }
+                    }
+                }
+                $('.depTerminalList').html(str1);
+                $('.arrTerminalList').html(str2);
+
+                var schedule = '';
+                var dset = new HashSet();
+                var aset = new HashSet();
+                var pathDetail = '';
+                var allPath = '';
+                var dt = '';
+                var at = '';
+                var sdt = '';
+                var sat = '';
+                var numD = $('#depTerminal option').length;
+                var numA = $('#arrTerminal option').length;
+                for (var i = 0; i < numD; i++) {
+                    $('#depTerminal option').eq(i).prop('selected', true);
+                    var depT = $('#depTerminal option:selected').text();
+                    //console.log(depT);
+                    for (var j = 0; j < numA; j++) {
+                        $('#arrTerminal option').eq(j).prop('selected', true);
+                        var arrT = $('#arrTerminal option:selected').text();
+                        //console.log(arrT);
+                        for (n in responseData) {
+                            pathDetail = '';
+                            for (m in responseData[n]) {
+                                dt = responseData[n][m]['depCity'];
+                                at = responseData[n][m]['arrCity'];
+                                //console.log('dt = ' + dt);
+                                //console.log('at = ' + at);
+                                if (dt == depT && at == arrT) {
+                                    sdt = dt;
+                                    sat = at;
+                                    /* console.log('1111:: ' + dset.set.length);
+                                        if (dset.set.length === 0 && aset.set.length === 0) {
+                                            allPath += ' * 출발: ' + dt + ' - ' + '도착: ' + at + '<br>';
+                                        } else {
+                                            for (var i = 0; i < dset.set.length; i++) {
+                                                for (var j = 0; j < aset.set.length; j++) {
+                                                    if (dset.set[i] !== dt && aset.set[i] !== at) {
+                                                        allPath += ' * 출발: ' + dt + ' - ' + '도착: ' + at + '<br>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    dset.add(dt);
+                                    aset.add(at); */
+                                    //console.log('sat = ' + sat);
+                                    //console.log('sdt = ' + sdt);
+                                    dTime = responseData[n][m]['depPlandTime'];
+                                    dTime = dTime.substring(8, dTime.length);
+                                    dTime = dTime.substring(0, 2) +  ':' + dTime.substring(2, 4);
+                                    aTime = responseData[n][m]['arrPlandTime'];
+                                    aTime = aTime.substring(8, aTime.length);
+                                    aTime = aTime.substring(0, 2) + ':' + aTime.substring(2, 4);
+                                    
+                                    if (responseData[n][m]['price'] === null) {
+                                        break;
+                                    }
+                                    
+                                    price = responseData[n][m]['price'].replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + '원';
+                                    gradeNm = responseData[n][m]['gradeNm'];
+                                    pathDetail += '<tr><td>' + dTime + '</td>' + 
+                                                  '<td>' + aTime + '</td>' + 
+                                                  '<td>' + price + '</td>' + 
+                                                  '<td>' + gradeNm + '</td></tr>';
+                                    schedule = pathDetail;
+                                    //console.log('pathDetail = ' + pathDetail);
+                                }
+
+                            };
+                        };
+                    };
+                                /* console.log('2222:: ' + dset.set);
+                                console.log('2222:: ' + aset.set);
+                                    console.log('2222:: ' + dset.set.length); */
+                };
+
+                if (schedule == '' || schedule == null) {
+                    window.alert('해당 경로가 없습니다!!!');
+                    return;
+                } else {
+                    $('#depTerminal option').each(function() {
+                        console.log($(this).text());
+                    if($(this).text() == sdt)
+                        $(this).prop('selected', true);
+                    });                             
+                $('#arrTerminal option').each(function() {
+                        console.log($(this).text());
+                    if($(this).text() == sat)
+                        $(this).prop('selected', true);
+                    });
+                }
+                $('#d_Path').html(allPath);
+                $('.transDetail_table').html(schedule);
+                $("#trans_s").modal();
             });
-        });
-        $(document).ready(function(){
-              $("#trans").click(function(){
-                  var checkin_date = $(".checkin_date").val().replace(/-/gi, '');
-                  var checkout_date = $(".checkout_date").val().replace(/-/gi, '');
-                  var dep_city = $('#departure option:selected').text();
-                  var dep_cityCode = $('#departure option:selected').val();
-                  var arr_city = $('#arrived option:selected').text();
-                  var arr_cityCode = $('#arrived option:selected').val();
-                  var req = { 'dep_date': checkin_date, 
-                          'arr_date': checkout_date, 
-                          'depcity': dep_city, 
-                          'arrcity': arr_city,
-                          'depcitycode': dep_cityCode,
-                          'arrcitycode': arr_cityCode,
-                          };
-                  var redirectURL = '/board/main'
-                  
-                  $('#dep_city').html(dep_city);
-                  $('#arr_city').html(arr_city);
-                  $('.date_dep').html($(".checkin_date").val());
-                  $('.date_arr').html($(".checkout_date").val());
-                  
-                  url = '/trans/transDetail';
-                  $.get(url, req, function (data) {
-                      $("#trans_f").modal();
-                      /* window.location.href = '/trans/transDetail'; */
-                      /* window.location.href = data.redirectURL; */
-                      /* alert(data); */
-                  });
-              });
-            });
+
+            $('#search-path').click(function() {
+                var depT = $('#depTerminal option:selected').text();
+                var arrT = $('#arrTerminal option:selected').text();
+                var pathDetail = '';
+                var torf = false;
+                    for (i in responseData) {
+                        for (j in responseData[i]) {
+                            var dt = responseData[i][j]['depCity'];
+                            var at = responseData[i][j]['arrCity'];
+                            if (responseData[i][j]['oper'] == null) {
+                                if (dt === depT) {
+                                    if (at === arrT) {
+                                        dTime = responseData[i][j]['depPlandTime'];
+                                        dTime = dTime.substring(8, dTime.length);
+                                        dTime = dTime.substring(0, 2) + ':' + dTime.substring(2, 4);
+                                        aTime = responseData[i][j]['arrPlandTime'];
+                                        aTime = aTime.substring(8, aTime.length);
+                                        aTime = aTime.substring(0, 2) + ':' + aTime.substring(2, 4);
+                                        price = responseData[i][j]['price'].replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + '원';
+                                        gradeNm = responseData[i][j]['gradeNm'];
+                                        pathDetail += '<tr><td>' + dTime + '</td>' + 
+                                                      '<td>' + aTime + '</td>' + 
+                                                      '<td>' + price + '</td>' + 
+                                                      '<td>' + gradeNm + '</td></tr>';
+
+                                        /* $('#depTerminal option').each(function() {
+                                            if ($(this).text() == 'dt') 
+                                                $(this).prop('selected', true);
+                                        });
+                                        $('#depTerminal option').each(function() {
+                                            if ($(this).text() == 'at') 
+                                                $(this).prop('selected', true);
+                                        }); */
+                                    }
+                                }
+                            }
+                        } // end for j
+                    } // end for i
+                    if (pathDetail == '') {
+                        alert('해당 경로가 없습니다!!!');
+                        return;
+                    }
+                    $('.transDetail_table').html(
+                            pathDetail);
+                });
+    });
       </script>
     </body>
 </html>
