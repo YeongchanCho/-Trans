@@ -48,8 +48,8 @@ public class TransController {
    private static final String API_URL = "http://openapi.tago.go.kr/openapi/service/";
    //private static final String SERVICE_KEY = "serviceKey=qRLgxrGXbMAS4kHs3H7QQnnkbOBpR6AFleTjqOPlp%2FXQOltZfLU2H7YFZfHA%2Fq2HLQOZvhC6LmsYw2%2BWdoDELg%3D%3D";
    //private static final String SERVICE_KEY = "serviceKey=dO2ePGmIl0dGNr0cnSQJSUqbD5C0gOm3RrF3VjHIJkgvDN9gPh6PRR4MHQKZAbrFGVoZ%2FLCHGXd2Hp1ygdk1Vw%3D%3D";
-   //private static final String SERVICE_KEY = "serviceKey=fxvu96zF2DmVmewwVNGBggD4TwFMXNj%2FeoBLL%2BhjQGSLKDg3I2bpRgYOJX%2Fru%2BdaSVVzVK%2FILWq0MKGEMCv77A%3D%3D";
-   private static final String SERVICE_KEY = "serviceKey=RAlsTVJZFcNfsDWCPPNGcNKEOZ2QCPnM3YhnyXLymNQpiuPmFoop2bfNl8OcptYeKZrfciRsAceW5WYXQ4wanw%3D%3D";
+   private static final String SERVICE_KEY = "serviceKey=fxvu96zF2DmVmewwVNGBggD4TwFMXNj%2FeoBLL%2BhjQGSLKDg3I2bpRgYOJX%2Fru%2BdaSVVzVK%2FILWq0MKGEMCv77A%3D%3D";
+   //private static final String SERVICE_KEY = "serviceKey=RAlsTVJZFcNfsDWCPPNGcNKEOZ2QCPnM3YhnyXLymNQpiuPmFoop2bfNl8OcptYeKZrfciRsAceW5WYXQ4wanw%3D%3D";
    private static final String SERVICE_KEY_CODE = SERVICE_KEY.replace("serviceKey", "");
    private Trans requestData = new Trans();
    private List<List<Trans>> responseData = new ArrayList<List<Trans>>();
@@ -591,7 +591,7 @@ private String findState(String depCityC) throws Exception {
          log.info("Train::url = {}", urlBuilder.toString());
       } else if (infoServiceName.equals("DmstcFlightNvgInfoService")) { 
          REQ_MESSAGE = "?depAirportId" + "=" + encodeResult1 + "&arrAirportId" + "=" + encodeResult2 + "&depPlandTime=" 
-        		 + encodeResult3 + "&numOfRows=100&pageNo=1"; 
+        		 + encodeResult3 + "&numOfRows=200&pageNo=1"; 
          url = API_URL + infoServiceName + "/" + "getFlightOpratInfoList" + REQ_MESSAGE + "&" + SERVICE_KEY;
          urlBuilder = new StringBuilder();
          urlBuilder.append(url);

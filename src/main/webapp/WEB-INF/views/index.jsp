@@ -27,7 +27,14 @@
         <link rel="stylesheet" href="resources/css/flaticon.css">
         <link rel="stylesheet" href="resources/css/icomoon.css">
         <link rel="stylesheet" href="resources/css/style.css">
-
+        <style type="text/css">
+        @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+        .jg{font-family: 'Jeju Gothic', sans-serif; color: #1E90FF}
+        #loadingModal{
+            position: absolute;
+            top: 30%;
+        }
+        </style>
     </head>
     <body>
     
@@ -117,7 +124,7 @@
                                         class="form-group p-4 align-self-stretch d-flex align-items-end">
                                         <div class="wrap">
                                             <label for="#">출발일</label> <input type="text"
-                                                class="form-control checkin_date" placeholder="출발일 선택">
+                                                class="form-control checkin_date" placeholder="출발일 선택" >
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +191,7 @@
                 </div>
             </div>
         </section>
-    
+     
         <footer class="ftco-footer ftco-bg-dark ftco-section">
             <div class="container">
                 <div class="row mb-5">
@@ -248,15 +255,34 @@
                 </div>
             </div>
         </footer>
+        <!-- The Modal(loading) -->
+        <div id="loadingModal" class="modal">
+            <div class="modal-dialog modal-ms">
+            <div class="modal-content">
+                    <div class="panel-body" style="text-align: center;">
+                          <h2 class="jg">데이터 로딩중 ...</h2>
+                          <div class="spinner-grow text-muted"></div>
+                          <div class="spinner-grow text-primary"></div>
+                          <div class="spinner-grow text-success"></div>
+                          <div class="spinner-grow text-info"></div>
+                          <div class="spinner-grow text-warning"></div>
+                          <div class="spinner-grow text-danger"></div>
+                          <div class="spinner-grow text-secondary"></div>
+                          <div class="spinner-grow text-dark"></div>
+                          <div class="spinner-grow text-light"></div>
+                    </div>
+            </div>
+            </div>
+        </div>
 
             <!-- loader -->
-            <div id="ftco-loader" class="show fullscreen">
+            <%-- <div id="ftco-loader" class="show fullscreen">
                 <svg class="circular" width="48px" height="48px">
                     <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
                         stroke-width="4" stroke="#eeeeee" />
                     <circle class="path" cx="24" cy="24" r="22" fill="none"
                         stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-            </div>
+            </div> --%>
         
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -286,7 +312,7 @@
         </div>
     <!-- The Modal 1st -->
     <div id="trans_f" class="modal fade">
-        <div class="modal-dialog modal-80size modal-center">
+        <div class="modal-dialog">
             <!-- Modal content -->
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -527,6 +553,7 @@
         var responseData;
         $(document).ready(function() {
             $("#trans").click(function() {
+                $('#loadingModal').show();
                 responseData = null;
                 var checkin_date = $(".checkin_date").val().replace(/-/gi, '');
                 var checkout_date = $(".checkout_date").val().replace(/-/gi, '');
@@ -583,7 +610,7 @@
                               break;
                             } */
                     }
-
+                    $('#loadingModal').hide();
                     $("#trans_f").modal();
 
                     });
@@ -604,9 +631,11 @@
                 };
                 if (device === 'train-table') {
                     deviceKey = 'TRAIN';
+                    $('#air_grade').html('열차종류');
                 }
                 if (device === 'expBus-table') {
                     deviceKey = 'BUS';
+                    $('#air_grade').html('버스등급');
                 }
                 var str1 = '';
                 var str2 = '';
@@ -666,27 +695,12 @@
                             for (m in responseData[n]) {
                                 dt = responseData[n][m]['depCity'];
                                 at = responseData[n][m]['arrCity'];
-                                //console.log('dt = ' + dt);
-                                //console.log('at = ' + at);
                                 if (dt == depT && at == arrT) {
+                                console.log('dt = ' + dt);
+                                console.log('at = ' + at);
                                     sdt = dt;
                                     sat = at;
-                                    /* console.log('1111:: ' + dset.set.length);
-                                        if (dset.set.length === 0 && aset.set.length === 0) {
-                                            allPath += ' * 출발: ' + dt + ' - ' + '도착: ' + at + '<br>';
-                                        } else {
-                                            for (var i = 0; i < dset.set.length; i++) {
-                                                for (var j = 0; j < aset.set.length; j++) {
-                                                    if (dset.set[i] !== dt && aset.set[i] !== at) {
-                                                        allPath += ' * 출발: ' + dt + ' - ' + '도착: ' + at + '<br>';
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    dset.add(dt);
-                                    aset.add(at); */
-                                    //console.log('sat = ' + sat);
-                                    //console.log('sdt = ' + sdt);
+                                    
                                     dTime = responseData[n][m]['depPlandTime'];
                                     dTime = dTime.substring(8, dTime.length);
                                     dTime = dTime.substring(0, 2) +  ':' + dTime.substring(2, 4);
@@ -695,7 +709,8 @@
                                     aTime = aTime.substring(0, 2) + ':' + aTime.substring(2, 4);
                                     
                                     if (responseData[n][m]['price'] === null) {
-                                        break;
+                                        responseData[n][m]['price'] = '***';
+                                        //break;
                                     }
                                     
                                     price = responseData[n][m]['price'].replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,') + '원';
@@ -711,9 +726,6 @@
                             };
                         };
                     };
-                                /* console.log('2222:: ' + dset.set);
-                                console.log('2222:: ' + aset.set);
-                                    console.log('2222:: ' + dset.set.length); */
                 };
 
                 if (schedule == '' || schedule == null) {
@@ -775,6 +787,7 @@
                         } // end for j
                     } // end for i
                     if (pathDetail == '') {
+                        $('.transDetail_table').html(pathDetail);
                         alert('해당 경로가 없습니다!!!');
                         return;
                     }
