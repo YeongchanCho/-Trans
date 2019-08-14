@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <!DOCTYPE html>
@@ -66,17 +64,20 @@
       
       <form action="/trans/user/login" class="form-signin"  method="post" onSubmit="logincall();return false">
         <h5 class="form-signin-heading">로그인 정보를 입력하세요</h5>
-        <label for="inputEmail" class="sr-only">Your ID</label>
-       
-        <input type="text" name="userid" id="uid" class="form-control" placeholder="Your ID" required autofocus><BR>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password"  name="pwd" id="upw" class="form-control" placeholder="Password" required><br>
+        
+        <input type="text" name="userid" id="uid" class="form-control" placeholder="Your ID" required autofocus>
+        <br>
+        
+        <input type="password"  name="pwd" id="upw" class="form-control" placeholder="Password" required>
+        <br>
+        
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> 기억하기
           </label>
         </div>
         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">로 그 인</button>
+        <input type="hidden" name="target" value="${ target }" />
       </form>
       
         </div>

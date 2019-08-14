@@ -67,7 +67,7 @@
                <c:if test="${empty signinId}">
                         <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
                         <li class="nav-item"><a href="../user/login"
-                            class="nav-link" style="font-size: 20px" id="btnSignIn">로그인</a></li>
+                            class="nav-link btnSignIn" style="font-size: 20px" id="btnSignIn">로그인</a></li>
                     </c:if>
                     <c:if test="${not empty signinId}">
                         <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
@@ -108,7 +108,7 @@
       <ul>
          <c:if test="${empty signinId}">
             <%-- 로그인되어 있지 않은 경우 --%>
-            <li><a href="../user/login" id="btnSignIn"
+            <li><a href="../user/login" id="btnSignIn" class="btnSignIn"
                style="font-family: 맑은 고딕; font-size: 200%">로그인</a></li>
          </c:if>
          <c:if test="${not empty signinId}">
@@ -129,7 +129,16 @@
 				<c:forEach var="board" items="${boardList}">
 					<div class="col-md-3 d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
-						  <a href="detail?bno=${board.bno}" class="block-20">	
+						
+						<c:if test="${empty signinId}">
+                        <a href="../user/login" class="block-20 btnSignIn">
+                        </c:if>
+						
+						
+						 <c:if test="${not empty signinId}">
+						 <a href="detail?bno=${board.bno}" class="block-20">  
+          
+                         </c:if>	
 						  		<c:if test="${empty board.attachment}">
 						  		  <img src="../resources/images/none.jpg" width="250" height="250">
 						  		</c:if>
@@ -290,7 +299,15 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
    <script src="../resources/js/google-map.js"></script>
    <script src="../resources/js/main.js"></script>
-
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.btnSignIn').click(function (event) {
+            // 로그인 버튼(링크)를 클릭했을 때 페이지가 이동되는 기본 동작을 막음.
+            event.preventDefault();
+            location = encodeURI('/trans/user/login?target=' + location.href);
+        }); // end $(#btnSignIn).click
+    }); // end $(document).ready
+    </script>
 </body>
 
 </html>

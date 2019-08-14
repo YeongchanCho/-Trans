@@ -62,12 +62,12 @@
                     <li class="nav-item"><a href="../user/myinfo?userid=${signinId}" class="nav-link" style="font-size: 20px">내정보</a></li>
                     <c:if test="${empty signinId}">
                         <%-- 로그인 정보가 없는 경우(로그인되어 있지 않은 경우) --%>
-                        <li class="nav-item"><a href="../user/login" class="nav-link"
+                        <li class="nav-item"><a href="../user/login" class="nav-link btnSignIn"
                             style="font-size: 20px" id="btnSignIn">로그인</a></li>
                     </c:if>
                     <c:if test="${not empty signinId}">
                         <%-- 로그인 정보가 있는 경우(로그인되어 있는 경우) --%>
-                        <li class="nav-link">${signinId}님,환영!<a href="/user/logout"
+                        <li class="nav-link">${signinId}님,환영!<a href="../user/logout"
                             class="nav-link">로그아웃</a>
                         </li>
                     </c:if>
@@ -104,12 +104,12 @@
     <ul>
         <c:if test="${empty signinId}">
             <%-- 로그인되어 있지 않은 경우 --%>
-            <li><a href="user/login" id="btnSignIn"
+            <li><a href="../user/login" id="btnSignIn" class="btnSignIn"
                 style="font-family: 맑은 고딕; font-size: 200%">로그인</a></li>
         </c:if>
         <c:if test="${not empty signinId}">
             <%-- 로그인되어 있는 경우 --%>
-            <li>${signinId}님.<a href="user/logout">로그아웃</a>
+            <li>${signinId}님.<a href="../user/logout">로그아웃</a>
             </li>
         </c:if>
 
@@ -299,5 +299,16 @@
             });
         });
     </script>
+    
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.btnSignIn').click(function (event) {
+            // 로그인 버튼(링크)를 클릭했을 때 페이지가 이동되는 기본 동작을 막음.
+            event.preventDefault();
+            location = encodeURI('/trans/user/login?target=' + location.href);
+        }); // end $(#btnSignIn).click
+    }); // end $(document).ready
+    </script>
+    
 </body>
 </html>

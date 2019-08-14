@@ -34,7 +34,12 @@ public class SignInInterceptor extends HandlerInterceptorAdapter {
 			if (user.getGrade().equals("guest")) {
 				
 				session.setAttribute("code", "guest");
-				response.sendRedirect("/trans/");
+				
+				if (target != null && !target.equals("")) {
+					response.sendRedirect(target);
+				} else {
+					response.sendRedirect("/trans/");
+				}
 				
 				return;
 			}
@@ -42,7 +47,12 @@ public class SignInInterceptor extends HandlerInterceptorAdapter {
 			// 세션에 로그인 정보(사용자 아이디)를 저장하고, 페이지 이동(redirect)
 			
 			session.setAttribute("signinId", ((User) user).getUserid());
-			response.sendRedirect("/trans/");
+			if (target != null && !target.equals("")) {
+				response.sendRedirect(target);
+				log.info("로그인 성공리다이렉트 주소 = {}", target);
+			} else {
+				response.sendRedirect("/trans/");
+			}
 
 		} else { // 로그인 실패한 경우
 			log.info("로그인 실패");
